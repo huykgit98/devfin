@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DevFin
 This project utilizes [Very good layered architecture](https://verygood.ventures/blog/very-good-flutter-architecture) developed by Felix Angelov, the creator of the BLoC library, and his team at Very Good Ventures.
 # Features
@@ -171,4 +170,3 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
->>>>>>> 6f4953c (init codebase)
