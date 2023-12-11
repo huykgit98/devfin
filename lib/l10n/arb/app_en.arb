@@ -1,0 +1,12 @@
+{
+  "username": "Username",
+  "usernameHint": "Input your username",
+  "password": "Password",
+  "passwordHint": "Input your password",
+  "forgotPassword": "Forgot password",
+  "login": "Login",
+  "firstName": "Firstname",
+  "firstNameHint": "Input your firstname",
+  "lastName": "Lastname",
+  "lastNameHint": "Input your lastname"
+}

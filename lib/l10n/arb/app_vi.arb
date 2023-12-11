@@ -1,0 +1,13 @@
+{
+  "username": "Tên người dùng",
+  "usernameHint": "Nhập vào tên người dùng",
+  "password": "Mật khẩu",
+  "passwordHint": "Nhập vào mật khẩu",
+  "forgotPassword": "Quên mật khẩu",
+  "login": "Đăng nhập",
+  "firstName": "Họ của bạn",
+  "firstNameHint": "Nhập vào họ của bạn",
+  "lastName": "Tên của bạn",
+  "lastNameHint": "Nhập vào tên của bạn"
+}
+ 
