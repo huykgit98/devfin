@@ -14,7 +14,15 @@ This project utilizes [Very good layered architecture](https://verygood.ventures
 
 ## Features
 ## Technologies used
-## Setup and run
+## Flutter app used
+### Using flutter_bloc for state management, and also utilizing Riverpod for simple use-cases such as theme switching and language switching.
+### [Very good layered architecture](https://verygood.ventures/blog/very-good-flutter-architecture) recommended by VeryGoodVentures
+### go_router for navigation and routing
+### Service Locator using get_it and injectable packages
+### l10n using flutter_localization via .arb
+### using [ShoreBird code-push](https://shorebird.dev/) for unplanned features
+### using [Firebase Remote Config](https://kazlauskas.dev/control-your-flutter-app-with-firebase-remote-config/) planned features
+
 ## Screenshot
 ## Todo
 
