@@ -10,6 +10,9 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		45EB1D2F2B5713B000E20997 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45EB1D2E2B5713B000E20997 /* GoogleService-Info.plist */; };
+		45EB1D312B5713B800E20997 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45EB1D302B5713B800E20997 /* GoogleService-Info.plist */; };
+		45EB1D332B5713BE00E20997 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45EB1D322B5713BE00E20997 /* GoogleService-Info.plist */; };
 		57A3D93AF68E7E796704F4A9 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A45157567F49E29E799C1E /* Pods_RunnerTests.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		45DEF82D2B56EE65008FF310 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		45DEF82E2B56EE71008FF310 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		45EB1D252B570AEF00E20997 /* Generated.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Generated.xcconfig; sourceTree = "<group>"; };
+		45EB1D2E2B5713B000E20997 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		45EB1D302B5713B800E20997 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		45EB1D322B5713BE00E20997 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		53758E0F537138B2C4DE1A63 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A45157567F49E29E799C1E /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		667F3B8F717BB8EDB9B3A590 /* Pods-Runner.release-staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-staging.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-staging.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +116,40 @@
 			path = RunnerTests;
 			sourceTree = "<group>";
 		};
+		45EB1D262B5712D900E20997 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				45EB1D292B57130000E20997 /* staging */,
+				45EB1D282B5712F800E20997 /* production */,
+				45EB1D272B5712E100E20997 /* development */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		45EB1D272B5712E100E20997 /* development */ = {
+			isa = PBXGroup;
+			children = (
+				45EB1D2E2B5713B000E20997 /* GoogleService-Info.plist */,
+			);
+			path = development;
+			sourceTree = "<group>";
+		};
+		45EB1D282B5712F800E20997 /* production */ = {
+			isa = PBXGroup;
+			children = (
+				45EB1D302B5713B800E20997 /* GoogleService-Info.plist */,
+			);
+			path = production;
+			sourceTree = "<group>";
+		};
+		45EB1D292B57130000E20997 /* staging */ = {
+			isa = PBXGroup;
+			children = (
+				45EB1D322B5713BE00E20997 /* GoogleService-Info.plist */,
+			);
+			path = staging;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +188,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				45EB1D262B5712D900E20997 /* Firebase */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -292,8 +333,11 @@
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
+				45EB1D2F2B5713B000E20997 /* GoogleService-Info.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+				45EB1D312B5713B800E20997 /* GoogleService-Info.plist in Resources */,
+				45EB1D332B5713BE00E20997 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
