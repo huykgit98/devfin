@@ -26,7 +26,8 @@ This project utilizes [Very good layered architecture](https://verygood.ventures
 ## Screenshot
 ## Todo
 
-## Getting Started 🚀
+<details>
+<summary>## Getting Started 🚀</summary>
 
 This project contains 3 flavors:
 
