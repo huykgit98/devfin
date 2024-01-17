@@ -27,7 +27,9 @@ This project utilizes [Very good layered architecture](https://verygood.ventures
 ## Todo
 
 <details>
-<summary>## Getting Started 🚀</summary>
+<summary>Verygood Ventures Documentation</summary>
+
+## Getting Started 🚀
 
 This project contains 3 flavors:
 
@@ -181,6 +183,7 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
 
+</details>
 
 ## References
 
