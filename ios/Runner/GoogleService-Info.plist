@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.negandev.devfin.stg</string>
+	<string>com.negandev.devfin.dev</string>
 	<key>PROJECT_ID</key>
 	<string>devfin-dev</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:314527698118:ios:d4452ce8ef6ce627cb1bc7</string>
+	<string>1:314527698118:ios:a6fc41ac583f768fcb1bc7</string>
 </dict>
 </plist>
