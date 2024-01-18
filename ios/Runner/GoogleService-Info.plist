@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCDMIysTJbZvzXPhDpMpupX3nS70i4nxIc</string>
+	<string>AIzaSyAKJtmnrwkFP_Xzsy39IBaSFxLXz8oY7YE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>314527698118</string>
+	<string>449011771107</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.negandev.devfin.stg</string>
+	<string>com.negandev.devfin.prod</string>
 	<key>PROJECT_ID</key>
-	<string>devfin-dev</string>
+	<string>devfin-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>devfin-dev.appspot.com</string>
+	<string>devfin-prod.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:314527698118:ios:d4452ce8ef6ce627cb1bc7</string>
+	<string>1:449011771107:ios:da10c2f58aba7308e2c7d6</string>
 </dict>
 </plist>

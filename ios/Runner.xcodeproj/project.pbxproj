@@ -556,7 +556,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = Devfin;
+				FLAVOR_APP_NAME = DevFin;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -653,7 +653,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = testApp;
+				FLAVOR_APP_NAME = DevFin;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -745,7 +745,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = Devfin;
+				FLAVOR_APP_NAME = DevFin;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -842,7 +842,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "[DEV] Devfin";
+				FLAVOR_APP_NAME = "[DEV] DevFin";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -937,7 +937,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "[DEV] Devfin";
+				FLAVOR_APP_NAME = "[DEV] DevFin";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1031,7 +1031,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "[DEV] Devfin";
+				FLAVOR_APP_NAME = "[DEV] DevFin";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1128,7 +1128,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "[STG] Devfin";
+				FLAVOR_APP_NAME = "[STG] DevFin";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1225,7 +1225,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "[STG] Devfin";
+				FLAVOR_APP_NAME = "[STG] DevFin";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1317,7 +1317,7 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
-				FLAVOR_APP_NAME = "[STG] Devfin";
+				FLAVOR_APP_NAME = "[STG] DevFin";
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
