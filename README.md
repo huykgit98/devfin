@@ -14,9 +14,20 @@ This project utilizes [Very good layered architecture](https://verygood.ventures
 
 ## Features
 ## Technologies used
-## Setup and run
+## Flutter app used
+### Using flutter_bloc for state management, and also utilizing Riverpod for simple use-cases such as theme switching and language switching.
+### [Very good layered architecture](https://verygood.ventures/blog/very-good-flutter-architecture) recommended by VeryGoodVentures
+### go_router for navigation and routing
+### Service Locator using get_it and injectable packages
+### l10n using flutter_localization via .arb
+### using [ShoreBird code-push](https://shorebird.dev/) for unplanned features
+### using [Firebase Remote Config](https://kazlauskas.dev/control-your-flutter-app-with-firebase-remote-config/) planned features
+
 ## Screenshot
 ## Todo
+
+<details>
+<summary>Verygood Ventures Documentation</summary>
 
 ## Getting Started 🚀
 
@@ -160,6 +171,7 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
         "description": "Texto mostrado en la AppBar de la página del contador"
     }
 }
+
 ```
 
 [coverage_badge]: coverage_badge.svg
@@ -170,3 +182,12 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
+
+</details>
+
+## References
+
+### Setting up muti-flavor with Firebase
+1. [Creating Development Environments for Firebase using the Very Good & Flutterfire CLIs in Flutter](https://demmss.medium.com/creating-development-environments-for-firebase-using-the-very-good-flutterfire-clis-in-flutter-250eba52bd4d)
+2. [Flutter Flavors Setup with multiple Firebase Environments using FlutterFire and Very Good CLI](https://codewithandrea.com/articles/flutter-flavors-for-firebase-apps/)
+3. [Practical Guide: Flutter + Firebase + FlutterFire CLI + CI (Codemagic)](https://blog.codemagic.io/pratical-guide-flutterfire-cli/)
