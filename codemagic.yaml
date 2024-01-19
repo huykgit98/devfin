@@ -3,14 +3,17 @@ workflows:
     name: iOS production release
     max_build_duration: 45
     environment:
+      ios_signing:
+        distribution_type: app_store # If you are publishing to the App Store or you are using TestFlight to distribute your app to test users, set the distribution_type to app_store.
+        bundle_identifier: com.negandev.devfin
       groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
         - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
           $APP_STORE_CONNECT_ISSUER_ID
           $APP_STORE_CONNECT_KEY_IDENTIFIER
           $APP_STORE_CONNECT_PRIVATE_KEY
-        - certificate_credentials 
-          $CERTIFICATE_PRIVATE_KEY
+        #- certificate_credentials
+        #  $CERTIFICATE_PRIVATE_KEY
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace" # <-- Put your encrypted Certificate Private Key here
         # Environment variable values provided when triggering build with Codemagic API. Alternatively add the required values below.
