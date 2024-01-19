@@ -2,18 +2,12 @@ workflows:
   ios-release:
     name: iOS production release
     max_build_duration: 45
+    integrations:
+      app_store_connect: DevFin API Key
     environment:
       ios_signing:
         distribution_type: app_store # If you are publishing to the App Store or you are using TestFlight to distribute your app to test users, set the distribution_type to app_store.
         bundle_identifier: com.negandev.devfin
-      groups:
-        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-        - app_store_credentials
-        #  $APP_STORE_CONNECT_ISSUER_ID
-        #  $APP_STORE_CONNECT_KEY_IDENTIFIER
-        #  $APP_STORE_CONNECT_PRIVATE_KEY
-        #- certificate_credentials
-        #  $CERTIFICATE_PRIVATE_KEY
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace" # <-- Put your encrypted Certificate Private Key here
         # Environment variable values provided when triggering build with Codemagic API. Alternatively add the required values below.
@@ -72,11 +66,7 @@ workflows:
         notify:
           success: true
           failure: true
-      app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
+      app_store_connect: # checkout https://docs.codemagic.io/yaml-publishing/app-store-connect/ for more information
+        auth: integration
         submit_to_testflight: true # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight beta review. Required for distributing to beta groups. Note: This action is performed during post-processing.
-        # beta_groups:                                  # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
-        #      - group name 1
-        #      - group name 2
+        expire_build_submitted_for_review: true
