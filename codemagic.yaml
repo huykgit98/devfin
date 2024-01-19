@@ -6,8 +6,10 @@ workflows:
       app_store_connect: DevFin API Key
     environment:
       ios_signing:
-        distribution_type: app_store # If you are publishing to the App Store or you are using TestFlight to distribute your app to test users, set the distribution_type to app_store.
-        bundle_identifier: com.negandev.devfin
+        provisioning_profiles:
+          - DevFin Prod Provisioning profile
+        certificates:
+          - DevFin Apple Cert
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace" # <-- Put your encrypted Certificate Private Key here
         # Environment variable values provided when triggering build with Codemagic API. Alternatively add the required values below.
