@@ -10,6 +10,7 @@ workflows:
           - DevFin Profile
         certificates:
           - DevFin Apple Cert
+        bundle_identifier: com.negandev.devfin
       groups:
         - code-signing
       vars:
