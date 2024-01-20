@@ -49,11 +49,14 @@ workflows:
       - name: Set up code signing settings on Xcode project
         script: |
           xcode-project use-profiles
+      - name: Increment build number
+        script: |
+          cd $CM_BUILD_DIR/ios
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release --flavor="$XCODE_SCHEME" -t "$ENTRY_POINT" \
-          --build-name=1.0.0 \
-          --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist \
 
     artifacts:
