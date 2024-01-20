@@ -557,9 +557,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = DevFin;
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_production.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -657,9 +654,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = DevFin;
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_production.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -752,9 +746,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = DevFin;
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_production.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -852,9 +843,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[DEV] DevFin";
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_development.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -950,9 +938,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[DEV] DevFin";
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_development.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1047,9 +1032,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[DEV] DevFin";
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_development.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1149,9 +1131,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[STG] DevFin";
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_staging.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1252,9 +1231,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[STG] DevFin";
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_staging.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -1350,9 +1326,6 @@
 				DEVELOPMENT_TEAM = 2SG9BR5K6B;
 				ENABLE_BITCODE = NO;
 				FLAVOR_APP_NAME = "[STG] DevFin";
-				FLUTTER_APPLICATION_PATH = "";
-				FLUTTER_ROOT = "";
-				FLUTTER_TARGET = lib/main_staging.dart;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DevFin;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
