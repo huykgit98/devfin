@@ -68,7 +68,6 @@ workflows:
       email:
         recipients:
           - huykgit98@gmail.com
-          - huykg98@icloud.com
         notify:
           success: true
           failure: true
