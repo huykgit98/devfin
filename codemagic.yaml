@@ -12,7 +12,6 @@ workflows:
           - DevFin Apple Cert
       groups:
         - code-signing
-        - app_store_credentials
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace" # <-- Put your encrypted Certificate Private Key here
         # Environment variable values provided when triggering build with Codemagic API. Alternatively add the required values below.
@@ -52,12 +51,9 @@ workflows:
           xcode-project use-profiles
       - name: Flutter build ipa and automatic versioning
         script: |
-          echo "XCODE_SCHEME: $XCODE_SCHEME"
-          echo "ENTRY_POINT: $ENTRY_POINT"
-          echo "build-number: $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1))"
           flutter build ipa --release --flavor="$XCODE_SCHEME" -t "$ENTRY_POINT" \
           --build-name=1.0.0 \
-          --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
+          --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist \
 
     artifacts:
