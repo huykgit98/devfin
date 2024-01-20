@@ -10,7 +10,6 @@ workflows:
           - DevFin Profile
         certificates:
           - DevFin Apple Cert
-        bundle_identifier: com.negandev.devfin
       groups:
         - code-signing
       vars:
@@ -52,6 +51,8 @@ workflows:
           xcode-project use-profiles
       - name: Flutter build ipa and automatic versioning
         script: |
+          echo "XCODE_SCHEME: $XCODE_SCHEME"
+          echo "ENTRY_POINT: $ENTRY_POINT"
           flutter build ipa --release \
           --build-name=1.0.0 \
           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
