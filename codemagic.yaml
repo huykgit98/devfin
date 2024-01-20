@@ -53,12 +53,11 @@ workflows:
         script: |
           echo "XCODE_SCHEME: $XCODE_SCHEME"
           echo "ENTRY_POINT: $ENTRY_POINT"
-          flutter build ipa --release \
+          flutter build ipa --release --flavor="$XCODE_SCHEME" -t "$ENTRY_POINT" \
           --build-name=1.0.0 \
           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist \
-          --flavor $XCODE_SCHEME \
-          --target $ENTRY_POINT
+
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
