@@ -23,13 +23,13 @@ workflows:
       flutter: 3.16.0
       xcode: 15.1 # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: "main"
-          include: true
-          source: true
+#    triggering:
+#      events:
+#        - push
+#      branch_patterns:
+#        - pattern: "main"
+#          include: true
+#          source: true
     scripts:
       - name: Get Flutter Packages
         script: |
