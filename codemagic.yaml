@@ -12,6 +12,8 @@ workflows:
           - DevFin Apple Cert
       groups:
         - code-signing
+        - app_store_credentials
+        - certificate_credentials
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace" # <-- Put your encrypted Certificate Private Key here
         # Environment variable values provided when triggering build with Codemagic API. Alternatively add the required values below.
