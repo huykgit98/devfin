@@ -20,7 +20,7 @@ This project utilizes [Very good layered architecture](https://verygood.ventures
 3. go_router for navigation and routing
 4. Service Locator using get_it and injectable packages
 5. l10n using flutter_localization via .arb
-6. using [ShoreBird code-push](https://shorebird.dev/) for unplanned features (ShoreBird is similar to a hot reload feature, but it operates in a production environment)
+6. using [ShoreBird code-push](https://shorebird.dev/) for unplanned features (ShoreBird is similar to Flutter's hot reload feature, but it operates in production environment)
 7. using [Firebase Remote Config](https://kazlauskas.dev/control-your-flutter-app-with-firebase-remote-config/) planned features
 
 ## Screenshot
