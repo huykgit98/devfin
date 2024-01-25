@@ -1,0 +1,11 @@
+//
+//  Development.xcconfig
+//  Runner
+//
+//  Created by Negan on 25/01/2024.
+//
+
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "Generated.xcconfig"
+
+GOOGLESERVICE_INFO_PLIST = ${PROJECT_DIR}/Runner/Firebase/dev/GoogleService-Info.plist
