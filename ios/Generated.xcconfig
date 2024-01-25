@@ -1,8 +1,8 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/Users/negan/fvm/versions/3.16.0
-FLUTTER_APPLICATION_PATH=/Users/negan/StudioProjects/devfin
+FLUTTER_APPLICATION_PATH=/Users/negan/Developer/StudioProjects/devfin
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=/Users/negan/StudioProjects/devfin/lib/main_development.dart
+FLUTTER_TARGET=/Users/negan/Developer/StudioProjects/devfin/lib/main_development.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
@@ -12,5 +12,4 @@ DART_DEFINES=Zmx1dHRlci5pbnNwZWN0b3Iuc3RydWN0dXJlZEVycm9ycz10cnVl,RkxVVFRFUl9XRU
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=/Users/negan/StudioProjects/devfin/.dart_tool/package_config.json
-
+PACKAGE_CONFIG=/Users/negan/Developer/StudioProjects/devfin/.dart_tool/package_config.json
