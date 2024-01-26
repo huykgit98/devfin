@@ -11,7 +11,7 @@ class DevFinApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text('DevFin'),
           ),
-          body: Center(child: Text('DevFin')),
+          body: Center(child: Text('DevFin - Track All Marketsads')),
         ));
   }
 }
