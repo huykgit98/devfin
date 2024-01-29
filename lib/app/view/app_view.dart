@@ -7,7 +7,7 @@ class DevFinApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var darkMode = ref.watch(darkModeProvider);
+    final darkMode = ref.watch(darkModeProvider);
 
     return MaterialApp.router(
       title: 'Devfin - Track All Markets',

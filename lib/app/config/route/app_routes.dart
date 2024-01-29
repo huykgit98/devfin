@@ -36,7 +36,7 @@ class AppRoutes {
             child: MarketsPage(),
           ),
         ),
-        routes: <GoRoute>[
+        routes: const <GoRoute>[
           // GoRoute(
           //   path: ':authorId',
           //   builder: (BuildContext context, GoRouterState state) {
