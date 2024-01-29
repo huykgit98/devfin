@@ -32,6 +32,7 @@ dependencies:
   firebase_core: ^2.24.2
   flutter_launcher_icons: ^0.13.1
   animated_bottom_navigation_bar: ^1.3.2
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:
@@ -56,5 +57,5 @@ flutter_gen:
 flutter_native_splash:
   color: '#ffffff'
 #  image: assets/icons/app_icon_transparent_bg.png
-  color_dark: '#000000'
+#  color_dark: '#000000'
 #  image_dark: assets/icons/app_icon_dark_theme_transparent_bg.png

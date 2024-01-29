@@ -4,86 +4,85 @@ import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignInSheet {
   static void show(BuildContext context, bool darkMode) {
     showModalBottomSheet(
-      useRootNavigator: true,
       isScrollControlled: true,
       useSafeArea: true,
       context: context,
       builder: (context) {
-        return Container(
-          height:
-              MediaQuery.of(context).size.height * 0.9, // 90% of device height
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: darkMode
-                    ? ColorsUtil.linearGradient
-                    : ColorsUtil.linearGradientLightMode),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(Sizes.p16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min, // To make the sheet wrap-content
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.topRight,
-                  child: IconButton(
-                    // color: Colors.white,
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.pop(context),
+        return FractionallySizedBox(
+          heightFactor: 0.9, // 90% of device height
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: darkMode
+                      ? ColorsUtil.linearGradient
+                      : ColorsUtil.linearGradientLightMode),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(Sizes.p16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize:
+                    MainAxisSize.min, // To make the sheet wrap-content
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () => Navigator.pop(context),
+                    ),
                   ),
-                ),
-                Center(
-                  child: Column(
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          width: Sizes.p48,
-                          height: Sizes.p48,
-                          decoration: const BoxDecoration(
-                            color: ColorsUtil.loadingIndicatorColor,
-                          ),
-                          child: Image(
-                            image: AssetImage(
-                                Assets.icons.appIconTransparentBg.path),
+                  Center(
+                    child: Column(
+                      children: [
+                        ClipOval(
+                          child: Container(
+                            width: Sizes.p48,
+                            height: Sizes.p48,
+                            child: SvgPicture.asset(
+                                darkMode
+                                    ? Assets
+                                        .icons.appIconDarkThemeTransparentBgSvg
+                                    : Assets.icons.appIconTransparentBgSvg,
+                                semanticsLabel: 'DevFin Logo'),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: Sizes.p32),
-                      const Text('Log in to DevFin'.hardcoded,
-                          style: TextStyle(
-                              // color: Colors.white,
-                              fontSize: Sizes.p24,
-                              fontWeight: FontWeight.bold)),
-                      Text('DevFin - Track All Markets'.hardcoded,
-                          style: TextStyle(
-                              color: Colors.blueGrey[100],
-                              fontSize: Sizes.p16,
-                              fontWeight: FontWeight.normal)),
-                      gapH16,
-                      _buildButton(
-                          'Use phone or email'.hardcoded, Icons.person),
-                      gapH16,
-                      _buildButton(
-                          'Continue with Facebook'.hardcoded, Icons.facebook),
-                      gapH16,
-                      _buildButton(
-                          'Continue with Apple'.hardcoded, Icons.apple),
-                      gapH16,
-                      _buildButton(
-                          'Continue with Google'.hardcoded, Icons.g_translate),
-                    ],
+                        const SizedBox(height: Sizes.p32),
+                        Text('Log in to DevFin'.hardcoded,
+                            style: TextStyle(
+                                fontSize: Sizes.p24,
+                                color: darkMode ? Colors.white : Colors.black,
+                                fontWeight: FontWeight.bold)),
+                        Text('DevFin - Track All Markets'.hardcoded,
+                            style: TextStyle(
+                                color: darkMode ? Colors.white : Colors.black,
+                                fontSize: Sizes.p16,
+                                fontWeight: FontWeight.normal)),
+                        gapH16,
+                        _buildButton('Use phone or email'.hardcoded,
+                            FontAwesomeIcons.user, darkMode),
+                        gapH16,
+                        _buildButton('Continue with Facebook'.hardcoded,
+                            FontAwesomeIcons.facebook, darkMode),
+                        gapH16,
+                        _buildButton('Continue with Apple'.hardcoded,
+                            FontAwesomeIcons.apple, darkMode),
+                        gapH16,
+                        _buildButton('Continue with Google'.hardcoded,
+                            FontAwesomeIcons.google, darkMode),
+                      ],
+                    ),
                   ),
-                ),
-                const Spacer(),
-                // _buildTermsAndConditions(),
-                _buildSignUpPrompt(context, darkMode),
-              ],
+                  const Spacer(),
+                  // _buildTermsAndConditions(context, darkMode),
+                  _buildLoginPrompt(context, darkMode),
+                ],
+              ),
             ),
           ),
         );
@@ -91,13 +90,15 @@ class SignInSheet {
     );
   }
 
-  static Widget _buildButton(String text, IconData icon) {
+  static Widget _buildButton(String text, IconData icon, bool darkMode) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Sizes.p20),
-        gradient: const LinearGradient(
-          colors: ColorsUtil.linearGradient,
+        gradient: LinearGradient(
+          colors: darkMode
+              ? ColorsUtil.linearGradient
+              : ColorsUtil.linearGradientLightMode,
         ),
       ),
       child: ElevatedButton(
@@ -108,11 +109,11 @@ class SignInSheet {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Icon(icon),
+            FaIcon(icon, color: darkMode ? Colors.white : Colors.black),
             Text(text,
-                style: const TextStyle(
-                    // color: Colors.white,
-                    )),
+                style: TextStyle(
+                  color: darkMode ? Colors.white : Colors.black,
+                )),
             const SizedBox()
           ],
         ),
@@ -120,7 +121,7 @@ class SignInSheet {
     );
   }
 
-  static Widget _buildTermsAndConditions() {
+  static Widget _buildTermsAndConditions(BuildContext context, bool darkMode) {
     return Center(
       child: Column(
         children: [
@@ -128,13 +129,12 @@ class SignInSheet {
             textAlign: TextAlign.center,
             text: TextSpan(
               style: TextStyle(
-                color: Colors.blueGrey[200],
-                fontSize: Sizes.p16,
+                color: darkMode ? Colors.white : Colors.black,
+                fontSize: 16,
                 fontWeight: FontWeight.normal,
               ),
               children: [
-                const TextSpan(
-                    text: 'By signing up, you agree to our '.hardcoded),
+                TextSpan(text: 'By signing up, you agree to our '.hardcoded),
                 WidgetSpan(
                   child: GestureDetector(
                     onTap: () {
@@ -143,8 +143,9 @@ class SignInSheet {
                     child: Text(
                       'Terms, Privacy Policy, '.hardcoded,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey[200]),
+                        fontWeight: FontWeight.bold,
+                        // color: Colors.blueGrey[200],
+                      ),
                     ),
                   ),
                 ),
@@ -155,7 +156,7 @@ class SignInSheet {
                     },
                     child: Text(
                       'and '.hardcoded,
-                      style: TextStyle(color: Colors.blueGrey[200]),
+                      // style: TextStyle(color: Colors.blueGrey[200]),
                     ),
                   ),
                 ),
@@ -167,21 +168,22 @@ class SignInSheet {
                     child: Text(
                       'Cookies Policy.'.hardcoded,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey[200]),
+                        fontWeight: FontWeight.bold,
+                        // color: Colors.blueGrey[200]
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: Sizes.p16),
+          SizedBox(height: Sizes.p16),
         ],
       ),
     );
   }
 
-  static Widget _buildSignUpPrompt(BuildContext context, bool darkMode) {
+  static Widget _buildLoginPrompt(BuildContext context, bool darkMode) {
     return Center(
       child: Column(
         children: [
@@ -189,20 +191,20 @@ class SignInSheet {
             text: TextSpan(
               text: 'Don\'t have an account? '.hardcoded,
               style: TextStyle(
-                color: Colors.blueGrey[200],
+                color: darkMode ? Colors.white : Colors.black,
                 fontSize: Sizes.p16,
                 fontWeight: FontWeight.normal,
               ),
               children: <TextSpan>[
                 TextSpan(
                   text: 'Sign up'.hardcoded,
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: TextStyle(
+                    color: darkMode ? Colors.white : Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      // Navigate to sign up bottom sheet
+                      // Navigate to login bottom sheet
                       Navigator.pop(context);
                       SignUpSheet.show(context, darkMode);
                     },

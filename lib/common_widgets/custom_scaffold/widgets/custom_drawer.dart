@@ -139,7 +139,7 @@ class CustomDrawer extends ConsumerWidget {
               aboutBoxChildren: [
                 ///Content goes here...
               ],
-              child: Text('About app.hardcoded'),
+              child: Text('About app'.hardcoded),
             ),
             Switch(
               thumbIcon: thumbIcon,

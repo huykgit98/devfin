@@ -1,21 +1,23 @@
 import 'package:devfin/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-class SplashView extends StatefulWidget {
+class SplashView extends ConsumerStatefulWidget {
   const SplashView({Key? key}) : super(key: key);
 
   @override
-  _SplashViewState createState() => _SplashViewState();
+  ConsumerState<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashViewState extends ConsumerState<SplashView> {
   @override
   void initState() {
     super.initState();
     FlutterNativeSplash.remove();
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 1), () {
       GoRouter.of(context).go(AppRoutes.markets);
     });
   }
@@ -27,11 +29,15 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
+    final darkMode = ref.watch(darkModeProvider);
     return SafeArea(
       child: Center(
-        child: Image(
-          image: AssetImage(Assets.icons.appIconTransparentBg.path),
-        ),
+        child: SvgPicture.asset(
+            darkMode
+                ? Assets.icons.appIconDarkThemeTransparentBgSvg
+                : Assets.icons.appIconTransparentBgSvg,
+            width: 100,
+            height: 100),
       ),
     );
   }

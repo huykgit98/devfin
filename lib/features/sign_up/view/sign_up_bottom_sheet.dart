@@ -4,6 +4,8 @@ import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignUpSheet {
   static void show(BuildContext context, bool darkMode) {
@@ -17,8 +19,6 @@ class SignUpSheet {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
                   colors: darkMode
                       ? ColorsUtil.linearGradient
                       : ColorsUtil.linearGradientLightMode),
@@ -42,42 +42,44 @@ class SignUpSheet {
                       children: [
                         ClipOval(
                           child: Container(
-                              width: Sizes.p48,
-                              height: Sizes.p48,
-                              decoration: const BoxDecoration(
-                                color: ColorsUtil.loadingIndicatorColor,
-                              ),
-                              child: Image(
-                                  image: AssetImage(
-                                      Assets.icons.appIconTransparentBg.path))),
+                            width: Sizes.p48,
+                            height: Sizes.p48,
+                            child: SvgPicture.asset(
+                                darkMode
+                                    ? Assets
+                                        .icons.appIconDarkThemeTransparentBgSvg
+                                    : Assets.icons.appIconTransparentBgSvg,
+                                semanticsLabel: 'DevFin Logo'),
+                          ),
                         ),
                         const SizedBox(height: Sizes.p32),
                         Text('Sign up for DevFin'.hardcoded,
                             style: TextStyle(
                                 fontSize: Sizes.p24,
+                                color: darkMode ? Colors.white : Colors.black,
                                 fontWeight: FontWeight.bold)),
                         Text('DevFin - Track All Markets'.hardcoded,
                             style: TextStyle(
-                                // color: Colors.blueGrey[100],
+                                color: darkMode ? Colors.white : Colors.black,
                                 fontSize: Sizes.p16,
                                 fontWeight: FontWeight.normal)),
                         gapH16,
-                        _buildButton(
-                            'Use phone or email'.hardcoded, Icons.person),
+                        _buildButton('Use phone or email'.hardcoded,
+                            FontAwesomeIcons.user, darkMode),
                         gapH16,
-                        _buildButton(
-                            'Continue with Facebook'.hardcoded, Icons.facebook),
+                        _buildButton('Continue with Facebook'.hardcoded,
+                            FontAwesomeIcons.facebook, darkMode),
                         gapH16,
-                        _buildButton(
-                            'Continue with Apple'.hardcoded, Icons.apple),
+                        _buildButton('Continue with Apple'.hardcoded,
+                            FontAwesomeIcons.apple, darkMode),
                         gapH16,
                         _buildButton('Continue with Google'.hardcoded,
-                            Icons.g_translate),
+                            FontAwesomeIcons.google, darkMode),
                       ],
                     ),
                   ),
                   const Spacer(),
-                  _buildTermsAndConditions(),
+                  _buildTermsAndConditions(context, darkMode),
                   _buildLoginPrompt(context, darkMode),
                 ],
               ),
@@ -88,13 +90,15 @@ class SignUpSheet {
     );
   }
 
-  static Widget _buildButton(String text, IconData icon) {
+  static Widget _buildButton(String text, IconData icon, bool darkMode) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Sizes.p20),
-        gradient: const LinearGradient(
-          colors: ColorsUtil.linearGradient,
+        gradient: LinearGradient(
+          colors: darkMode
+              ? ColorsUtil.linearGradient
+              : ColorsUtil.linearGradientLightMode,
         ),
       ),
       child: ElevatedButton(
@@ -105,8 +109,11 @@ class SignUpSheet {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Icon(icon),
-            Text(text, style: const TextStyle()),
+            FaIcon(icon, color: darkMode ? Colors.white : Colors.black),
+            Text(text,
+                style: TextStyle(
+                  color: darkMode ? Colors.white : Colors.black,
+                )),
             const SizedBox()
           ],
         ),
@@ -114,7 +121,7 @@ class SignUpSheet {
     );
   }
 
-  static Widget _buildTermsAndConditions() {
+  static Widget _buildTermsAndConditions(BuildContext context, bool darkMode) {
     return Center(
       child: Column(
         children: [
@@ -122,7 +129,7 @@ class SignUpSheet {
             textAlign: TextAlign.center,
             text: TextSpan(
               style: TextStyle(
-                // color: Colors.blueGrey[200],
+                color: darkMode ? Colors.white : Colors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.normal,
               ),
@@ -184,15 +191,15 @@ class SignUpSheet {
             text: TextSpan(
               text: 'Already have an account? '.hardcoded,
               style: TextStyle(
-                // color: Colors.blueGrey[200],
+                color: darkMode ? Colors.white : Colors.black,
                 fontSize: Sizes.p16,
                 fontWeight: FontWeight.normal,
               ),
               children: <TextSpan>[
                 TextSpan(
                   text: 'Log in'.hardcoded,
-                  style: const TextStyle(
-                    // color: Colors.white,
+                  style: TextStyle(
+                    color: darkMode ? Colors.white : Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                   recognizer: TapGestureRecognizer()

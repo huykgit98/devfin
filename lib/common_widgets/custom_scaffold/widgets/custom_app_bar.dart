@@ -67,11 +67,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: <Widget>[
         IconButton(
           icon: Icon(icon),
+          iconSize: Sizes.p32,
           onPressed: () {},
         ),
         Positioned(
-          right: Sizes.p12,
-          top: Sizes.p12,
+          right: Sizes.p8,
+          top: Sizes.p8,
           child: Container(
             padding: EdgeInsets.all(Sizes.p2),
             decoration: BoxDecoration(
@@ -83,7 +84,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               minHeight: Sizes.p16,
             ),
             child: const Text(
-              '1',
+              '99+',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: Sizes.p8,

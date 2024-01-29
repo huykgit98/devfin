@@ -13,12 +13,20 @@ class $AssetsIconsGen {
   const $AssetsIconsGen();
 
   /// File path: assets/icons/app_icon_dark_theme_transparent_bg.png
-  AssetGenImage get appIconDarkThemeTransparentBg => const AssetGenImage(
+  AssetGenImage get appIconDarkThemeTransparentBgPng => const AssetGenImage(
       'assets/icons/app_icon_dark_theme_transparent_bg.png');
 
+  /// File path: assets/icons/app_icon_dark_theme_transparent_bg.svg
+  String get appIconDarkThemeTransparentBgSvg =>
+      'assets/icons/app_icon_dark_theme_transparent_bg.svg';
+
   /// File path: assets/icons/app_icon_transparent_bg.png
-  AssetGenImage get appIconTransparentBg =>
+  AssetGenImage get appIconTransparentBgPng =>
       const AssetGenImage('assets/icons/app_icon_transparent_bg.png');
+
+  /// File path: assets/icons/app_icon_transparent_bg.svg
+  String get appIconTransparentBgSvg =>
+      'assets/icons/app_icon_transparent_bg.svg';
 
   /// File path: assets/icons/launcher_icon.png
   AssetGenImage get launcherIcon =>
@@ -29,9 +37,11 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/launcher_icon_dark.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-        appIconDarkThemeTransparentBg,
-        appIconTransparentBg,
+  List<dynamic> get values => [
+        appIconDarkThemeTransparentBgPng,
+        appIconDarkThemeTransparentBgSvg,
+        appIconTransparentBgPng,
+        appIconTransparentBgSvg,
         launcherIcon,
         launcherIconDark
       ];
