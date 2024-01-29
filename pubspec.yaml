@@ -55,6 +55,6 @@ flutter_gen:
 
 flutter_native_splash:
   color: '#ffffff'
-  image: assets/icons/app_icon_transparent_bg.png
+#  image: assets/icons/app_icon_transparent_bg.png
   color_dark: '#000000'
-  image_dark: assets/icons/app_icon_dark_theme_transparent_bg.png
+#  image_dark: assets/icons/app_icon_dark_theme_transparent_bg.png
