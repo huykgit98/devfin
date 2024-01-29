@@ -1,5 +1,6 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/features/sign_up/sign_up.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class SignInSheet {
                     : ColorsUtil.linearGradientLightMode),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(Sizes.p16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min, // To make the sheet wrap-content
@@ -42,8 +43,8 @@ class SignInSheet {
                     children: [
                       ClipOval(
                         child: Container(
-                          width: 48,
-                          height: 48,
+                          width: Sizes.p48,
+                          height: Sizes.p48,
                           decoration: const BoxDecoration(
                             color: ColorsUtil.loadingIndicatorColor,
                           ),
@@ -53,25 +54,29 @@ class SignInSheet {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 32.0),
-                      const Text('Log in to DevFin',
+                      const SizedBox(height: Sizes.p32),
+                      const Text('Log in to DevFin'.hardcoded,
                           style: TextStyle(
                               // color: Colors.white,
-                              fontSize: 24,
+                              fontSize: Sizes.p24,
                               fontWeight: FontWeight.bold)),
-                      Text('DevFin - Track All Markets',
+                      Text('DevFin - Track All Markets'.hardcoded,
                           style: TextStyle(
                               color: Colors.blueGrey[100],
-                              fontSize: 16,
+                              fontSize: Sizes.p16,
                               fontWeight: FontWeight.normal)),
-                      const SizedBox(height: 16.0),
-                      _buildButton('Use phone or email', Icons.person),
-                      const SizedBox(height: 16.0),
-                      _buildButton('Continue with Facebook', Icons.facebook),
-                      const SizedBox(height: 16.0),
-                      _buildButton('Continue with Apple', Icons.apple),
-                      const SizedBox(height: 16.0),
-                      _buildButton('Continue with Google', Icons.g_translate),
+                      gapH16,
+                      _buildButton(
+                          'Use phone or email'.hardcoded, Icons.person),
+                      gapH16,
+                      _buildButton(
+                          'Continue with Facebook'.hardcoded, Icons.facebook),
+                      gapH16,
+                      _buildButton(
+                          'Continue with Apple'.hardcoded, Icons.apple),
+                      gapH16,
+                      _buildButton(
+                          'Continue with Google'.hardcoded, Icons.g_translate),
                     ],
                   ),
                 ),
@@ -90,7 +95,7 @@ class SignInSheet {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(Sizes.p20),
         gradient: const LinearGradient(
           colors: ColorsUtil.linearGradient,
         ),
@@ -124,18 +129,19 @@ class SignInSheet {
             text: TextSpan(
               style: TextStyle(
                 color: Colors.blueGrey[200],
-                fontSize: 16,
+                fontSize: Sizes.p16,
                 fontWeight: FontWeight.normal,
               ),
               children: [
-                const TextSpan(text: 'By signing up, you agree to our '),
+                const TextSpan(
+                    text: 'By signing up, you agree to our '.hardcoded),
                 WidgetSpan(
                   child: GestureDetector(
                     onTap: () {
                       // Handle tap on "Terms, Privacy Policy"
                     },
                     child: Text(
-                      'Terms, Privacy Policy, ',
+                      'Terms, Privacy Policy, '.hardcoded,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.blueGrey[200]),
@@ -148,7 +154,7 @@ class SignInSheet {
                       // Handle tap on "Cookie Use"
                     },
                     child: Text(
-                      'and ',
+                      'and '.hardcoded,
                       style: TextStyle(color: Colors.blueGrey[200]),
                     ),
                   ),
@@ -159,7 +165,7 @@ class SignInSheet {
                       // Handle tap on "Cookie Use"
                     },
                     child: Text(
-                      'Cookies Policy.',
+                      'Cookies Policy.'.hardcoded,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.blueGrey[200]),
@@ -169,7 +175,7 @@ class SignInSheet {
               ],
             ),
           ),
-          const SizedBox(height: 16.0),
+          const SizedBox(height: Sizes.p16),
         ],
       ),
     );
@@ -181,15 +187,15 @@ class SignInSheet {
         children: [
           RichText(
             text: TextSpan(
-              text: 'Don\'t have an account? ',
+              text: 'Don\'t have an account? '.hardcoded,
               style: TextStyle(
                 color: Colors.blueGrey[200],
-                fontSize: 16,
+                fontSize: Sizes.p16,
                 fontWeight: FontWeight.normal,
               ),
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Sign up',
+                  text: 'Sign up'.hardcoded,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -204,7 +210,7 @@ class SignInSheet {
               ],
             ),
           ),
-          const SizedBox(height: 32.0),
+          const SizedBox(height: Sizes.p32),
         ],
       ),
     );

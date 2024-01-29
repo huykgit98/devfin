@@ -27,10 +27,11 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // backgroundColor: ColorsUtil.backgroundColor,
-      body: Center(
-        child: CircularProgressIndicator(),
+    return SafeArea(
+      child: Center(
+        child: Image(
+          image: AssetImage(Assets.icons.appIconTransparentBg.path),
+        ),
       ),
     );
   }
