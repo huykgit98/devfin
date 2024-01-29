@@ -1,3 +1,5 @@
+import 'package:devfin/app/app.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,31 +15,40 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       leading: Builder(
         builder: (context) => IconButton(
-          iconSize: 32,
+          iconSize: Sizes.p32,
           icon: const Icon(Icons.menu_rounded),
           onPressed: () => Scaffold.of(context).openDrawer(),
         ),
       ),
       title: TextField(
         decoration: InputDecoration(
-          hintText: 'Search',
+          hintText: 'Search'.hardcoded,
           hintStyle: TextStyle(
             color: darkMode ? const Color(0xFFA6A6AA) : Colors.black38,
           ),
-          prefixIcon: const Icon(Icons.search_rounded, size: 24),
+          prefixIcon: const Icon(
+            Icons.search_rounded,
+            size: Sizes.p24,
+          ),
           filled: true,
           fillColor: darkMode ? const Color(0xFF323340) : Colors.white,
           border: InputBorder.none,
           isDense: true,
-          contentPadding: const EdgeInsets.all(8),
+          contentPadding: const EdgeInsets.all(
+            Sizes.p8,
+          ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(40)),
+            borderRadius: const BorderRadius.all(Radius.circular(
+              Sizes.p32,
+            )),
             borderSide: BorderSide(
               color: darkMode ? Colors.grey : Colors.white,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: const BorderRadius.all(Radius.circular(40)),
+            borderRadius: const BorderRadius.all(Radius.circular(
+              Sizes.p32,
+            )),
             borderSide: BorderSide(
               color: darkMode ? Colors.white : Colors.grey,
             ),
@@ -59,23 +70,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
         ),
         Positioned(
-          right: 11,
-          top: 11,
+          right: Sizes.p12,
+          top: Sizes.p12,
           child: Container(
-            padding: const EdgeInsets.all(2),
+            padding: EdgeInsets.all(Sizes.p2),
             decoration: BoxDecoration(
               color: Colors.red,
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(Sizes.p4),
             ),
             constraints: const BoxConstraints(
-              minWidth: 14,
-              minHeight: 14,
+              minWidth: Sizes.p16,
+              minHeight: Sizes.p16,
             ),
             child: const Text(
               '1',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 8,
+                fontSize: Sizes.p8,
               ),
               textAlign: TextAlign.center,
             ),

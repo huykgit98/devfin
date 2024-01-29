@@ -100,7 +100,7 @@ class CustomDrawer extends ConsumerWidget {
               },
             ),
             buildDrawerItem(
-              'Profile',
+              'Profile'.hardcoded,
               Icons.person_rounded,
               onTap: () {
                 context.go(AppRoutes.profile);
@@ -108,38 +108,38 @@ class CustomDrawer extends ConsumerWidget {
               },
             ),
             buildDrawerItem(
-              'Messages',
+              'Messages'.hardcoded,
               Icons.chat_bubble_rounded,
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             buildDrawerItem(
-              'Notifications',
+              'Notifications'.hardcoded,
               Icons.notifications_active_rounded,
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             buildDrawerItem(
-              'Sign Out',
+              'Sign Out'.hardcoded,
               Icons.logout_rounded,
               onTap: () {},
             ),
-            const AboutListTile(
+            AboutListTile(
               icon: Icon(
                 Icons.info,
               ),
               applicationIcon: Icon(
                 Icons.local_play_rounded,
               ),
-              applicationName: 'DevFin - Track All Markets',
-              applicationVersion: '1.0.25',
-              applicationLegalese: '© 2023 NeganDev',
+              applicationName: 'DevFin - Track All Markets'.hardcoded,
+              applicationVersion: '1.0.25'.hardcoded,
+              applicationLegalese: '© 2023 NeganDev'.hardcoded,
               aboutBoxChildren: [
                 ///Content goes here...
               ],
-              child: Text('About app'),
+              child: Text('About app.hardcoded'),
             ),
             Switch(
               thumbIcon: thumbIcon,

@@ -1,3 +1,4 @@
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -6,7 +7,7 @@ class DarkModeNotifier extends StateNotifier<bool> {
 
   Future _init() async {
     prefs = await SharedPreferences.getInstance();
-    var darkMode = prefs.getBool("darkMode");
+    var darkMode = prefs.getBool('darkMode'.hardcoded);
     state = darkMode ?? false;
   }
 
@@ -14,9 +15,9 @@ class DarkModeNotifier extends StateNotifier<bool> {
     _init();
   }
 
-  void toggle() async {
+  void toggle() {
     state = !state;
-    prefs.setBool("darkMode", state);
+    prefs.setBool('darkMode'.hardcoded, state);
   }
 }
 

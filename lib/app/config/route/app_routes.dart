@@ -1,10 +1,10 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin_ui_kit/screens/explore/explore.dart';
-import 'package:devfin_ui_kit/screens/markets/markets.dart';
-import 'package:devfin_ui_kit/screens/profile/profile.dart';
-import 'package:devfin_ui_kit/screens/splash/splash_screen.dart';
-import 'package:devfin_ui_kit/screens/watchlist/watchlist.dart';
+import 'package:devfin/features/explore/explore.dart';
+import 'package:devfin/features/markets/markets.dart';
+import 'package:devfin/features/profile/profile.dart';
+import 'package:devfin/features/splash/splash_screen.dart';
+import 'package:devfin/features/watchlist/watchlist.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
