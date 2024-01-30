@@ -1,4 +1,5 @@
 import 'package:devfin/app/app.dart';
+import 'package:devfin/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +15,8 @@ class DevFinApp extends ConsumerWidget {
       routerConfig: AppRoutes.route,
       darkTheme: ThemeData.dark(),
       themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }

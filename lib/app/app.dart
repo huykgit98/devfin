@@ -1,3 +1,4 @@
+export 'app_bloc_observer.dart';
 export 'config/contants/app_sizes.dart';
 export 'config/enums/enums.dart';
 export 'config/gen/assets.gen.dart';

@@ -12,5 +12,5 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await bootstrap(() => const ProviderScope(child: DevFinApp()));
+  bootstrap();
 }
