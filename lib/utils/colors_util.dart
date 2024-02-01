@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class ColorsUtil {
   static const List<Color> darkLinearGradient = [
-    Color(0xFF001C27),
+    Color(0xFF0c355a),
     Color(0xFF121212),
   ];
+
   static const List<Color> lightLinearGradient = [
     Color(0xFF6BB3FF),
     Color(0xFFD3DAFD),
