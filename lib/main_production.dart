@@ -8,9 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  bootstrap();
+  await bootstrap(() => const ProviderScope(child: DevFinApp()));
 }

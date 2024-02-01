@@ -1,20 +1,16 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:devfin/app/app.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void bootstrap() {
-  FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
-  };
+Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  Bloc.observer = AppBlocObserver();
 
-  Bloc.observer = const AppBlocObserver();
-
-  runZonedGuarded(
-    () => runApp(const ProviderScope(child: DevFinApp())),
-    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
-  );
+  // await Firebase.initializeApp();
+  // await Hive.initFlutter();
+  // await initServices();
+  // setLocaleMessages('vi', ViMessages());
+  // setDefaultLocale('vi');
+  runApp(await builder());
 }
