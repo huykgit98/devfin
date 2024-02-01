@@ -51,8 +51,8 @@ class CustomDrawer extends ConsumerWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: darkMode
-                ? ColorsUtil.linearGradient
-                : ColorsUtil.linearGradientLightMode,
+                ? ColorsUtil.darkLinearGradient
+                : ColorsUtil.lightLinearGradient,
           ),
         ),
         child: ListView(
@@ -63,8 +63,8 @@ class CustomDrawer extends ConsumerWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: darkMode
-                      ? ColorsUtil.linearGradient
-                      : ColorsUtil.linearGradientLightMode,
+                      ? ColorsUtil.darkLinearGradient
+                      : ColorsUtil.lightLinearGradient,
                 ),
               ),
               accountName: Text(

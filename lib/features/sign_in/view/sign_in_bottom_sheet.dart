@@ -20,8 +20,8 @@ class SignInSheet {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: darkMode
-                      ? ColorsUtil.linearGradient
-                      : ColorsUtil.linearGradientLightMode),
+                      ? ColorsUtil.darkLinearGradient
+                      : ColorsUtil.lightLinearGradient),
             ),
             child: Padding(
               padding: const EdgeInsets.all(Sizes.p16),
@@ -97,8 +97,8 @@ class SignInSheet {
         borderRadius: BorderRadius.circular(Sizes.p20),
         gradient: LinearGradient(
           colors: darkMode
-              ? ColorsUtil.linearGradient
-              : ColorsUtil.linearGradientLightMode,
+              ? ColorsUtil.darkLinearGradient
+              : ColorsUtil.lightLinearGradient,
         ),
       ),
       child: ElevatedButton(

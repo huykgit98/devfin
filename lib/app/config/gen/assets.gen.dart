@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/app_icon_dark_no_background.png
+  AssetGenImage get appIconDarkNoBackground =>
+      const AssetGenImage('assets/icons/app_icon_dark_no_background.png');
+
   /// File path: assets/icons/app_icon_dark_theme_transparent_bg.png
   AssetGenImage get appIconDarkThemeTransparentBgPng => const AssetGenImage(
       'assets/icons/app_icon_dark_theme_transparent_bg.png');
@@ -19,6 +23,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/app_icon_dark_theme_transparent_bg.svg
   String get appIconDarkThemeTransparentBgSvg =>
       'assets/icons/app_icon_dark_theme_transparent_bg.svg';
+
+  /// File path: assets/icons/app_icon_no_background.png
+  AssetGenImage get appIconNoBackground =>
+      const AssetGenImage('assets/icons/app_icon_no_background.png');
 
   /// File path: assets/icons/app_icon_transparent_bg.png
   AssetGenImage get appIconTransparentBgPng =>
@@ -38,8 +46,10 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        appIconDarkNoBackground,
         appIconDarkThemeTransparentBgPng,
         appIconDarkThemeTransparentBgSvg,
+        appIconNoBackground,
         appIconTransparentBgPng,
         appIconTransparentBgSvg,
         launcherIcon,

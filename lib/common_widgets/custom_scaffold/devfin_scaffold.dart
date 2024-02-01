@@ -19,8 +19,8 @@ class DevFinScaffold extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) => GradientBackground(
         gradient: LinearGradient(
           colors: ref.watch(darkModeProvider)
-              ? ColorsUtil.linearGradient
-              : ColorsUtil.linearGradientLightMode,
+              ? ColorsUtil.darkLinearGradient
+              : ColorsUtil.lightLinearGradient,
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,

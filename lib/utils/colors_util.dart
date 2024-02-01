@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
 
 class ColorsUtil {
-  static const linearGradient = [Color(0xff001c27), Color(0xff121212)];
-  static const linearGradientLightMode = [Color(0xff6bb3ff), Color(0xffd3dafd)];
-
-  static const linearGradientButton = [
+  static const List<Color> darkLinearGradient = [
+    Color(0xFF001C27),
+    Color(0xFF121212),
+  ];
+  static const List<Color> lightLinearGradient = [
+    Color(0xFF6BB3FF),
+    Color(0xFFD3DAFD),
+  ];
+  static const List<Color> messengerLikeGradient = [
+    Color(0xFF0695FF),
+    Color(0xFFA334FA),
+    Color(0xFFFF6968),
+  ];
+  static const List<Color> darkLinearGradientButton = [
     Color(0xFF323340),
-    Color(0xff6c6a6a),
-    Color(0xFF323340)
+    Color(0xFF6C6A6A),
+    Color(0xFF323340),
   ];
-
-  static const linearGradientButtonLightMode = [
+  static const List<Color> lightLinearGradientButton = [
     Color(0xFFAEB3C1),
-    Color(0xff6c6a6a),
-    Color(0xFFAEB3C1)
+    Color(0xFF6C6A6A),
+    Color(0xFFAEB3C1),
   ];
-
-  static const loadingIndicatorColor = Color(0xff05e6f2);
-  static const backgroundColor = Color(0xFF001c27);
+  static const List<Color> customLoadingGradient = [
+    Color(0xFFFF0069),
+    Color(0xFFFED602),
+    Color(0xFF7639FB),
+    Color(0xFFD500C5),
+    Color(0xFFFF7A01),
+    Color(0xFFFF0069),
+  ];
 }
