@@ -18,7 +18,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
   void initState() {
     super.initState();
     FlutterNativeSplash.remove();
-    Future.delayed(const Duration(milliseconds: 2500), () {
+    Future.delayed(const Duration(milliseconds: 2000), () {
       GoRouter.of(context).go(AppRoutes.markets);
     });
   }
