@@ -60,13 +60,7 @@ class CustomDrawer extends ConsumerWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: darkMode
-                      ? ColorsUtil.darkLinearGradient
-                      : ColorsUtil.lightLinearGradient,
-                ),
-              ),
+              decoration: const BoxDecoration(),
               accountName: Text(
                 'Huy Nguyen'.hardcoded,
               ),
