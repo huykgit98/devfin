@@ -1,21 +1,28 @@
 import 'package:devfin/app/app.dart';
-import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomTabBar extends ConsumerWidget {
-  const CustomTabBar(this._tabController, {super.key});
+  const CustomTabBar(
+      {required this.tabs, required this.tabController, this.onTap, super.key});
 
-  final TabController _tabController;
+  final TabController tabController;
+  final void Function(int)? onTap;
+  final List<Widget> tabs;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
+
     return TabBar(
-      controller: _tabController,
+      controller: tabController,
       isScrollable: true,
       dividerColor: Colors.transparent,
       tabAlignment: TabAlignment.start,
+      labelColor: darkMode ? Colors.white : Colors.black,
+      indicatorColor: darkMode ? Colors.white : Colors.black,
+      onTap: onTap,
+
       // indicator: ShapeDecoration(
       //   shape: RoundedRectangleBorder(
       //     borderRadius: BorderRadius.circular(20),
@@ -28,23 +35,7 @@ class CustomTabBar extends ConsumerWidget {
       //         : ColorsUtil.lightLinearGradientButton,
       //   ),
       // ),
-      tabs: <Widget>[
-        Tab(
-          text: 'Indices'.hardcoded,
-        ),
-        Tab(
-          text: 'Stocks'.hardcoded,
-        ),
-        Tab(
-          text: 'Cryptocurrencies'.hardcoded,
-        ),
-        Tab(
-          text: 'Commodities'.hardcoded,
-        ),
-        Tab(
-          text: 'Currencies'.hardcoded,
-        ),
-      ],
+      tabs: tabs,
     );
   }
 }

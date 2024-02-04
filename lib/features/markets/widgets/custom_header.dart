@@ -21,8 +21,11 @@ class CustomHeader extends ConsumerWidget {
               : ColorsUtil.lightLinearGradient,
         ),
         child: FlexibleSpaceBar(
-          title: Text('Markets'.hardcoded),
-          titlePadding: const EdgeInsets.all(0),
+          title: Text(
+            'Markets'.hardcoded,
+            style: TextStyle(color: darkMode ? Colors.white : Colors.black),
+          ),
+          titlePadding: const EdgeInsets.all(Sizes.p16),
           centerTitle: false,
         ),
       ),
