@@ -40,7 +40,7 @@ class CustomBottomAppBar extends StatelessWidget {
           }
         },
 
-        height: 56,
+        height: 70,
         indicatorColor: darkMode ? Colors.white : Colors.grey.shade400,
         backgroundColor: Colors.transparent,
         selectedIndex: selectedTab.index,

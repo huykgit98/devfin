@@ -19,7 +19,6 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _listCount = 20;
-  int _gridCount = 20;
   int _tabIndex = 0;
   late EasyRefreshController _easyRefreshController;
 
@@ -116,14 +115,14 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                   ),
                   CustomExtendedVisibilityDetector(
                     tabKey: 'StocksTab',
-                    items: List.generate(_gridCount, (index) => null),
+                    items: List.generate(_listCount, (index) => null),
                     onRefresh: () async {
                       await Future.delayed(
                         const Duration(seconds: 2),
                         () {
                           if (mounted) {
                             setState(() {
-                              _gridCount = 20;
+                              _listCount = 20;
                             });
                           }
                         },
@@ -135,7 +134,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                         () {
                           if (mounted) {
                             setState(() {
-                              _gridCount += 10;
+                              _listCount += 10;
                             });
                           }
                         },
@@ -169,14 +168,14 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                   ),
                   CustomExtendedVisibilityDetector(
                     tabKey: 'CommoditiesTab',
-                    items: List.generate(_gridCount, (index) => null),
+                    items: List.generate(_listCount, (index) => null),
                     onRefresh: () async {
                       await Future.delayed(
                         const Duration(seconds: 2),
                         () {
                           if (mounted) {
                             setState(() {
-                              _gridCount = 20;
+                              _listCount = 20;
                             });
                           }
                         },
@@ -188,7 +187,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                         () {
                           if (mounted) {
                             setState(() {
-                              _gridCount += 10;
+                              _listCount += 10;
                             });
                           }
                         },
