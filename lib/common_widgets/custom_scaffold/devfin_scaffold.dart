@@ -31,9 +31,6 @@ class DevFinScaffold extends ConsumerWidget {
             darkMode: ref.watch(darkModeProvider),
             selectedTab: selectedTab,
           ),
-          // appBar: CustomAppBar(
-          //   darkMode: ref.watch(darkModeProvider),
-          // ),
         ),
       );
 }

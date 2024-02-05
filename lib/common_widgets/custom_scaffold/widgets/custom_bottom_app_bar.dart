@@ -39,7 +39,6 @@ class CustomBottomAppBar extends StatelessWidget {
               context.go(AppRoutes.profile);
           }
         },
-
         height: 70,
         indicatorColor: darkMode ? Colors.white : Colors.grey.shade400,
         backgroundColor: Colors.transparent,

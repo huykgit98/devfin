@@ -41,189 +41,190 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: ExtendedNestedScrollView(
-        onlyOneScrollInBody: true,
-        pinnedHeaderSliverHeightBuilder: () {
-          return MediaQuery.of(context).padding.top + kToolbarHeight;
-        },
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return <Widget>[const CustomHeader()];
-        },
-        body: Column(
-          children: <Widget>[
-            CustomTabBar(
-              tabs: <Widget>[
-                Tab(
-                  text: 'Indices'.hardcoded,
+    return ExtendedNestedScrollView(
+      onlyOneScrollInBody: true,
+      pinnedHeaderSliverHeightBuilder: () {
+        return MediaQuery.of(context).padding.top + kToolbarHeight;
+      },
+      headerSliverBuilder: (context, innerBoxIsScrolled) {
+        return <Widget>[
+          CustomHeader(
+            innerBoxIsScrolled: innerBoxIsScrolled,
+          )
+        ];
+      },
+      body: Column(
+        children: <Widget>[
+          CustomTabBar(
+            tabs: <Widget>[
+              Tab(
+                text: 'Indices'.hardcoded,
+              ),
+              Tab(
+                text: 'Stocks'.hardcoded,
+              ),
+              Tab(
+                text: 'Cryptocurrencies'.hardcoded,
+              ),
+              Tab(
+                text: 'Commodities'.hardcoded,
+              ),
+              Tab(
+                text: 'Currencies'.hardcoded,
+              ),
+            ],
+            tabController: _tabController,
+            onTap: (index) {
+              setState(() {
+                _tabIndex = index;
+              });
+            },
+          ),
+          gapH2,
+          Expanded(
+            child: IndexedStack(
+              index: _tabIndex,
+              children: <Widget>[
+                CustomExtendedVisibilityDetector(
+                  tabKey: 'IndicesTab',
+                  items: List.generate(_listCount, (index) => null),
+                  onRefresh: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(() {
+                            _listCount = 20;
+                          });
+                        }
+                      },
+                    );
+                  },
+                  onLoad: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(
+                            () {
+                              _listCount += 10;
+                            },
+                          );
+                        }
+                      },
+                    );
+                  },
                 ),
-                Tab(
-                  text: 'Stocks'.hardcoded,
+                CustomExtendedVisibilityDetector(
+                  tabKey: 'StocksTab',
+                  items: List.generate(_listCount, (index) => null),
+                  onRefresh: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(() {
+                            _listCount = 20;
+                          });
+                        }
+                      },
+                    );
+                  },
+                  onLoad: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(() {
+                            _listCount += 10;
+                          });
+                        }
+                      },
+                    );
+                  },
                 ),
-                Tab(
-                  text: 'Cryptocurrencies'.hardcoded,
+                CustomExtendedVisibilityDetector(
+                  tabKey: 'CryptocurrenciesTab',
+                  items: List.generate(_listCount, (index) => null),
+                  onRefresh: () async {
+                    await Future.delayed(const Duration(seconds: 1), () {
+                      if (mounted) {
+                        setState(() {
+                          _listCount = 20;
+                        });
+                      }
+                    });
+                  },
+                  onLoad: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(() {
+                            _listCount += 10;
+                          });
+                        }
+                      },
+                    );
+                  },
                 ),
-                Tab(
-                  text: 'Commodities'.hardcoded,
+                CustomExtendedVisibilityDetector(
+                  tabKey: 'CommoditiesTab',
+                  items: List.generate(_listCount, (index) => null),
+                  onRefresh: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(() {
+                            _listCount = 20;
+                          });
+                        }
+                      },
+                    );
+                  },
+                  onLoad: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(() {
+                            _listCount += 10;
+                          });
+                        }
+                      },
+                    );
+                  },
                 ),
-                Tab(
-                  text: 'Currencies'.hardcoded,
+                CustomExtendedVisibilityDetector(
+                  tabKey: 'CurrenciesTab',
+                  items: List.generate(_listCount, (index) => null),
+                  onRefresh: () async {
+                    await Future.delayed(const Duration(seconds: 1), () {
+                      if (mounted) {
+                        setState(() {
+                          _listCount = 20;
+                        });
+                      }
+                    });
+                  },
+                  onLoad: () async {
+                    await Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        if (mounted) {
+                          setState(() {
+                            _listCount += 10;
+                          });
+                        }
+                      },
+                    );
+                  },
                 ),
               ],
-              tabController: _tabController,
-              onTap: (index) {
-                setState(() {
-                  _tabIndex = index;
-                });
-              },
             ),
-            gapH8,
-            Expanded(
-              child: IndexedStack(
-                index: _tabIndex,
-                children: <Widget>[
-                  CustomExtendedVisibilityDetector(
-                    tabKey: 'IndicesTab',
-                    items: List.generate(_listCount, (index) => null),
-                    onRefresh: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(() {
-                              _listCount = 20;
-                            });
-                          }
-                        },
-                      );
-                    },
-                    onLoad: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(
-                              () {
-                                _listCount += 10;
-                              },
-                            );
-                          }
-                        },
-                      );
-                    },
-                  ),
-                  CustomExtendedVisibilityDetector(
-                    tabKey: 'StocksTab',
-                    items: List.generate(_listCount, (index) => null),
-                    onRefresh: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(() {
-                              _listCount = 20;
-                            });
-                          }
-                        },
-                      );
-                    },
-                    onLoad: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(() {
-                              _listCount += 10;
-                            });
-                          }
-                        },
-                      );
-                    },
-                  ),
-                  CustomExtendedVisibilityDetector(
-                    tabKey: 'CryptocurrenciesTab',
-                    items: List.generate(_listCount, (index) => null),
-                    onRefresh: () async {
-                      await Future.delayed(const Duration(seconds: 2), () {
-                        if (mounted) {
-                          setState(() {
-                            _listCount = 20;
-                          });
-                        }
-                      });
-                    },
-                    onLoad: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(() {
-                              _listCount += 10;
-                            });
-                          }
-                        },
-                      );
-                    },
-                  ),
-                  CustomExtendedVisibilityDetector(
-                    tabKey: 'CommoditiesTab',
-                    items: List.generate(_listCount, (index) => null),
-                    onRefresh: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(() {
-                              _listCount = 20;
-                            });
-                          }
-                        },
-                      );
-                    },
-                    onLoad: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(() {
-                              _listCount += 10;
-                            });
-                          }
-                        },
-                      );
-                    },
-                  ),
-                  CustomExtendedVisibilityDetector(
-                    tabKey: 'CurrenciesTab',
-                    items: List.generate(_listCount, (index) => null),
-                    onRefresh: () async {
-                      await Future.delayed(const Duration(seconds: 2), () {
-                        if (mounted) {
-                          setState(() {
-                            _listCount = 20;
-                          });
-                        }
-                      });
-                    },
-                    onLoad: () async {
-                      await Future.delayed(
-                        const Duration(seconds: 2),
-                        () {
-                          if (mounted) {
-                            setState(() {
-                              _listCount += 10;
-                            });
-                          }
-                        },
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
