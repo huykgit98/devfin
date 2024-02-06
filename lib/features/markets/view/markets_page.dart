@@ -19,24 +19,24 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late ScrollController _scrollController;
-  double _scrollPosition = 0;
+  static const kExpandedHeight = 140.0;
 
   int _listCount = 20;
   int _tabIndex = 0;
   late EasyRefreshController _easyRefreshController;
 
-  // This method handles the notification from the ScrollController.
-  void _handleControllerNotification() {
-    setState(() {
-      _scrollPosition = _scrollController.position.pixels;
-    });
+  bool get _isSliverAppBarCollapsed {
+    return _scrollController.hasClients &&
+        _scrollController.offset > kExpandedHeight - kToolbarHeight;
   }
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(_handleControllerNotification);
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {});
+      });
 
     _tabController = TabController(length: 5, vsync: this);
     _easyRefreshController = EasyRefreshController(
@@ -57,15 +57,14 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
     return ExtendedNestedScrollView(
       controller: _scrollController,
       onlyOneScrollInBody: true,
-      pinnedHeaderSliverHeightBuilder: () {
-        return MediaQuery.of(context).padding.top + kToolbarHeight;
-      },
       headerSliverBuilder: (context, innerBoxIsScrolled) {
         return <Widget>[
           CustomHeader(
             innerBoxIsScrolled: innerBoxIsScrolled,
+            isSliverAppBarCollapsed: _isSliverAppBarCollapsed,
             title: 'Markets'.hardcoded,
             tabController: _tabController,
+            expandedHeight: kExpandedHeight,
             tabs: <Widget>[
               Tab(
                 text: 'Indices'.hardcoded,

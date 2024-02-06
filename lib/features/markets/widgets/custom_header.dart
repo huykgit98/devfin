@@ -1,10 +1,12 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin/features/markets/widgets/widgets.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'custom_tab_bar.dart';
 
 class CustomHeader extends ConsumerStatefulWidget {
   const CustomHeader(
@@ -12,13 +14,19 @@ class CustomHeader extends ConsumerStatefulWidget {
       required this.tabController,
       required this.tabs,
       required this.onTapTapped,
+      required this.isSliverAppBarCollapsed,
       this.title = '',
+      this.expandedHeight = 180.0,
       super.key});
   final bool innerBoxIsScrolled;
   final TabController tabController;
   final List<Widget> tabs;
   final void Function(int)? onTapTapped;
   final String title;
+  final bool isSliverAppBarCollapsed;
+
+  final double expandedHeight;
+
   @override
   ConsumerState<CustomHeader> createState() => _CustomHeaderState();
 }
@@ -39,7 +47,7 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
   Widget build(BuildContext context) {
     final darkMode = ref.watch(darkModeProvider);
     return SliverAppBar(
-      // backgroundColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
       bottom: CustomTabBar(
         tabController: widget.tabController,
         tabs: widget.tabs,
@@ -54,23 +62,45 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
       pinned: true,
       centerTitle: true,
       forceElevated: widget.innerBoxIsScrolled,
-      title: Text(
-        widget.title,
-        style: TextStyle(color: darkMode ? Colors.white : Colors.black),
-      ),
-      expandedHeight: 180.0,
-      flexibleSpace: FlexibleSpaceBar(
-        centerTitle: false,
-        title: const Text('Flight Report'),
-        background: GradientBackground(
-          gradient: LinearGradient(
-            colors: darkMode
-                ? ColorsUtil.darkLinearGradient
-                : ColorsUtil.lightLinearGradient,
+      title: AnimatedCrossFade(
+        duration: const Duration(milliseconds: 200),
+        firstChild: Text(
+          widget.title,
+          style: TextStyle(color: darkMode ? Colors.white : Colors.black),
+        ),
+        secondChild: ClipOval(
+          child: SizedBox(
+            width: Sizes.p48,
+            height: Sizes.p48,
+            child: SvgPicture.asset(
+              darkMode
+                  ? Assets.icons.appIconDarkThemeTransparentBgSvg
+                  : Assets.icons.appIconTransparentBgSvg,
+              semanticsLabel: 'DevFin Logo',
+            ),
           ),
         ),
+        crossFadeState: widget.isSliverAppBarCollapsed
+            ? CrossFadeState.showFirst
+            : CrossFadeState.showSecond,
       ),
-
+      expandedHeight: widget.expandedHeight,
+      flexibleSpace: widget.isSliverAppBarCollapsed
+          ? null
+          : FlexibleSpaceBar(
+              centerTitle: false,
+              collapseMode: CollapseMode.none,
+              stretchModes: [StretchMode.blurBackground],
+              titlePadding: const EdgeInsets.only(left: 16, bottom: 48),
+              title: Text(widget.title),
+              background: GradientBackground(
+                gradient: LinearGradient(
+                  colors: darkMode
+                      ? ColorsUtil.darkLinearGradient
+                      : ColorsUtil.lightLinearGradient,
+                ),
+              ),
+            ),
       actions: [
         _buildActionButton(
           icon: Icons.search_rounded,
