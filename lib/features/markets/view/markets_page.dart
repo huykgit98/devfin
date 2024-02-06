@@ -20,23 +20,24 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
   late TabController _tabController;
   late ScrollController _scrollController;
   static const kExpandedHeight = 140.0;
+  bool _isAppBarFullyExpanded = true;
 
   int _listCount = 20;
   int _tabIndex = 0;
   late EasyRefreshController _easyRefreshController;
 
-  bool get _isSliverAppBarCollapsed {
-    return _scrollController.hasClients &&
-        _scrollController.offset > kExpandedHeight - kToolbarHeight;
+  void _scrollListener() {
+    if (_scrollController.hasClients) {
+      setState(() {
+        _isAppBarFullyExpanded = _scrollController.offset == 0.0;
+      });
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController()
-      ..addListener(() {
-        setState(() {});
-      });
+    _scrollController = ScrollController()..addListener(_scrollListener);
 
     _tabController = TabController(length: 5, vsync: this);
     _easyRefreshController = EasyRefreshController(
@@ -50,6 +51,9 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
     super.dispose();
     _easyRefreshController.dispose();
     _tabController.dispose();
+    _scrollController
+      ..removeListener(_scrollListener)
+      ..dispose();
   }
 
   @override
@@ -61,7 +65,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
         return <Widget>[
           CustomHeader(
             innerBoxIsScrolled: innerBoxIsScrolled,
-            isSliverAppBarCollapsed: _isSliverAppBarCollapsed,
+            isFullyExpanded: _isAppBarFullyExpanded,
             title: 'Markets'.hardcoded,
             tabController: _tabController,
             expandedHeight: kExpandedHeight,

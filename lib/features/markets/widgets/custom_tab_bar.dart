@@ -36,5 +36,6 @@ class CustomTabBar extends ConsumerWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(
+      kToolbarHeight / 3); //remove extra spaces between tabs and appbar
 }

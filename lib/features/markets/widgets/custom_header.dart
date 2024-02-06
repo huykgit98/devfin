@@ -14,7 +14,7 @@ class CustomHeader extends ConsumerStatefulWidget {
       required this.tabController,
       required this.tabs,
       required this.onTapTapped,
-      required this.isSliverAppBarCollapsed,
+      required this.isFullyExpanded,
       this.title = '',
       this.expandedHeight = 180.0,
       super.key});
@@ -23,7 +23,7 @@ class CustomHeader extends ConsumerStatefulWidget {
   final List<Widget> tabs;
   final void Function(int)? onTapTapped;
   final String title;
-  final bool isSliverAppBarCollapsed;
+  final bool isFullyExpanded;
 
   final double expandedHeight;
 
@@ -46,8 +46,13 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
   @override
   Widget build(BuildContext context) {
     final darkMode = ref.watch(darkModeProvider);
+
     return SliverAppBar(
-      backgroundColor: Colors.transparent,
+      shadowColor: Colors.black12.withOpacity(0.5),
+      // backgroundColor: Colors.transparent,
+      foregroundColor: darkMode ? Colors.white : Colors.black,
+      collapsedHeight: 60,
+
       bottom: CustomTabBar(
         tabController: widget.tabController,
         tabs: widget.tabs,
@@ -63,12 +68,11 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
       centerTitle: true,
       forceElevated: widget.innerBoxIsScrolled,
       title: AnimatedCrossFade(
-        duration: const Duration(milliseconds: 200),
-        firstChild: Text(
+        duration: const Duration(milliseconds: 500),
+        secondChild: Text(
           widget.title,
-          style: TextStyle(color: darkMode ? Colors.white : Colors.black),
         ),
-        secondChild: ClipOval(
+        firstChild: ClipOval(
           child: SizedBox(
             width: Sizes.p48,
             height: Sizes.p48,
@@ -80,19 +84,22 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
             ),
           ),
         ),
-        crossFadeState: widget.isSliverAppBarCollapsed
+        crossFadeState: widget.isFullyExpanded
             ? CrossFadeState.showFirst
             : CrossFadeState.showSecond,
       ),
       expandedHeight: widget.expandedHeight,
-      flexibleSpace: widget.isSliverAppBarCollapsed
-          ? null
-          : FlexibleSpaceBar(
+      flexibleSpace: widget.isFullyExpanded
+          ? FlexibleSpaceBar(
               centerTitle: false,
               collapseMode: CollapseMode.none,
-              stretchModes: [StretchMode.blurBackground],
-              titlePadding: const EdgeInsets.only(left: 16, bottom: 48),
-              title: Text(widget.title),
+              stretchModes: const [StretchMode.blurBackground],
+              titlePadding:
+                  const EdgeInsets.only(left: Sizes.p16, bottom: Sizes.p48),
+              title: Text(
+                widget.title,
+                style: TextStyle(color: darkMode ? Colors.white : Colors.black),
+              ),
               background: GradientBackground(
                 gradient: LinearGradient(
                   colors: darkMode
@@ -100,7 +107,15 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
                       : ColorsUtil.lightLinearGradient,
                 ),
               ),
+            )
+          : GradientBackground(
+              gradient: LinearGradient(
+                colors: darkMode
+                    ? ColorsUtil.darkLinearGradient
+                    : ColorsUtil.lightLinearGradient,
+              ),
             ),
+
       actions: [
         _buildActionButton(
           icon: Icons.search_rounded,
