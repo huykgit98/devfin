@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:devfin/app/config/contants/app_sizes.dart';
+import 'package:devfin/app/app.dart';
 import 'package:devfin/features/markets/widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -18,13 +18,26 @@ class MarketsPage extends ConsumerStatefulWidget {
 class _MarketsPageState extends ConsumerState<MarketsPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late ScrollController _scrollController;
+  double _scrollPosition = 0;
+
   int _listCount = 20;
   int _tabIndex = 0;
   late EasyRefreshController _easyRefreshController;
 
+  // This method handles the notification from the ScrollController.
+  void _handleControllerNotification() {
+    setState(() {
+      _scrollPosition = _scrollController.position.pixels;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_handleControllerNotification);
+
     _tabController = TabController(length: 5, vsync: this);
     _easyRefreshController = EasyRefreshController(
       controlFinishRefresh: true,
@@ -42,6 +55,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
   @override
   Widget build(BuildContext context) {
     return ExtendedNestedScrollView(
+      controller: _scrollController,
       onlyOneScrollInBody: true,
       pinnedHeaderSliverHeightBuilder: () {
         return MediaQuery.of(context).padding.top + kToolbarHeight;
@@ -50,12 +64,8 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
         return <Widget>[
           CustomHeader(
             innerBoxIsScrolled: innerBoxIsScrolled,
-          )
-        ];
-      },
-      body: Column(
-        children: <Widget>[
-          CustomTabBar(
+            title: 'Markets'.hardcoded,
+            tabController: _tabController,
             tabs: <Widget>[
               Tab(
                 text: 'Indices'.hardcoded,
@@ -73,13 +83,16 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                 text: 'Currencies'.hardcoded,
               ),
             ],
-            tabController: _tabController,
-            onTap: (index) {
+            onTapTapped: (index) {
               setState(() {
                 _tabIndex = index;
               });
             },
-          ),
+          )
+        ];
+      },
+      body: Column(
+        children: <Widget>[
           gapH2,
           Expanded(
             child: IndexedStack(

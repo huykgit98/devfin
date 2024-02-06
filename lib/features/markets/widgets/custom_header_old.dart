@@ -1,49 +1,31 @@
 import 'package:devfin/app/app.dart';
-import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin/features/markets/widgets/widgets.dart';
-import 'package:devfin/utils/utils.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CustomHeader extends ConsumerStatefulWidget {
-  const CustomHeader(
-      {required this.innerBoxIsScrolled,
-      required this.tabController,
-      required this.tabs,
-      required this.onTapTapped,
-      this.title = '',
-      super.key});
+import 'custom_tab_bar.dart';
+
+class CustomHeader extends ConsumerWidget {
+  const CustomHeader({
+    required this.tabs,
+    required this.tabController,
+    required this.innerBoxIsScrolled,
+    super.key,
+  });
   final bool innerBoxIsScrolled;
   final TabController tabController;
   final List<Widget> tabs;
-  final void Function(int)? onTapTapped;
-  final String title;
-  @override
-  ConsumerState<CustomHeader> createState() => _CustomHeaderState();
-}
-
-class _CustomHeaderState extends ConsumerState<CustomHeader>
-    with SingleTickerProviderStateMixin {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
-    return SliverAppBar(
-      // backgroundColor: Colors.transparent,
+
+    return SliverAppBar.medium(
+      backgroundColor: Colors.transparent,
       bottom: CustomTabBar(
-        tabController: widget.tabController,
-        tabs: widget.tabs,
-        onTap: widget.onTapTapped,
+        tabController: tabController,
+        tabs: tabs,
       ),
       leading: IconButton(
         icon: const FaIcon(FontAwesomeIcons.barsStaggered),
@@ -51,26 +33,13 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
           Scaffold.of(context).openDrawer();
         },
       ),
-      pinned: true,
-      centerTitle: true,
-      forceElevated: widget.innerBoxIsScrolled,
+      floating: true,
+      centerTitle: false,
+      forceElevated: innerBoxIsScrolled,
       title: Text(
-        widget.title,
+        'Markets'.hardcoded,
         style: TextStyle(color: darkMode ? Colors.white : Colors.black),
       ),
-      expandedHeight: 180.0,
-      flexibleSpace: FlexibleSpaceBar(
-        centerTitle: false,
-        title: const Text('Flight Report'),
-        background: GradientBackground(
-          gradient: LinearGradient(
-            colors: darkMode
-                ? ColorsUtil.darkLinearGradient
-                : ColorsUtil.lightLinearGradient,
-          ),
-        ),
-      ),
-
       actions: [
         _buildActionButton(
           icon: Icons.search_rounded,

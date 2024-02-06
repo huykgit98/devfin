@@ -2,9 +2,9 @@ import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class GradientBackground extends StatelessWidget {
-  const GradientBackground({required this.child, super.key, this.gradient});
+  const GradientBackground({this.child, super.key, this.gradient});
   final Gradient? gradient;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class GradientBackground extends StatelessWidget {
                 ),
           ),
         ),
-        child,
+        child ?? const SizedBox.shrink(),
       ],
     );
   }
