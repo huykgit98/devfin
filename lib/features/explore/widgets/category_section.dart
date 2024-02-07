@@ -85,8 +85,8 @@ class CategorySection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _buildItemDetail(item: item, context: context),
             _buildItemImage(item.imageUrl),
+            _buildItemDetail(item: item, context: context),
           ],
         ),
         if (!isLastIndex)

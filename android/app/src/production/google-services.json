@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "964701927823",
+    "project_id": "devfin-436ed",
+    "storage_bucket": "devfin-436ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964701927823:android:cd6ea466d93be42e66b3fa",
+        "android_client_info": {
+          "package_name": "com.negandev.devfin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBeslgYmInjwx9PIkqry2dSi4-ph9iyYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

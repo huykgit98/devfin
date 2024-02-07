@@ -2,11 +2,11 @@ class ExampleData {
   ExampleData._internal();
 
   static List<String> images = [
-    "https://github.com/wayne900204/vertical_scrollable_tabview/blob/main/example/assets/food.jpeg?raw=true",
-    "https://github.com/wayne900204/vertical_scrollable_tabview/blob/main/example/assets/food.jpeg?raw=true",
-    "https://github.com/wayne900204/vertical_scrollable_tabview/blob/main/example/assets/food.jpeg?raw=true",
-    "https://github.com/wayne900204/vertical_scrollable_tabview/blob/main/example/assets/food.jpeg?raw=true",
-    "https://github.com/wayne900204/vertical_scrollable_tabview/blob/main/example/assets/food.jpeg?raw=true",
+    "https://s2.coinmarketcap.com/static/img/coins/128x128/1.png",
+    "https://s2.coinmarketcap.com/static/img/coins/128x128/1027.png",
+    "https://s2.coinmarketcap.com/static/img/coins/128x128/2.png",
+    "https://s2.coinmarketcap.com/static/img/coins/128x128/1028.png",
+    "https://s2.coinmarketcap.com/static/img/coins/128x128/1029.png",
   ];
 
   static List<Category> data = [
@@ -25,7 +25,7 @@ class ExampleData {
       5,
       (index) {
         return Item(
-          name: "701. 超人氣泡菜鍋",
+          name: "FLC",
           price: "200",
           comparePrice: "\$198",
           imageUrl: images[index % images.length],
@@ -43,7 +43,7 @@ class ExampleData {
       3,
       (index) {
         return Item(
-          name: "706. 迷你原味鍋",
+          name: "DXG",
           price: "230",
           comparePrice: "\$250",
           imageUrl: images[index % images.length],
@@ -61,7 +61,7 @@ class ExampleData {
       1,
       (index) {
         return Item(
-          name: "經典火鍋",
+          name: "VNINDEX",
           price: "258",
           comparePrice: "\$289",
           imageUrl: images[index % images.length],
@@ -79,7 +79,7 @@ class ExampleData {
       5,
       (index) {
         return Item(
-          name: "728. 連庭素食鍋",
+          name: "VCG",
           price: "240",
           comparePrice: "\$300",
           imageUrl: images[index % images.length],
@@ -97,7 +97,7 @@ class ExampleData {
       5,
       (index) {
         return Item(
-          name: "728. 連庭素食鍋",
+          name: "BITCOIN",
           price: "240",
           comparePrice: "\$300",
           imageUrl: images[index % images.length],

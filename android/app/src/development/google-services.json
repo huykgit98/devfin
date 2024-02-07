@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "314527698118",
+    "project_id": "devfin-dev",
+    "storage_bucket": "devfin-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314527698118:android:3bc6aedd013fec3acb1bc7",
+        "android_client_info": {
+          "package_name": "com.negandev.devfin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5Tj1R20_oGojV1WcrwHZB63A2jRzfyoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314527698118:android:14dc98b666e5e2c2cb1bc7",
+        "android_client_info": {
+          "package_name": "com.negandev.devfin.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5Tj1R20_oGojV1WcrwHZB63A2jRzfyoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314527698118:android:68cc284223b05168cb1bc7",
+        "android_client_info": {
+          "package_name": "com.negandev.devfin.stg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5Tj1R20_oGojV1WcrwHZB63A2jRzfyoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
