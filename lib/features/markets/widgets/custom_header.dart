@@ -4,7 +4,6 @@ import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'custom_tab_bar.dart';
 
@@ -17,6 +16,7 @@ class CustomHeader extends ConsumerStatefulWidget {
       required this.isFullyExpanded,
       this.title = '',
       this.expandedHeight = 180.0,
+      this.leading,
       super.key});
   final bool innerBoxIsScrolled;
   final TabController tabController;
@@ -24,7 +24,7 @@ class CustomHeader extends ConsumerStatefulWidget {
   final void Function(int)? onTapTapped;
   final String title;
   final bool isFullyExpanded;
-
+  final Widget? leading;
   final double expandedHeight;
 
   @override
@@ -58,12 +58,7 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
         tabs: widget.tabs,
         onTap: widget.onTapTapped,
       ),
-      leading: IconButton(
-        icon: const FaIcon(FontAwesomeIcons.barsStaggered),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-      ),
+      leading: widget.leading,
       pinned: true,
       centerTitle: true,
       forceElevated: widget.innerBoxIsScrolled,
