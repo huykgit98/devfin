@@ -10,15 +10,15 @@ class ExampleData {
   ];
 
   static List<Category> data = [
-    indeces,
+    indices,
     stocks,
     cryptoCurrencies,
     commodities,
     currencies
   ];
 
-  static Category indeces = Category(
-    title: "indeces",
+  static Category indices = Category(
+    title: "Indices",
     subtitle: "subtitle",
     isHotSale: true,
     items: List.generate(
@@ -36,7 +36,7 @@ class ExampleData {
   );
 
   static Category stocks = Category(
-    title: "stocks",
+    title: "Stocks",
     subtitle: "subtitle",
     isHotSale: false,
     items: List.generate(
@@ -54,7 +54,7 @@ class ExampleData {
   );
 
   static Category cryptoCurrencies = Category(
-    title: "cryptoCurrencies",
+    title: "CryptoCurrencies",
     subtitle: "subtitle",
     isHotSale: false,
     items: List.generate(
@@ -72,7 +72,7 @@ class ExampleData {
   );
 
   static Category commodities = Category(
-    title: "commodities",
+    title: "Commodities",
     subtitle: "subtitle",
     isHotSale: false,
     items: List.generate(

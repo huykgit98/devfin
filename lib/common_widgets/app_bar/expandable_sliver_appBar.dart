@@ -7,12 +7,12 @@ import 'package:flutter_svg/svg.dart';
 
 class CustomHeader extends ConsumerStatefulWidget {
   const CustomHeader(
-      {required this.innerBoxIsScrolled,
+      {this.innerBoxIsScrolled,
       this.title = '',
       this.leading,
       this.bottom,
       super.key});
-  final bool innerBoxIsScrolled;
+  final bool? innerBoxIsScrolled;
   final String title;
   final Widget? leading;
   final PreferredSizeWidget? bottom;
@@ -51,7 +51,7 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
           leading: widget.leading,
           pinned: true,
           centerTitle: true,
-          forceElevated: widget.innerBoxIsScrolled,
+          forceElevated: widget.innerBoxIsScrolled ?? false,
           title: AnimatedCrossFade(
             duration: const Duration(milliseconds: 500),
             secondChild: Text(

@@ -1,5 +1,8 @@
+import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/explore/widgets/widgets.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 
@@ -36,40 +39,33 @@ class _ExplorePageState extends State<ExplorePage>
 
   @override
   Widget build(BuildContext context) {
-    return VerticalScrollableTabView(
-      autoScrollController: autoScrollController,
-      scrollbarThumbVisibility: false,
-      tabController: tabController,
-      listItemData: data,
-      eachItemChild: (object, index) =>
-          CategorySection(category: object as Category),
-      slivers: [
-        SliverAppBar(
-          pinned: true,
-          expandedHeight: 250.0,
-          flexibleSpace: const FlexibleSpaceBar(
-            title: Text("Explore"),
-            titlePadding: EdgeInsets.only(bottom: 50),
-            collapseMode: CollapseMode.pin,
-            background: FlutterLogo(),
+    return SafeArea(
+      child: VerticalScrollableTabView(
+        autoScrollController: autoScrollController,
+        scrollbarThumbVisibility: false,
+        tabController: tabController,
+        listItemData: data,
+        eachItemChild: (object, index) =>
+            CategorySection(category: object as Category),
+        slivers: [
+          CustomHeader(
+            title: 'Explore'.hardcoded,
+            leading: IconButton(
+              icon: const FaIcon(FontAwesomeIcons.barsStaggered),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            ),
+            bottom: CustomTabBar(
+              tabController: tabController,
+              tabs: data.map((e) {
+                return Tab(text: e.title);
+              }).toList(),
+              onTap: VerticalScrollableTabBarStatus.setIndex,
+            ),
           ),
-          bottom: TabBar(
-            isScrollable: true,
-            controller: tabController,
-            indicatorPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-            indicatorColor: Colors.cyan,
-            labelColor: Colors.cyan,
-            unselectedLabelColor: Colors.white,
-            indicatorWeight: 3.0,
-            tabs: data.map((e) {
-              return Tab(text: e.title);
-            }).toList(),
-            onTap: (index) {
-              VerticalScrollableTabBarStatus.setIndex(index);
-            },
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -15,7 +15,7 @@ class CategorySection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: Sizes.p16),
       margin: const EdgeInsets.only(bottom: Sizes.p16),
-      color: Colors.cyanAccent.withOpacity(0.1),
+      // color: Colors.cyanAccent.withOpacity(0.1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
