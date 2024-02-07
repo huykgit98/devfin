@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:devfin/app/app.dart';
+import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/markets/widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:easy_refresh/easy_refresh.dart';
@@ -68,7 +69,6 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
             innerBoxIsScrolled: innerBoxIsScrolled,
             isFullyExpanded: _isAppBarFullyExpanded,
             title: 'Markets'.hardcoded,
-            tabController: _tabController,
             expandedHeight: kExpandedHeight,
             leading: IconButton(
               icon: const FaIcon(FontAwesomeIcons.barsStaggered),
@@ -76,28 +76,31 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                 Scaffold.of(context).openDrawer();
               },
             ),
-            tabs: <Widget>[
-              Tab(
-                text: 'Indices'.hardcoded,
-              ),
-              Tab(
-                text: 'Stocks'.hardcoded,
-              ),
-              Tab(
-                text: 'Cryptocurrencies'.hardcoded,
-              ),
-              Tab(
-                text: 'Commodities'.hardcoded,
-              ),
-              Tab(
-                text: 'Currencies'.hardcoded,
-              ),
-            ],
-            onTapTapped: (index) {
-              setState(() {
-                _tabIndex = index;
-              });
-            },
+            bottom: CustomTabBar(
+              tabController: _tabController,
+              tabs: <Widget>[
+                Tab(
+                  text: 'Indices'.hardcoded,
+                ),
+                Tab(
+                  text: 'Stocks'.hardcoded,
+                ),
+                Tab(
+                  text: 'Cryptocurrencies'.hardcoded,
+                ),
+                Tab(
+                  text: 'Commodities'.hardcoded,
+                ),
+                Tab(
+                  text: 'Currencies'.hardcoded,
+                ),
+              ],
+              onTap: (index) {
+                setState(() {
+                  _tabIndex = index;
+                });
+              },
+            ),
           )
         ];
       },
