@@ -35,6 +35,7 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   easy_refresh: ^3.3.4
   extended_nested_scroll_view: ^6.2.1
+  vertical_scrollable_tabview: ^0.1.1
 
 dev_dependencies:
   flutter_test:

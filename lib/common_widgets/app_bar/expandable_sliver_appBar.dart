@@ -8,18 +8,14 @@ import 'package:flutter_svg/svg.dart';
 class CustomHeader extends ConsumerStatefulWidget {
   const CustomHeader(
       {required this.innerBoxIsScrolled,
-      required this.isFullyExpanded,
       this.title = '',
-      this.expandedHeight = 180.0,
       this.leading,
       this.bottom,
       super.key});
   final bool innerBoxIsScrolled;
   final String title;
-  final bool isFullyExpanded;
   final Widget? leading;
   final PreferredSizeWidget? bottom;
-  final double expandedHeight;
 
   @override
   ConsumerState<CustomHeader> createState() => _CustomHeaderState();
@@ -41,83 +37,89 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
   Widget build(BuildContext context) {
     final darkMode = ref.watch(darkModeProvider);
 
-    return SliverAppBar(
-      shadowColor: Colors.black12.withOpacity(0.5),
-      // backgroundColor: Colors.transparent,
-      foregroundColor: darkMode ? Colors.white : Colors.black,
-      collapsedHeight: 60,
+    return SliverLayoutBuilder(
+      builder: (BuildContext context, constraints) {
+        bool isFullyCollapsed = constraints.scrollOffset == 0;
 
-      bottom: widget.bottom,
-      leading: widget.leading,
-      pinned: true,
-      centerTitle: true,
-      forceElevated: widget.innerBoxIsScrolled,
-      title: AnimatedCrossFade(
-        duration: const Duration(milliseconds: 500),
-        secondChild: Text(
-          widget.title,
-        ),
-        firstChild: ClipOval(
-          child: SizedBox(
-            width: Sizes.p48,
-            height: Sizes.p48,
-            child: SvgPicture.asset(
-              darkMode
-                  ? Assets.icons.appIconDarkThemeTransparentBgSvg
-                  : Assets.icons.appIconTransparentBgSvg,
-              semanticsLabel: 'DevFin Logo',
+        return SliverAppBar(
+          shadowColor: Colors.black12.withOpacity(0.5),
+          // backgroundColor: Colors.transparent,
+          foregroundColor: darkMode ? Colors.white : Colors.black,
+          collapsedHeight: 60,
+          expandedHeight: 140,
+          bottom: widget.bottom,
+          leading: widget.leading,
+          pinned: true,
+          centerTitle: true,
+          forceElevated: widget.innerBoxIsScrolled,
+          title: AnimatedCrossFade(
+            duration: const Duration(milliseconds: 500),
+            secondChild: Text(
+              widget.title,
             ),
-          ),
-        ),
-        crossFadeState: widget.isFullyExpanded
-            ? CrossFadeState.showFirst
-            : CrossFadeState.showSecond,
-      ),
-      expandedHeight: widget.expandedHeight,
-      flexibleSpace: widget.isFullyExpanded
-          ? FlexibleSpaceBar(
-              centerTitle: false,
-              collapseMode: CollapseMode.none,
-              stretchModes: const [StretchMode.blurBackground],
-              titlePadding:
-                  const EdgeInsets.only(left: Sizes.p16, bottom: Sizes.p48),
-              title: Text(
-                widget.title,
-                style: TextStyle(color: darkMode ? Colors.white : Colors.black),
-              ),
-              background: GradientBackground(
-                gradient: LinearGradient(
-                  colors: darkMode
-                      ? ColorsUtil.darkLinearGradient
-                      : ColorsUtil.lightLinearGradient,
+            firstChild: ClipOval(
+              child: SizedBox(
+                width: Sizes.p48,
+                height: Sizes.p48,
+                child: SvgPicture.asset(
+                  darkMode
+                      ? Assets.icons.appIconDarkThemeTransparentBgSvg
+                      : Assets.icons.appIconTransparentBgSvg,
+                  semanticsLabel: 'DevFin Logo',
                 ),
               ),
-            )
-          : GradientBackground(
-              gradient: LinearGradient(
-                colors: darkMode
-                    ? ColorsUtil.darkLinearGradient
-                    : ColorsUtil.lightLinearGradient,
-              ),
             ),
+            crossFadeState: isFullyCollapsed
+                ? CrossFadeState.showFirst
+                : CrossFadeState.showSecond,
+          ),
+          flexibleSpace: isFullyCollapsed
+              ? FlexibleSpaceBar(
+                  centerTitle: false,
+                  collapseMode: CollapseMode.none,
+                  stretchModes: const [StretchMode.blurBackground],
+                  titlePadding:
+                      const EdgeInsets.only(left: Sizes.p16, bottom: Sizes.p48),
+                  title: Text(
+                    widget.title,
+                    style: TextStyle(
+                        color: darkMode ? Colors.white : Colors.black),
+                  ),
+                  background: GradientBackground(
+                    gradient: LinearGradient(
+                      colors: darkMode
+                          ? ColorsUtil.darkLinearGradient
+                          : ColorsUtil.lightLinearGradient,
+                    ),
+                  ),
+                )
+              : GradientBackground(
+                  gradient: LinearGradient(
+                    colors: darkMode
+                        ? ColorsUtil.darkLinearGradient
+                        : ColorsUtil.lightLinearGradient,
+                  ),
+                ),
 
-      actions: [
-        _buildActionButton(
-          icon: Icons.search_rounded,
-          onPressed: () {},
-        ),
-        _buildActionButton(
-          icon: Icons.chat_bubble_outline_rounded,
-          onPressed: () {},
-          isShowBadge: true,
-        ),
-        _buildActionButton(
-          icon: Icons.notifications_none_rounded,
-          onPressed: () {},
-          isShowBadge: true,
-        ),
-        gapW8,
-      ],
+          actions: [
+            _buildActionButton(
+              icon: Icons.search_rounded,
+              onPressed: () {},
+            ),
+            // _buildActionButton(
+            //   icon: Icons.chat_bubble_outline_rounded,
+            //   onPressed: () {},
+            //   isShowBadge: true,
+            // ),
+            _buildActionButton(
+              icon: Icons.notifications_none_rounded,
+              onPressed: () {},
+              isShowBadge: true,
+            ),
+            gapW8,
+          ],
+        );
+      },
     );
   }
 
