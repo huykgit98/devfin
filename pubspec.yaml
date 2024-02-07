@@ -36,6 +36,7 @@ dependencies:
   easy_refresh: ^3.3.4
   extended_nested_scroll_view: ^6.2.1
   vertical_scrollable_tabview: ^0.1.1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

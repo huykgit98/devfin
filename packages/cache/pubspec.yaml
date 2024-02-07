@@ -1,5 +1,5 @@
-name: authentication_data_source
-description: Authentication DataSource package
+name: cache
+description: Cache
 version: 0.1.0+1
 publish_to: none
 
