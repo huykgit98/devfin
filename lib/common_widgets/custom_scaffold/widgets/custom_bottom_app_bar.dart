@@ -35,7 +35,7 @@ class CustomBottomAppBar extends StatelessWidget {
             case ScaffoldTab.watchlist:
               context.go(AppRoutes.watchlist);
             case ScaffoldTab.profile:
-              SignUpSheet.show(context, darkMode);
+              SignUpSheet.show(context, darkMode: darkMode);
               context.go(AppRoutes.profile);
           }
         },

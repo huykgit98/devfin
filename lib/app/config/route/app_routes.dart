@@ -3,6 +3,8 @@ import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/explore/explore.dart';
 import 'package:devfin/features/markets/markets.dart';
 import 'package:devfin/features/profile/profile.dart';
+import 'package:devfin/features/sign_in/sign_in.dart';
+import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/features/splash/splash_screen.dart';
 import 'package:devfin/features/watchlist/watchlist.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,8 @@ const ValueKey<String> scaffoldKey = ValueKey<String>('App scaffold');
 class AppRoutes {
   static const splash = '/';
   static const markets = '/markets';
+  static const signIn = '/sign-in';
+  static const signUp = '/sign-up';
   static const profile = '/profile';
   static const explore = '/explore';
   static const watchlist = '/watchlist';
@@ -23,6 +27,18 @@ class AppRoutes {
         path: splash,
         builder: (context, state) {
           return const SplashView();
+        },
+      ),
+      GoRoute(
+        path: signIn,
+        builder: (context, state) {
+          return const SignInPage();
+        },
+      ),
+      GoRoute(
+        path: signUp,
+        builder: (context, state) {
+          return const SignUpPage();
         },
       ),
       //Markets Tab
