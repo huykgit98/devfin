@@ -10,6 +10,7 @@ class ColorsUtil {
     Color(0xFF6BB3FF),
     Color(0xFFD3DAFD),
   ];
+
   static const List<Color> messengerLikeGradient = [
     Color(0xFF0695FF),
     Color(0xFFA334FA),

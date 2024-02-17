@@ -1,5 +1,4 @@
 import 'package:devfin/app/app.dart';
-import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +34,7 @@ class CustomBottomAppBar extends StatelessWidget {
             case ScaffoldTab.watchlist:
               context.go(AppRoutes.watchlist);
             case ScaffoldTab.profile:
-              SignUpSheet.show(context, darkMode: darkMode);
+              // SignUpSheet.show(context, darkMode: darkMode);
               context.go(AppRoutes.profile);
           }
         },

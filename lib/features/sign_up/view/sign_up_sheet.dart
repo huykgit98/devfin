@@ -4,111 +4,121 @@ import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-class SignUpSheet1 {
-  static void show(BuildContext context, {required bool darkMode}) {
-    showModalBottomSheet(
-      useRootNavigator: true,
-      isScrollControlled: true,
-      useSafeArea: true,
-      context: context,
-      builder: (context) {
-        return FractionallySizedBox(
-          heightFactor: 0.9, // 90% of device height
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: darkMode
-                      ? ColorsUtil.darkLinearGradient
-                      : ColorsUtil.lightLinearGradient),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(Sizes.p16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize:
-                    MainAxisSize.min, // To make the sheet wrap-content
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => Navigator.pop(context),
-                    ),
+class SignUpSheet extends ConsumerWidget {
+  const SignUpSheet({
+    required this.size,
+    required this.destinations,
+    super.key,
+  });
+
+  final double size;
+  final List<String> destinations;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+    final textColor = Theme.of(context).colorScheme.onSecondaryContainer;
+    final textStyle = Theme.of(context).textTheme.displayMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: textColor,
+        );
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: darkMode
+                    ? ColorsUtil.darkLinearGradient
+                    : ColorsUtil.lightLinearGradient),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(Sizes.p16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min, // To make the sheet wrap-content
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () => Navigator.pop(context),
                   ),
-                  Center(
-                    child: Column(
-                      children: [
-                        ClipOval(
-                          child: Container(
-                            width: Sizes.p48,
-                            height: Sizes.p48,
-                            child: SvgPicture.asset(
-                                darkMode
-                                    ? Assets
-                                        .icons.appIconDarkThemeTransparentBgSvg
-                                    : Assets.icons.appIconTransparentBgSvg,
-                                semanticsLabel: 'DevFin Logo'),
-                          ),
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      ClipOval(
+                        child: SizedBox(
+                          width: Sizes.p48,
+                          height: Sizes.p48,
+                          child: SvgPicture.asset(
+                              darkMode
+                                  ? Assets
+                                      .icons.appIconDarkThemeTransparentBgSvg
+                                  : Assets.icons.appIconTransparentBgSvg,
+                              semanticsLabel: 'DevFin Logo'),
                         ),
-                        const SizedBox(height: Sizes.p32),
-                        Text('Sign up for DevFin'.hardcoded,
-                            style: TextStyle(
-                                fontSize: Sizes.p24,
-                                color: darkMode ? Colors.white : Colors.black,
-                                fontWeight: FontWeight.bold)),
-                        Text('DevFin - Track All Markets'.hardcoded,
-                            style: TextStyle(
-                                color: darkMode ? Colors.white : Colors.black,
-                                fontSize: Sizes.p16,
-                                fontWeight: FontWeight.normal)),
-                        gapH16,
-                        _buildButton(
-                            text: 'Use phone or email'.hardcoded,
-                            icon: FontAwesomeIcons.user,
-                            darkMode: darkMode,
-                            onPressed: () {
-                              // Navigator.pop(context);
-                              GoRouter.of(context).go(AppRoutes.signUp);
-                            }),
-                        gapH16,
-                        _buildButton(
-                          text: 'Continue with Facebook'.hardcoded,
-                          icon: FontAwesomeIcons.facebook,
+                      ),
+                      const SizedBox(height: Sizes.p32),
+                      Text('Sign up for DevFin'.hardcoded,
+                          style: TextStyle(
+                              fontSize: Sizes.p24,
+                              color: darkMode ? Colors.white : Colors.black,
+                              fontWeight: FontWeight.bold)),
+                      Text('DevFin - Track All Markets'.hardcoded,
+                          style: TextStyle(
+                              color: darkMode ? Colors.white : Colors.black,
+                              fontSize: Sizes.p16,
+                              fontWeight: FontWeight.normal)),
+                      gapH16,
+                      _buildButton(
+                          text: 'Use phone or email'.hardcoded,
+                          icon: FontAwesomeIcons.user,
                           darkMode: darkMode,
                           onPressed: () {
-                            // Handle Facebook sign up
-                          },
-                        ),
-                        gapH16,
-                        _buildButton(
-                          text: 'Continue with Apple'.hardcoded,
-                          icon: FontAwesomeIcons.apple,
-                          darkMode: darkMode,
-                          onPressed: () {
-                            // Handle Apple sign up
-                          },
-                        ),
-                        gapH16,
-                        _buildButton(
-                          text: 'Continue with Google'.hardcoded,
-                          icon: FontAwesomeIcons.google,
-                          darkMode: darkMode,
-                          onPressed: () {
-                            // Handle Google sign up
-                          },
-                        ),
-                      ],
-                    ),
+                            // Navigator.pop(context);
+                            GoRouter.of(context).go(AppRoutes.signUp);
+                          }),
+                      gapH16,
+                      _buildButton(
+                        text: 'Continue with Facebook'.hardcoded,
+                        icon: FontAwesomeIcons.facebook,
+                        darkMode: darkMode,
+                        onPressed: () {
+                          // Handle Facebook sign up
+                        },
+                      ),
+                      gapH16,
+                      _buildButton(
+                        text: 'Continue with Apple'.hardcoded,
+                        icon: FontAwesomeIcons.apple,
+                        darkMode: darkMode,
+                        onPressed: () {
+                          // Handle Apple sign up
+                        },
+                      ),
+                      gapH16,
+                      _buildButton(
+                        text: 'Continue with Google'.hardcoded,
+                        icon: FontAwesomeIcons.google,
+                        darkMode: darkMode,
+                        onPressed: () {
+                          // Handle Google sign up
+                        },
+                      ),
+                    ],
                   ),
-                  const Spacer(),
-                  _buildTermsAndConditions(context, darkMode),
-                  _buildLoginPrompt(context, darkMode),
-                ],
-              ),
+                ),
+                const Spacer(),
+                _buildTermsAndConditions(context, darkMode),
+                _buildLoginPrompt(context, darkMode),
+              ],
             ),
           ),
         );

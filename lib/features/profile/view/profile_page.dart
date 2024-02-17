@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class ProfilePage extends ConsumerStatefulWidget {
+  const ProfilePage({
+    super.key,
+  });
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  ConsumerState<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends ConsumerState<ProfilePage> {
+  final bool _isLoggedIn = true;
   @override
   void initState() {
     super.initState();
@@ -20,6 +24,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) => SafeArea(
-        child: ListView(children: const [Text('Profile')]),
+        child: Stack(
+          children: [
+            ListView(children: const [Text('Profile')]),
+            const Text('Login'),
+          ],
+        ),
       );
 }

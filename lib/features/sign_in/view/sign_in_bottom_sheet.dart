@@ -1,5 +1,4 @@
 import 'package:devfin/app/app.dart';
-import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/gestures.dart';
@@ -11,6 +10,7 @@ import 'package:go_router/go_router.dart';
 class SignInSheet {
   static void show(BuildContext context, {required bool darkMode}) {
     showModalBottomSheet(
+      useRootNavigator: true,
       isScrollControlled: true,
       useSafeArea: true,
       context: context,
@@ -234,7 +234,7 @@ class SignInSheet {
                     ..onTap = () {
                       // Navigate to login bottom sheet
                       Navigator.pop(context);
-                      SignUpSheet.show(context, darkMode: darkMode);
+                      // SignUpSheet.show(context, darkMode: darkMode);
                     },
                 ),
               ],

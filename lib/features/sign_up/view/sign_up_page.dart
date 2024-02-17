@@ -22,7 +22,7 @@ class SignUpPage extends ConsumerWidget {
           leading: IconButton(
             icon: Icon(Icons.adaptive.arrow_back_rounded),
             onPressed: () {
-              SignUpSheet.show(context, darkMode: darkMode);
+              // SignUpSheet.show(context, darkMode: darkMode);
             },
           ),
           title: Text('Sign Up'.hardcoded)),
