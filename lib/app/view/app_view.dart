@@ -2,6 +2,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:devfin/app/app.dart';
 import 'package:devfin/features/authentication/authentication.dart';
 import 'package:devfin/l10n/l10n.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,7 +44,7 @@ class _DevFinAppViewState extends ConsumerState<DevFinAppView> {
         ),
       ],
       child: MaterialApp.router(
-        title: 'Devfin - Track All Markets',
+        title: 'Devfin - Track All Markets'.hardcoded,
         debugShowCheckedModeBanner: false,
         routeInformationProvider: AppRoutes.route.routeInformationProvider,
         routeInformationParser: AppRoutes.route.routeInformationParser,
