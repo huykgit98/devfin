@@ -1,14 +1,14 @@
 import 'package:devfin/app/app.dart';
-import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInSheet {
-  static void show(BuildContext context, bool darkMode) {
+  static void show(BuildContext context, {required bool darkMode}) {
     showModalBottomSheet(
       isScrollControlled: true,
       useSafeArea: true,
@@ -64,17 +64,40 @@ class SignInSheet {
                                 fontSize: Sizes.p16,
                                 fontWeight: FontWeight.normal)),
                         gapH16,
-                        _buildButton('Use phone or email'.hardcoded,
-                            FontAwesomeIcons.user, darkMode),
+                        _buildButton(
+                          text: 'Use phone or email'.hardcoded,
+                          icon: FontAwesomeIcons.user,
+                          darkMode: darkMode,
+                          onPressed: () {
+                            context.pop();
+                            GoRouter.of(context).go(AppRoutes.signIn);
+                          },
+                        ),
                         gapH16,
-                        _buildButton('Continue with Facebook'.hardcoded,
-                            FontAwesomeIcons.facebook, darkMode),
+                        _buildButton(
+                          text: 'Continue with Facebook'.hardcoded,
+                          icon: FontAwesomeIcons.facebook,
+                          darkMode: darkMode,
+                          onPressed: () {
+                            // Handle tap on "Continue with Facebook" ,
+                          },
+                        ),
                         gapH16,
-                        _buildButton('Continue with Apple'.hardcoded,
-                            FontAwesomeIcons.apple, darkMode),
+                        _buildButton(
+                            text: 'Continue with Apple'.hardcoded,
+                            icon: FontAwesomeIcons.apple,
+                            darkMode: darkMode,
+                            onPressed: () {
+                              // Handle tap on "Continue with Apple"
+                            }),
                         gapH16,
-                        _buildButton('Continue with Google'.hardcoded,
-                            FontAwesomeIcons.google, darkMode),
+                        _buildButton(
+                            text: 'Continue with Google'.hardcoded,
+                            icon: FontAwesomeIcons.google,
+                            darkMode: darkMode,
+                            onPressed: () {
+                              // Handle tap on "Continue with Google"
+                            }),
                       ],
                     ),
                   ),
@@ -90,7 +113,11 @@ class SignInSheet {
     );
   }
 
-  static Widget _buildButton(String text, IconData icon, bool darkMode) {
+  static Widget _buildButton(
+      {required void Function()? onPressed,
+      required String text,
+      required IconData icon,
+      required bool darkMode}) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -102,7 +129,7 @@ class SignInSheet {
         ),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent),
@@ -206,7 +233,7 @@ class SignInSheet {
                     ..onTap = () {
                       // Navigate to login bottom sheet
                       Navigator.pop(context);
-                      SignUpSheet.show(context, darkMode);
+                      // SignUpSheet.show(context, darkMode: darkMode);
                     },
                 ),
               ],

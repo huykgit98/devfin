@@ -7,12 +7,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DevFinScaffold extends ConsumerWidget {
   const DevFinScaffold({
-    required this.selectedTab,
     required this.child,
     super.key,
   });
 
-  final ScaffoldTab selectedTab;
   final Widget child;
 
   @override
@@ -26,11 +24,8 @@ class DevFinScaffold extends ConsumerWidget {
           backgroundColor: Colors.transparent,
           body: child,
           extendBody: true,
-          drawer: CustomDrawer(ref: ref),
-          bottomNavigationBar: CustomBottomAppBar(
-            darkMode: ref.watch(darkModeProvider),
-            selectedTab: selectedTab,
-          ),
+          drawer: const CustomDrawer(),
+          bottomNavigationBar: const CustomBottomAppBar(),
         ),
       );
 }

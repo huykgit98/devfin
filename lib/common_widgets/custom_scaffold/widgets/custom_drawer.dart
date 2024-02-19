@@ -6,13 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends ConsumerWidget {
-  const CustomDrawer({required this.ref, super.key});
-
-  final WidgetRef ref;
+  const CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
+
     final trackColor = MaterialStateProperty.resolveWith<Color?>(
       (Set<MaterialState> states) {
         if (states.contains(MaterialState.selected)) {

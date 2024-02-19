@@ -1,13 +1,19 @@
+import 'package:devfin/app/app.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class ProfilePage extends ConsumerStatefulWidget {
+  const ProfilePage({
+    super.key,
+  });
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  ConsumerState<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   void initState() {
     super.initState();
@@ -19,7 +25,23 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: ListView(children: const [Text('Profile')]),
-      );
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Center(
+        child: Column(
+          children: [
+            Center(
+              child: Text('Log into existing account'.hardcoded),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.go('${AppRoutes.profile}/${AppRoutes.signIn}');
+              },
+              child: Text('Login'.hardcoded),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

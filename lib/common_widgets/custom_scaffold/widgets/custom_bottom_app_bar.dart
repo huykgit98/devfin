@@ -1,22 +1,19 @@
 import 'package:devfin/app/app.dart';
-import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class CustomBottomAppBar extends StatelessWidget {
+class CustomBottomAppBar extends ConsumerWidget {
   const CustomBottomAppBar({
-    required this.darkMode,
-    required this.selectedTab,
     super.key,
   });
 
-  final bool darkMode;
-  final ScaffoldTab selectedTab;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final darkMode = ref.watch(darkModeProvider);
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -26,23 +23,11 @@ class CustomBottomAppBar extends StatelessWidget {
         ),
       ),
       child: NavigationBar(
-        onDestinationSelected: (int idx) {
-          switch (ScaffoldTab.values[idx]) {
-            case ScaffoldTab.markets:
-              context.go(AppRoutes.markets);
-            case ScaffoldTab.explore:
-              context.go(AppRoutes.explore);
-            case ScaffoldTab.watchlist:
-              context.go(AppRoutes.watchlist);
-            case ScaffoldTab.profile:
-              SignUpSheet.show(context, darkMode);
-              context.go(AppRoutes.profile);
-          }
-        },
+        onDestinationSelected: (int idx) => _onItemTapped(idx, context),
         height: 70,
         indicatorColor: darkMode ? Colors.white : Colors.grey.shade400,
         backgroundColor: Colors.transparent,
-        selectedIndex: selectedTab.index,
+        selectedIndex: _calculateSelectedIndex(context),
         // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         destinations: <Widget>[
           NavigationDestination(
@@ -70,5 +55,36 @@ class CustomBottomAppBar extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _onItemTapped(int index, BuildContext context) {
+    switch (ScaffoldTab.values[index]) {
+      case ScaffoldTab.markets:
+        context.go(AppRoutes.markets);
+      case ScaffoldTab.explore:
+        context.go(AppRoutes.explore);
+      case ScaffoldTab.watchlist:
+        context.go(AppRoutes.watchlist);
+      case ScaffoldTab.profile:
+        context.go(AppRoutes.profile);
+      // SignInSheet.show(context, darkMode: true);
+    }
+  }
+
+  static int _calculateSelectedIndex(BuildContext context) {
+    final location = GoRouterState.of(context).uri.toString();
+    if (location.startsWith(AppRoutes.markets)) {
+      return ScaffoldTab.markets.index;
+    }
+    if (location.startsWith(AppRoutes.explore)) {
+      return ScaffoldTab.explore.index;
+    }
+    if (location.startsWith(AppRoutes.watchlist)) {
+      return ScaffoldTab.watchlist.index;
+    }
+    if (location.startsWith(AppRoutes.profile)) {
+      return ScaffoldTab.profile.index;
+    }
+    return 0;
   }
 }
