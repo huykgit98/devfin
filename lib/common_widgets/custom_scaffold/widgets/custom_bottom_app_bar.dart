@@ -43,6 +43,12 @@ class CustomBottomAppBar extends ConsumerWidget {
             label: 'Explore'.hardcoded,
           ),
           NavigationDestination(
+            selectedIcon:
+                const Icon(Icons.explore_rounded, color: Colors.black),
+            icon: const Icon(Icons.search_rounded),
+            label: 'Search'.hardcoded,
+          ),
+          NavigationDestination(
             selectedIcon: const Icon(Icons.star_rounded, color: Colors.black),
             icon: const Icon(Icons.star_rounded),
             label: 'Watchlist'.hardcoded,
@@ -63,6 +69,8 @@ class CustomBottomAppBar extends ConsumerWidget {
         context.go(AppRoutes.markets);
       case ScaffoldTab.explore:
         context.go(AppRoutes.explore);
+      case ScaffoldTab.search:
+        context.go(AppRoutes.search);
       case ScaffoldTab.watchlist:
         context.go(AppRoutes.watchlist);
       case ScaffoldTab.profile:
