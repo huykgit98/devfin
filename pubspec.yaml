@@ -46,6 +46,7 @@ dependencies:
   get_it: ^7.6.7
   injectable: ^2.3.2
   smooth_sheets: ^0.2.0
+  flutter_platform_widgets: ^6.1.0
 
 dev_dependencies:
   build_runner: ^2.4.7
