@@ -1,5 +1,8 @@
+import 'package:devfin/app/app.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({
@@ -11,7 +14,6 @@ class ProfilePage extends ConsumerStatefulWidget {
 }
 
 class _ProfilePageState extends ConsumerState<ProfilePage> {
-  final bool _isLoggedIn = true;
   @override
   void initState() {
     super.initState();
@@ -23,12 +25,23 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   }
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: Stack(
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Center(
+        child: Column(
           children: [
-            ListView(children: const [Text('Profile')]),
-            const Text('Login'),
+            Center(
+              child: Text('Log into existing account'.hardcoded),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.go('${AppRoutes.profile}/${AppRoutes.signIn}');
+              },
+              child: Text('Login'.hardcoded),
+            ),
           ],
         ),
-      );
+      ),
+    );
+  }
 }

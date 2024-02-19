@@ -10,7 +10,6 @@ import 'package:go_router/go_router.dart';
 class SignInSheet {
   static void show(BuildContext context, {required bool darkMode}) {
     showModalBottomSheet(
-      useRootNavigator: true,
       isScrollControlled: true,
       useSafeArea: true,
       context: context,

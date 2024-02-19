@@ -67,6 +67,7 @@ class CustomBottomAppBar extends ConsumerWidget {
         context.go(AppRoutes.watchlist);
       case ScaffoldTab.profile:
         context.go(AppRoutes.profile);
+      // SignInSheet.show(context, darkMode: true);
     }
   }
 
