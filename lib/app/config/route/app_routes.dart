@@ -3,8 +3,8 @@ import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/authentication/authentication.dart';
 import 'package:devfin/features/explore/explore.dart';
 import 'package:devfin/features/markets/markets.dart';
-import 'package:devfin/features/profile/profile.dart';
 import 'package:devfin/features/search/search.dart';
+import 'package:devfin/features/settings/settings.dart';
 import 'package:devfin/features/sign_in/sign_in.dart';
 import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/features/splash/splash_screen.dart';
@@ -142,7 +142,7 @@ class AppRoutes {
             pageBuilder: (BuildContext context, GoRouterState state) {
               return FadeTransitionPage(
                 key: scaffoldKey,
-                child: const ProfilePage(),
+                child: const SettingsPage(),
               );
             },
             routes: <RouteBase>[

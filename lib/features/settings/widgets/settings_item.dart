@@ -1,4 +1,4 @@
-import 'package:devfin/features/profile/widgets/widgets.dart';
+import 'package:devfin/features/settings/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class SettingsItem extends StatelessWidget {
@@ -6,7 +6,6 @@ class SettingsItem extends StatelessWidget {
     required this.icons,
     required this.title,
     super.key,
-    this.iconStyle,
     this.titleStyle,
     this.subtitle,
     this.subtitleStyle,
@@ -18,7 +17,6 @@ class SettingsItem extends StatelessWidget {
     this.overflow = TextOverflow.ellipsis,
   });
   final IconData icons;
-  final IconStyle? iconStyle;
   final String title;
   final TextStyle? titleStyle;
   final String? subtitle;
@@ -36,26 +34,13 @@ class SettingsItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       child: ListTile(
         onTap: onTap,
-        leading: (iconStyle != null && iconStyle!.withBackground!)
-            ? Container(
-                decoration: BoxDecoration(
-                  color: iconStyle!.backgroundColor,
-                  borderRadius: BorderRadius.circular(iconStyle!.borderRadius!),
-                ),
-                padding: const EdgeInsets.all(5),
-                child: Icon(
-                  icons,
-                  size: SettingsScreenUtils.settingsGroupIconSize,
-                  color: iconStyle!.iconsColor,
-                ),
-              )
-            : Padding(
-                padding: const EdgeInsets.all(5),
-                child: Icon(
-                  icons,
-                  size: SettingsScreenUtils.settingsGroupIconSize,
-                ),
-              ),
+        leading: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Icon(
+            icons,
+            size: SettingsScreenUtils.settingsGroupIconSize,
+          ),
+        ),
         title: Text(
           title,
           style: titleStyle ?? const TextStyle(fontWeight: FontWeight.bold),

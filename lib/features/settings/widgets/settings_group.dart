@@ -1,4 +1,4 @@
-import 'package:devfin/features/profile/widgets/widgets.dart';
+import 'package:devfin/features/settings/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 /// This component group the Settings items (BabsComponentSettingsItem)
@@ -37,7 +37,7 @@ class SettingsGroup extends StatelessWidget {
               child: Text(
                 settingsGroupTitle!,
                 style: (settingsGroupTitleStyle == null)
-                    ? const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)
+                    ? const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
                     : settingsGroupTitleStyle,
               ),
             )
@@ -46,7 +46,7 @@ class SettingsGroup extends StatelessWidget {
           // The SettingsGroup sections
           Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
             ),
             child: ListView.separated(
