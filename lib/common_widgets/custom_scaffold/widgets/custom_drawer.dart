@@ -69,7 +69,7 @@ class CustomDrawer extends ConsumerWidget {
               'Profile'.hardcoded,
               Icons.person_rounded,
               onTap: () {
-                context.go(AppRoutes.profile);
+                context.go(AppRoutes.settings);
                 Navigator.pop(context);
               },
             ),

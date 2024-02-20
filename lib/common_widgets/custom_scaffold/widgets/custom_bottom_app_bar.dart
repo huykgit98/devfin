@@ -5,6 +5,7 @@ import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomBottomAppBar extends ConsumerWidget {
@@ -18,7 +19,7 @@ class CustomBottomAppBar extends ConsumerWidget {
     Icons.explore_rounded,
     Icons.search_rounded,
     Icons.star_rounded,
-    Icons.person_rounded,
+    FontAwesomeIcons.barsStaggered,
   ];
 
   static final labelList = <String>[
@@ -26,7 +27,7 @@ class CustomBottomAppBar extends ConsumerWidget {
     'Explore'.hardcoded,
     'Search'.hardcoded,
     'Watchlist'.hardcoded,
-    'Profile'.hardcoded,
+    'Menu'.hardcoded,
   ];
 
   @override
@@ -87,8 +88,8 @@ class CustomBottomAppBar extends ConsumerWidget {
         context.go(AppRoutes.search);
       case ScaffoldTab.watchlist:
         context.go(AppRoutes.watchlist);
-      case ScaffoldTab.profile:
-        context.go(AppRoutes.profile);
+      case ScaffoldTab.settings:
+        context.go(AppRoutes.settings);
     }
   }
 
@@ -106,8 +107,8 @@ class CustomBottomAppBar extends ConsumerWidget {
     if (location.startsWith(AppRoutes.watchlist)) {
       return ScaffoldTab.watchlist.index;
     }
-    if (location.startsWith(AppRoutes.profile)) {
-      return ScaffoldTab.profile.index;
+    if (location.startsWith(AppRoutes.settings)) {
+      return ScaffoldTab.settings.index;
     }
     return 0;
   }

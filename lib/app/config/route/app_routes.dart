@@ -35,7 +35,7 @@ class AppRoutes {
   static const explore = '/explore';
   static const search = '/search';
   static const watchlist = '/watchlist';
-  static const profile = '/profile';
+  static const settings = '/settings';
 
   static final GoRouter route = GoRouter(
     debugLogDiagnostics: true,
@@ -138,7 +138,7 @@ class AppRoutes {
             ],
           ),
           GoRoute(
-            path: profile,
+            path: settings,
             pageBuilder: (BuildContext context, GoRouterState state) {
               return FadeTransitionPage(
                 key: scaffoldKey,

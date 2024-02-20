@@ -20,7 +20,7 @@ class SignInMethodsSheet extends ConsumerWidget {
     return SheetContentScaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => context.go(AppRoutes.profile),
+          onPressed: () => context.go(AppRoutes.settings),
           icon: const Icon(Icons.close),
         ),
       ),
@@ -39,7 +39,7 @@ class SignInMethodsSheet extends ConsumerWidget {
                   foregroundColor: textColor,
                 ),
                 onPressed: () => context.go(
-                    '${AppRoutes.profile}/${AppRoutes.signIn}/${AppRoutes.signInWithEmailOrPhone}'),
+                    '${AppRoutes.settings}/${AppRoutes.signIn}/${AppRoutes.signInWithEmailOrPhone}'),
                 child: const Text(AppRoutes.signInWithEmailOrPhone),
               ),
               TextButton(
@@ -47,7 +47,7 @@ class SignInMethodsSheet extends ConsumerWidget {
                   foregroundColor: textColor,
                 ),
                 onPressed: () =>
-                    context.go('${AppRoutes.profile}/${AppRoutes.signUp}'),
+                    context.go('${AppRoutes.settings}/${AppRoutes.signUp}'),
                 child: const Text('No account? Sign Up'),
               ),
             ],

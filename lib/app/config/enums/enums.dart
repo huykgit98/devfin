@@ -12,6 +12,6 @@ enum ScaffoldTab {
   /// The watchlist tab.
   watchlist,
 
-  /// The profile tab.
-  profile,
+  /// The menu tab.
+  settings,
 }
