@@ -43,29 +43,37 @@ class _DevFinAppViewState extends ConsumerState<DevFinAppView> {
           ),
         ),
       ],
-      child: MaterialApp.router(
-        title: 'Devfin - Track All Markets'.hardcoded,
-        debugShowCheckedModeBanner: false,
-        routeInformationProvider: AppRoutes.route.routeInformationProvider,
-        routeInformationParser: AppRoutes.route.routeInformationParser,
-        routerDelegate: AppRoutes.route.routerDelegate,
-        theme: ThemeData(
-          useMaterial3: true,
-          // fontFamily: FontFamily.nunito,
-          inputDecorationTheme: const InputDecorationTheme(
-            border: InputBorder.none,
-          ),
-
-          // primaryColorDark: ColorUtils.primaryColor,
-          // primaryColor: ColorUtils.primaryColor,
-          // textSelectionTheme: const TextSelectionThemeData(
-          //   cursorColor: ColorUtils.primaryColor,
-          // ),
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: Theme.of(context).platform == TargetPlatform.iOS
+              ? Colors.transparent
+              : null,
+          highlightColor: Theme.of(context).platform == TargetPlatform.iOS
+              ? Colors.transparent
+              : null,
         ),
-        darkTheme: ThemeData.dark(),
-        themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
+        child: MaterialApp.router(
+          title: 'Devfin - Track All Markets'.hardcoded,
+          debugShowCheckedModeBanner: false,
+          routeInformationProvider: AppRoutes.route.routeInformationProvider,
+          routeInformationParser: AppRoutes.route.routeInformationParser,
+          routerDelegate: AppRoutes.route.routerDelegate,
+          theme: ThemeData(
+            useMaterial3: true,
+            // fontFamily: FontFamily.nunito,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+
+            inputDecorationTheme: const InputDecorationTheme(
+              border: InputBorder.none,
+            ),
+          ),
+          darkTheme: ThemeData.dark(),
+          themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+        ),
       ),
     );
   }
