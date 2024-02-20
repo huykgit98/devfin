@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -82,6 +84,9 @@ class AppTheme {
         surface: isLight ? Colors.blue : colorGray,
         background: isLight ? Colors.white : colorGray,
       ),
+      splashColor: Platform.isIOS ? Colors.transparent : null,
+      // highlightColor: Platform.isIOS ? Colors.transparent : null,
+      // hoverColor: Platform.isIOS ? Colors.transparent : null,
     );
   }
 }

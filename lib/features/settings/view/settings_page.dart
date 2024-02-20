@@ -6,6 +6,7 @@ import 'package:devfin/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingsPage extends ConsumerStatefulWidget {
   const SettingsPage({
@@ -62,10 +63,21 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           actions: [],
         ),
         SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+          child: Container(
+            margin: const EdgeInsets.all(0.0),
             child: Column(
               children: [
+                SettingsGroup(
+                  items: [
+                    SettingsItem(
+                      onTap: () {
+                        context.go('${AppRoutes.settings}/${AppRoutes.signIn}');
+                      },
+                      icons: Icons.login_rounded,
+                      title: 'Login'.hardcoded,
+                    ),
+                  ],
+                ),
                 SettingsGroup(
                   settingsGroupTitle: 'General'.hardcoded,
                   items: [
@@ -75,7 +87,10 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                       title: 'Notifications'.hardcoded,
                     ),
                     SettingsItem(
-                      onTap: () {},
+                      onTap: () {
+                        context.go(
+                            '${AppRoutes.settings}/${AppRoutes.themeSettings}');
+                      },
                       icons: Icons.dark_mode_rounded,
                       title: 'Theme'.hardcoded,
                     ),

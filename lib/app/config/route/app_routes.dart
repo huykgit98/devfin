@@ -35,7 +35,9 @@ class AppRoutes {
   static const explore = '/explore';
   static const search = '/search';
   static const watchlist = '/watchlist';
+
   static const settings = '/settings';
+  static const themeSettings = 'theme-settings';
 
   static final GoRouter route = GoRouter(
     debugLogDiagnostics: true,
@@ -202,6 +204,12 @@ class AppRoutes {
                     ],
                   ),
                 ],
+              ),
+              GoRoute(
+                path: themeSettings,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const ThemeSettingsPage();
+                },
               ),
             ],
           ),

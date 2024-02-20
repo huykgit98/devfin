@@ -33,7 +33,7 @@ class SettingsGroup extends StatelessWidget {
           // The title
           if (settingsGroupTitle != null)
             Padding(
-              padding: const EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(left: 16, bottom: 5),
               child: Text(
                 settingsGroupTitle!,
                 style: (settingsGroupTitleStyle == null)
@@ -51,7 +51,11 @@ class SettingsGroup extends StatelessWidget {
             ),
             child: ListView.separated(
               separatorBuilder: (context, index) {
-                return const Divider();
+                return const Divider(
+                  height: 0,
+                  indent: 0,
+                  thickness: 1,
+                );
               },
               itemCount: items.length,
               itemBuilder: (BuildContext context, int index) {

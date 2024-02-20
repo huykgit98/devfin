@@ -43,27 +43,17 @@ class _DevFinAppViewState extends ConsumerState<DevFinAppView> {
           ),
         ),
       ],
-      child: Theme(
-        data: Theme.of(context).copyWith(
-          splashColor: Theme.of(context).platform == TargetPlatform.iOS
-              ? Colors.transparent
-              : null,
-          highlightColor: Theme.of(context).platform == TargetPlatform.iOS
-              ? Colors.transparent
-              : null,
-        ),
-        child: MaterialApp.router(
-          title: 'Devfin - Track All Markets'.hardcoded,
-          debugShowCheckedModeBanner: false,
-          routeInformationProvider: AppRoutes.route.routeInformationProvider,
-          routeInformationParser: AppRoutes.route.routeInformationParser,
-          routerDelegate: AppRoutes.route.routerDelegate,
-          theme: AppTheme.get(isLight: true),
-          darkTheme: AppTheme.get(isLight: false),
-          themeMode: _themeNotifier.themeMode,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-        ),
+      child: MaterialApp.router(
+        title: 'Devfin - Track All Markets'.hardcoded,
+        debugShowCheckedModeBanner: false,
+        routeInformationProvider: AppRoutes.route.routeInformationProvider,
+        routeInformationParser: AppRoutes.route.routeInformationParser,
+        routerDelegate: AppRoutes.route.routerDelegate,
+        theme: AppTheme.get(isLight: true),
+        darkTheme: AppTheme.get(isLight: false),
+        themeMode: _themeNotifier.themeMode,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }
