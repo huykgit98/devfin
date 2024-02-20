@@ -11,35 +11,8 @@ class CustomDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkMode = ref.watch(darkModeProvider);
-
-    final trackColor = MaterialStateProperty.resolveWith<Color?>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
-          return Colors.blueGrey.shade400;
-        }
-        return null;
-      },
-    );
-    final overlayColor = MaterialStateProperty.resolveWith<Color?>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
-          return Colors.amber.withOpacity(0.54);
-        }
-        if (states.contains(MaterialState.disabled)) {
-          return Colors.grey.shade400;
-        }
-        return null;
-      },
-    );
-
-    final thumbIcon = MaterialStateProperty.resolveWith<Icon?>(
-      (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
-          return const Icon(Icons.mode_night_outlined);
-        }
-        return const Icon(Icons.light_mode_outlined);
-      },
-    );
+    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
+    final notifier = ref.watch(themeNotifierProvider);
 
     Widget buildDrawerItem(String title, IconData icon, {VoidCallback? onTap}) {
       return ListTile(leading: Icon(icon), title: Text(title), onTap: onTap);
@@ -134,19 +107,22 @@ class CustomDrawer extends ConsumerWidget {
               ],
               child: Text('About app'.hardcoded),
             ),
-            Switch(
-              thumbIcon: thumbIcon,
-              value: darkMode,
-              overlayColor: overlayColor,
-              trackColor: trackColor,
-              thumbColor: const MaterialStatePropertyAll<Color>(Colors.black),
-              onChanged: (bool value) {
-                ref.read(darkModeProvider.notifier).toggle();
-              },
-            ),
+            _singleTile('Dark Theme'.hardcoded, ThemeMode.dark, notifier),
+            _singleTile('Light Theme'.hardcoded, ThemeMode.light, notifier),
+            _singleTile('System Theme'.hardcoded, ThemeMode.system, notifier),
           ],
         ),
       ),
     );
+  }
+
+  Widget _singleTile(String title, ThemeMode mode, ThemeNotifier notifier) {
+    return RadioListTile<ThemeMode>.adaptive(
+        value: mode,
+        title: Text(title),
+        groupValue: notifier.themeMode,
+        onChanged: (val) {
+          if (val != null) notifier.setTheme(val);
+        });
   }
 }
