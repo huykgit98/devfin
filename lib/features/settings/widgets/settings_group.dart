@@ -26,28 +26,28 @@ class SettingsGroup extends StatelessWidget {
     }
 
     return Container(
-      margin: margin ?? const EdgeInsets.only(bottom: 20),
+      margin: margin ?? const EdgeInsets.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // The title
           if (settingsGroupTitle != null)
             Padding(
-              padding: const EdgeInsets.only(left: 16, bottom: 5),
+              padding: const EdgeInsets.only(left: 16, bottom: 8),
               child: Text(
                 settingsGroupTitle!,
                 style: (settingsGroupTitleStyle == null)
-                    ? const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
+                    ? const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)
                     : settingsGroupTitleStyle,
               ),
             )
           else
-            Container(),
+            const SizedBox.shrink(),
           // The SettingsGroup sections
           Container(
             decoration: BoxDecoration(
               color: Colors.transparent,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(16),
             ),
             child: ListView.separated(
               separatorBuilder: (context, index) {

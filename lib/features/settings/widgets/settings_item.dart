@@ -31,19 +31,16 @@ class SettingsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(16),
       child: ListTile(
         onTap: onTap,
-        leading: Padding(
-          padding: const EdgeInsets.all(5),
-          child: Icon(
-            icons,
-            size: SettingsScreenUtils.settingsGroupIconSize,
-          ),
+        leading: Icon(
+          icons,
+          size: SettingsScreenUtils.settingsGroupIconSize,
         ),
         title: Text(
           title,
-          style: titleStyle ?? const TextStyle(fontWeight: FontWeight.bold),
+          style: titleStyle ?? const TextStyle(fontWeight: FontWeight.normal),
           maxLines: titleMaxLine,
           overflow: titleMaxLine != null ? overflow : null,
         ),

@@ -93,7 +93,7 @@ class CustomDrawer extends ConsumerWidget {
               onTap: () {},
             ),
             AboutListTile(
-              icon: Icon(
+              icon: const Icon(
                 Icons.info,
               ),
               applicationIcon: Icon(
