@@ -1,6 +1,5 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +9,6 @@ class CustomDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final darkMode = ref.watch(darkModeProvider);
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
     final notifier = ref.watch(themeNotifierProvider);
 
@@ -20,13 +18,7 @@ class CustomDrawer extends ConsumerWidget {
 
     return Drawer(
       child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: darkMode
-                ? ColorsUtil.darkLinearGradient
-                : ColorsUtil.lightLinearGradient,
-          ),
-        ),
+        decoration: BoxDecoration(),
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
