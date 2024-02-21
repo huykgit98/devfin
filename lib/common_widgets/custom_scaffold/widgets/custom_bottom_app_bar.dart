@@ -15,9 +15,17 @@ class CustomBottomAppBar extends ConsumerWidget {
   final AnimationController hideAnimationController;
 
   static final iconList = <IconData>[
+    Icons.bar_chart_outlined,
+    Icons.explore_outlined,
+    Icons.search_sharp,
+    Icons.star_border_outlined,
+    FontAwesomeIcons.barsStaggered,
+  ];
+
+  static final activeIconList = <IconData>[
     Icons.bar_chart_rounded,
     Icons.explore_rounded,
-    Icons.search_rounded,
+    Icons.search_sharp,
     Icons.star_rounded,
     FontAwesomeIcons.barsStaggered,
   ];
@@ -45,7 +53,7 @@ class CustomBottomAppBar extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              iconList[index],
+              isActive ? activeIconList[index] : iconList[index],
               size: Sizes.p24,
               color: color,
             ),

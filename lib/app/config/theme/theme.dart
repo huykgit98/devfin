@@ -59,9 +59,9 @@ class AppTheme {
                   Color(0xFF121212),
                 ],
           loadingIndicatorGradient: const [
-            Color(0xFFAEB3C1),
-            Color(0xFF6C6A6A),
-            Color(0xFFAEB3C1),
+            Color(0xFF0695FF),
+            Color(0xFFA334FA),
+            Color(0xFFFF6968),
           ],
           customLoadingGradient: const [
             Color(0xFFFF0069),
