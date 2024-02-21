@@ -6,9 +6,12 @@ enum ScaffoldTab {
   /// The explore tab.
   explore,
 
+  /// The search tab.
+  search,
+
   /// The watchlist tab.
   watchlist,
 
-  /// The profile tab.
-  profile,
+  /// The menu tab.
+  settings,
 }

@@ -1,6 +1,5 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,21 +13,19 @@ class CustomTabBar extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final darkMode = ref.watch(darkModeProvider);
+    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
 
     return GradientBackground(
       gradient: LinearGradient(
-        colors: darkMode
-            ? ColorsUtil.darkLinearGradient
-            : ColorsUtil.lightLinearGradient,
+        colors: colors.linearGradientBackground,
       ),
       child: TabBar(
         controller: tabController,
         isScrollable: true,
         dividerColor: Colors.transparent,
         tabAlignment: TabAlignment.start,
-        labelColor: darkMode ? Colors.white : Colors.black,
-        indicatorColor: darkMode ? Colors.white : Colors.black,
+        labelColor: colors.labelColor,
+        indicatorColor: colors.labelColor,
         onTap: onTap,
         tabs: tabs,
       ),

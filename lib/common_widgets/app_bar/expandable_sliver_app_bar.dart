@@ -1,6 +1,5 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -35,7 +34,9 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
 
   @override
   Widget build(BuildContext context) {
-    final darkMode = ref.watch(darkModeProvider);
+    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
+    final darkMode =
+        ref.watch(themeNotifierProvider).themeMode == ThemeMode.dark;
 
     return SliverLayoutBuilder(
       builder: (BuildContext context, constraints) {
@@ -43,8 +44,7 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
 
         return SliverAppBar(
           shadowColor: Colors.black12.withOpacity(0.5),
-          // backgroundColor: Colors.transparent,
-          foregroundColor: darkMode ? Colors.white : Colors.black,
+          foregroundColor: colors.labelColor,
           collapsedHeight: 60,
           expandedHeight: 140,
           bottom: widget.bottom,
@@ -82,35 +82,24 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
                       const EdgeInsets.only(left: Sizes.p16, bottom: Sizes.p48),
                   title: Text(
                     widget.title,
-                    style: TextStyle(
-                        color: darkMode ? Colors.white : Colors.black),
+                    style: TextStyle(color: colors.labelColor),
                   ),
                   background: GradientBackground(
                     gradient: LinearGradient(
-                      colors: darkMode
-                          ? ColorsUtil.darkLinearGradient
-                          : ColorsUtil.lightLinearGradient,
+                      colors: colors.linearGradientBackground,
                     ),
                   ),
                 )
               : GradientBackground(
                   gradient: LinearGradient(
-                    colors: darkMode
-                        ? ColorsUtil.darkLinearGradient
-                        : ColorsUtil.lightLinearGradient,
+                    colors: colors.linearGradientBackground,
                   ),
                 ),
-
           actions: [
             _buildActionButton(
               icon: Icons.search_rounded,
               onPressed: () {},
             ),
-            // _buildActionButton(
-            //   icon: Icons.chat_bubble_outline_rounded,
-            //   onPressed: () {},
-            //   isShowBadge: true,
-            // ),
             _buildActionButton(
               icon: Icons.notifications_none_rounded,
               onPressed: () {},

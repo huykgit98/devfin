@@ -1,16 +1,15 @@
 import 'package:devfin/app/app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'custom_painter/liquid_painter.dart';
 import 'custom_painter/radial_progress_painter.dart';
 
-class CustomProgressWidget extends StatefulWidget {
+class CustomProgressWidget extends ConsumerStatefulWidget {
   const CustomProgressWidget(
-      {required this.darkMode,
-      required this.backgroundGradientColors,
+      {required this.backgroundGradientColors,
       required this.liquidGradient,
       super.key});
-  final bool darkMode;
   final List<Color> backgroundGradientColors;
   final List<Color> liquidGradient;
 
@@ -18,7 +17,7 @@ class CustomProgressWidget extends StatefulWidget {
   _ProgressWidgetState createState() => _ProgressWidgetState();
 }
 
-class _ProgressWidgetState extends State<CustomProgressWidget>
+class _ProgressWidgetState extends ConsumerState<CustomProgressWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   bool isPlaying = false;
@@ -34,8 +33,9 @@ class _ProgressWidgetState extends State<CustomProgressWidget>
       })
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          _controller.reset();
-          _controller.forward();
+          _controller
+            ..reset()
+            ..forward();
         }
       });
 
@@ -51,6 +51,9 @@ class _ProgressWidgetState extends State<CustomProgressWidget>
 
   @override
   Widget build(BuildContext context) {
+    final darkMode =
+        ref.watch(themeNotifierProvider).themeMode == ThemeMode.dark;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -80,7 +83,7 @@ class _ProgressWidgetState extends State<CustomProgressWidget>
                     height: 64,
                     width: 64,
                     image: AssetImage(
-                      widget.darkMode
+                      darkMode
                           ? Assets.icons.appIconDarkNoBackground.path
                           : Assets.icons.appIconNoBackground.path,
                     ),

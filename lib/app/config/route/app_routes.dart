@@ -3,7 +3,8 @@ import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/authentication/authentication.dart';
 import 'package:devfin/features/explore/explore.dart';
 import 'package:devfin/features/markets/markets.dart';
-import 'package:devfin/features/profile/profile.dart';
+import 'package:devfin/features/search/search.dart';
+import 'package:devfin/features/settings/settings.dart';
 import 'package:devfin/features/sign_in/sign_in.dart';
 import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/features/splash/splash_screen.dart';
@@ -32,8 +33,11 @@ class AppRoutes {
 
   static const markets = '/markets';
   static const explore = '/explore';
+  static const search = '/search';
   static const watchlist = '/watchlist';
-  static const profile = '/profile';
+
+  static const settings = '/settings';
+  static const themeSettings = 'theme-settings';
 
   static final GoRouter route = GoRouter(
     debugLogDiagnostics: true,
@@ -109,6 +113,16 @@ class AppRoutes {
             ],
           ),
           GoRoute(
+            path: search,
+            pageBuilder: (BuildContext context, GoRouterState state) {
+              return FadeTransitionPage(
+                key: scaffoldKey,
+                child: const SearchPage(),
+              );
+            },
+            routes: <RouteBase>[],
+          ),
+          GoRoute(
             path: watchlist,
             pageBuilder: (BuildContext context, GoRouterState state) {
               return FadeTransitionPage(
@@ -126,11 +140,11 @@ class AppRoutes {
             ],
           ),
           GoRoute(
-            path: profile,
+            path: settings,
             pageBuilder: (BuildContext context, GoRouterState state) {
               return FadeTransitionPage(
                 key: scaffoldKey,
-                child: const ProfilePage(),
+                child: const SettingsPage(),
               );
             },
             routes: <RouteBase>[
@@ -190,6 +204,12 @@ class AppRoutes {
                     ],
                   ),
                 ],
+              ),
+              GoRoute(
+                path: themeSettings,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const ThemeSettingsPage();
+                },
               ),
             ],
           ),

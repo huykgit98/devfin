@@ -11,8 +11,6 @@ class SignInWithEmailOrPhoneSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final darkMode = ref.watch(darkModeProvider);
-
     return SheetContentScaffold(
       appBar: AppBar(),
       body: Padding(

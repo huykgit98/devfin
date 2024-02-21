@@ -8,7 +8,6 @@ import 'package:easy_refresh/easy_refresh.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MarketsPage extends ConsumerStatefulWidget {
   const MarketsPage({super.key});
@@ -52,29 +51,48 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
           CustomHeader(
             innerBoxIsScrolled: innerBoxIsScrolled,
             title: 'Markets'.hardcoded,
-            leading: IconButton(
-              icon: const FaIcon(FontAwesomeIcons.barsStaggered),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            ),
             bottom: CustomTabBar(
               tabController: _tabController,
               tabs: <Widget>[
                 Tab(
-                  text: 'Indices'.hardcoded,
+                  child: Text(
+                    'Indices'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Stocks'.hardcoded,
+                  child: Text(
+                    'Stocks'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Cryptocurrencies'.hardcoded,
+                  child: Text(
+                    'Cryptocurrencies'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Commodities'.hardcoded,
+                  child: Text(
+                    'Commodities'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Currencies'.hardcoded,
+                  child: Text(
+                    'Currencies'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
               onTap: (index) {
