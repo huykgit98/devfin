@@ -1,7 +1,6 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/custom_scaffold/widgets/widgets.dart';
 import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -48,9 +47,9 @@ class _DevFinScaffoldState extends ConsumerState<DevFinScaffold>
   @override
   Widget build(BuildContext context) => GradientBackground(
         gradient: LinearGradient(
-          colors: ref.watch(darkModeProvider)
-              ? ColorsUtil.darkLinearGradient
-              : ColorsUtil.lightLinearGradient,
+          colors: Theme.of(context)
+              .extension<CustomColorsTheme>()!
+              .linearGradientBackground,
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,

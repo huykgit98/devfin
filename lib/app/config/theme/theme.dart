@@ -1,10 +1,9 @@
 import 'dart:io' show Platform;
 
+import 'package:devfin/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'custom_colors_theme.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   ThemeNotifier() {
@@ -44,15 +43,38 @@ class AppTheme {
     return base.copyWith(
       extensions: [
         CustomColorsTheme(
-          colorLabelColor: isLight ? Colors.grey : const Color(0xFF7A7FB0),
-          bottomNavigationBarBackgroundColor: isLight ? Colors.blue : colorGray,
-          activeNavigationBarColor: isLight ? Colors.yellow : colorOrange,
-          notActiveNavigationBarColor: Colors.white,
+          labelColor: isLight ? Colors.black : Colors.white,
+          bottomNavigationBarBackgroundColor: Colors.transparent,
+          activeNavigationBarColor: isLight ? Colors.black87 : Colors.white,
+          notActiveNavigationBarColor:
+              isLight ? Colors.black54 : Colors.white54,
           shadowNavigationBarColor: isLight ? Colors.blue : colorOrange,
+          linearGradientBackground: isLight
+              ? const [
+                  Color(0xFF6BB3FF),
+                  Color(0xFFD3DAFD),
+                ]
+              : const [
+                  Color(0xFF0c355a),
+                  Color(0xFF121212),
+                ],
+          loadingIndicatorGradient: const [
+            Color(0xFFAEB3C1),
+            Color(0xFF6C6A6A),
+            Color(0xFFAEB3C1),
+          ],
+          customLoadingGradient: const [
+            Color(0xFFFF0069),
+            Color(0xFFFED602),
+            Color(0xFF7639FB),
+            Color(0xFFD500C5),
+            Color(0xFFFF7A01),
+            Color(0xFFFF0069),
+          ],
         ),
       ],
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: isLight ? Colors.yellow : colorOrange,
+        backgroundColor: isLight ? Colors.black : Colors.white,
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: isLight ? Colors.blue : colorGray,

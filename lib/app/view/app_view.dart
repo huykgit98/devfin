@@ -33,7 +33,7 @@ class DevFinAppView extends ConsumerStatefulWidget {
 class _DevFinAppViewState extends ConsumerState<DevFinAppView> {
   @override
   Widget build(BuildContext context) {
-    final _themeNotifier = ref.watch(themeNotifierProvider);
+    final themeNotifier = ref.watch(themeNotifierProvider);
 
     return MultiBlocProvider(
       providers: [
@@ -51,7 +51,7 @@ class _DevFinAppViewState extends ConsumerState<DevFinAppView> {
         routerDelegate: AppRoutes.route.routerDelegate,
         theme: AppTheme.get(isLight: true),
         darkTheme: AppTheme.get(isLight: false),
-        themeMode: _themeNotifier.themeMode,
+        themeMode: themeNotifier.themeMode,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
       ),

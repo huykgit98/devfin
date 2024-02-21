@@ -1,7 +1,6 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -13,14 +12,11 @@ class ThemeSettingsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
     final notifier = ref.watch(themeNotifierProvider);
-    final darkMode = notifier.themeMode == ThemeMode.dark;
 
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: darkMode
-              ? ColorsUtil.darkLinearGradient
-              : ColorsUtil.lightLinearGradient,
+          colors: colors.linearGradientBackground,
         ),
       ),
       alignment: Alignment.center,
@@ -41,19 +37,19 @@ class ThemeSettingsPage extends ConsumerWidget {
             title: Text('Theme Settings'.hardcoded),
             flexibleSpace: GradientBackground(
               gradient: LinearGradient(
-                colors: darkMode
-                    ? ColorsUtil.darkLinearGradient
-                    : ColorsUtil.lightLinearGradient,
+                colors: colors.linearGradientBackground,
               ),
             ),
           ),
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                _singleTile('Dark Theme'.hardcoded, ThemeMode.dark, notifier),
-                _singleTile('Light Theme'.hardcoded, ThemeMode.light, notifier),
                 _singleTile(
-                    'System Theme'.hardcoded, ThemeMode.system, notifier),
+                    'Dark Theme'.hardcoded, ThemeMode.dark, notifier, colors),
+                _singleTile(
+                    'Light Theme'.hardcoded, ThemeMode.light, notifier, colors),
+                _singleTile('System Theme'.hardcoded, ThemeMode.system,
+                    notifier, colors),
               ],
             ),
           ),
@@ -62,10 +58,12 @@ class ThemeSettingsPage extends ConsumerWidget {
     );
   }
 
-  Widget _singleTile(String title, ThemeMode mode, ThemeNotifier notifier) {
+  Widget _singleTile(String title, ThemeMode mode, ThemeNotifier notifier,
+      CustomColorsTheme colors) {
     return RadioListTile<ThemeMode>(
       value: mode,
       title: Text(title),
+      activeColor: colors.activeNavigationBarColor,
       groupValue: notifier.themeMode,
       onChanged: (val) {
         if (val != null) notifier.setTheme(val);

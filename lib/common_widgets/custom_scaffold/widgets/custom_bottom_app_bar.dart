@@ -1,7 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:devfin/app/app.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +13,7 @@ class CustomBottomAppBar extends ConsumerWidget {
     super.key,
   });
   final AnimationController hideAnimationController;
+
   static final iconList = <IconData>[
     Icons.bar_chart_rounded,
     Icons.explore_rounded,
@@ -32,11 +32,14 @@ class CustomBottomAppBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final darkMode = ref.watch(darkModeProvider);
+    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
+
     return AnimatedBottomNavigationBar.builder(
       itemCount: ScaffoldTab.values.length,
       tabBuilder: (int index, bool isActive) {
-        final color = isActive ? Colors.red : Colors.blue;
+        final color = isActive
+            ? colors.activeNavigationBarColor
+            : colors.notActiveNavigationBarColor;
         return Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -59,9 +62,7 @@ class CustomBottomAppBar extends ConsumerWidget {
       splashColor: Colors.black,
       gapLocation: GapLocation.none,
       backgroundGradient: LinearGradient(
-        colors: darkMode
-            ? ColorsUtil.darkLinearGradient
-            : ColorsUtil.lightLinearGradient,
+        colors: colors.linearGradientBackground,
       ),
       leftCornerRadius: Sizes.p32,
       rightCornerRadius: Sizes.p32,

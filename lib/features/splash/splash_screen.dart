@@ -1,6 +1,5 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,18 +29,16 @@ class _SplashViewState extends ConsumerState<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    final darkMode = ref.watch(darkModeProvider);
+    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
+
     return GradientBackground(
       gradient: LinearGradient(
-        colors: darkMode
-            ? ColorsUtil.darkLinearGradient
-            : ColorsUtil.lightLinearGradient,
+        colors: colors.linearGradientBackground,
       ),
       child: Center(
         child: CustomProgressWidget(
-          darkMode: darkMode,
-          backgroundGradientColors: ColorsUtil.customLoadingGradient,
-          liquidGradient: ColorsUtil.messengerLikeGradient,
+          backgroundGradientColors: colors.customLoadingGradient,
+          liquidGradient: colors.loadingIndicatorGradient,
         ),
       ),
     );

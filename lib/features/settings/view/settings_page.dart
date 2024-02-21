@@ -2,7 +2,6 @@ import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/settings/widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
-import 'package:devfin/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,14 +29,13 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final darkMode =
-        ref.watch(themeNotifierProvider).themeMode == ThemeMode.dark;
+    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
 
     return CustomScrollView(
       slivers: [
         SliverAppBar(
           shadowColor: Colors.black12.withOpacity(0.5),
-          foregroundColor: darkMode ? Colors.white : Colors.black,
+          foregroundColor: colors.labelColor,
           collapsedHeight: 60,
           pinned: true,
           centerTitle: true,
@@ -45,9 +43,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           title: Text('Settings'.hardcoded),
           flexibleSpace: GradientBackground(
             gradient: LinearGradient(
-              colors: darkMode
-                  ? ColorsUtil.darkLinearGradient
-                  : ColorsUtil.lightLinearGradient,
+              colors: colors.linearGradientBackground,
             ),
           ),
           actions: const [],

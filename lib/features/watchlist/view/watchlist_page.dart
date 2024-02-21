@@ -51,7 +51,14 @@ class _WatchlistPageState extends State<WatchlistPage>
             bottom: CustomTabBar(
               tabController: tabController,
               tabs: data.map((e) {
-                return Tab(text: e.title);
+                return Tab(
+                  child: Text(
+                    e.title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                );
               }).toList(),
               onTap: VerticalScrollableTabBarStatus.setIndex,
             ),

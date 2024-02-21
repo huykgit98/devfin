@@ -55,19 +55,44 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
               tabController: _tabController,
               tabs: <Widget>[
                 Tab(
-                  text: 'Indices'.hardcoded,
+                  child: Text(
+                    'Indices'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Stocks'.hardcoded,
+                  child: Text(
+                    'Stocks'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Cryptocurrencies'.hardcoded,
+                  child: Text(
+                    'Cryptocurrencies'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Commodities'.hardcoded,
+                  child: Text(
+                    'Commodities'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Tab(
-                  text: 'Currencies'.hardcoded,
+                  child: Text(
+                    'Currencies'.hardcoded,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
               onTap: (index) {
