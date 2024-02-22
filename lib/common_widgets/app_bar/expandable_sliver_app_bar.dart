@@ -35,8 +35,7 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
-    final darkMode =
-        ref.watch(themeNotifierProvider).themeMode == ThemeMode.dark;
+    final darkMode = AppTheme.darkMode(context);
 
     return SliverLayoutBuilder(
       builder: (BuildContext context, constraints) {
@@ -84,17 +83,9 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
                     widget.title,
                     style: TextStyle(color: colors.labelColor),
                   ),
-                  background: GradientBackground(
-                    gradient: LinearGradient(
-                      colors: colors.linearGradientBackground,
-                    ),
-                  ),
+                  background: const GradientBackground(),
                 )
-              : GradientBackground(
-                  gradient: LinearGradient(
-                    colors: colors.linearGradientBackground,
-                  ),
-                ),
+              : const GradientBackground(),
           actions: [
             _buildActionButton(
               icon: Icons.search_rounded,

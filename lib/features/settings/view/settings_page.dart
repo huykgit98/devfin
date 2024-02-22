@@ -41,11 +41,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           centerTitle: true,
           forceElevated: true,
           title: Text('Settings'.hardcoded),
-          flexibleSpace: GradientBackground(
-            gradient: LinearGradient(
-              colors: colors.linearGradientBackground,
-            ),
-          ),
+          flexibleSpace: GradientBackground(),
           actions: const [],
         ),
         SliverToBoxAdapter(

@@ -32,9 +32,6 @@ class _SplashViewState extends ConsumerState<SplashView> {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
 
     return GradientBackground(
-      gradient: LinearGradient(
-        colors: colors.linearGradientBackground,
-      ),
       child: Center(
         child: CustomProgressWidget(
           backgroundGradientColors: colors.customLoadingGradient,

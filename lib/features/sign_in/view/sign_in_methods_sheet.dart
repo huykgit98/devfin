@@ -17,8 +17,8 @@ class SignInMethodsSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
-    final darkMode =
-        ref.watch(themeNotifierProvider).themeMode == ThemeMode.dark;
+    final darkMode = AppTheme.darkMode(context);
+
     return SheetContentScaffold(
       appBar: GradientAppBar(
         leading: IconButton(
@@ -28,9 +28,6 @@ class SignInMethodsSheet extends ConsumerWidget {
       ),
       extendBody: true,
       body: GradientBackground(
-        gradient: LinearGradient(
-          colors: colors.linearGradientBackground,
-        ),
         child: Padding(
           padding: const EdgeInsets.all(Sizes.p16),
           child: Column(

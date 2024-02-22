@@ -5,4 +5,5 @@ export 'config/gen/assets.gen.dart';
 export 'config/route/app_routes.dart';
 export 'config/theme/custom_colors_theme.dart';
 export 'config/theme/theme.dart';
+export 'config/utils/utils.dart';
 export 'view/app_view.dart';

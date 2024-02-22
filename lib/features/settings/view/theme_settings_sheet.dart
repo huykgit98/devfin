@@ -30,9 +30,6 @@ class ThemeSettingsSheet extends ConsumerWidget {
             title: Text('Theme Settings'.hardcoded),
           ),
           body: GradientBackground(
-            gradient: LinearGradient(
-              colors: colors.linearGradientBackground,
-            ),
             child: ListView.builder(
               itemCount: ThemeMode.values.length,
               itemBuilder: (context, index) => _buildRadioTile(

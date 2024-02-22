@@ -5,25 +5,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomTabBar extends ConsumerWidget implements PreferredSizeWidget {
   const CustomTabBar(
-      {required this.tabs, required this.tabController, this.onTap, super.key});
+      {required this.tabs,
+      this.tabAlignment,
+      this.tabController,
+      this.onTap,
+      super.key});
 
-  final TabController tabController;
+  final TabController? tabController;
   final void Function(int)? onTap;
   final List<Widget> tabs;
-
+  final TabAlignment? tabAlignment;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
 
     return GradientBackground(
-      gradient: LinearGradient(
-        colors: colors.linearGradientBackground,
-      ),
       child: TabBar(
         controller: tabController,
         isScrollable: true,
         dividerColor: Colors.transparent,
-        tabAlignment: TabAlignment.start,
+        tabAlignment: tabAlignment ?? TabAlignment.start,
         labelColor: colors.labelColor,
         indicatorColor: colors.labelColor,
         splashFactory: NoSplash.splashFactory,

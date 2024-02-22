@@ -1,4 +1,3 @@
-export '../utils/fade_transition_page.dart';
 export 'app_bar/custom_tab_bar.dart';
 export 'app_bar/expandable_sliver_app_bar.dart';
 export 'app_bar/gradient_app_bar.dart';

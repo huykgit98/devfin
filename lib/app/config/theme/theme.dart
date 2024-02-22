@@ -1,9 +1,10 @@
-import 'dart:io' show Platform;
+import 'dart:io';
 
-import 'package:devfin/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'custom_colors_theme.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   ThemeNotifier() {
@@ -35,8 +36,20 @@ final themeNotifierProvider =
     ChangeNotifierProvider<ThemeNotifier>((_) => ThemeNotifier());
 
 class AppTheme {
-  static HexColor colorOrange = HexColor('#FFA400');
-  static HexColor colorGray = HexColor('#373A36');
+  static bool darkMode(BuildContext context) {
+    final currentBrightness = MediaQuery.of(context).platformBrightness;
+    final isDark = ProviderContainer().read(themeNotifierProvider).themeMode ==
+        ThemeMode.dark;
+    return isDark || currentBrightness == Brightness.dark;
+  }
+
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF$hexColor';
+    }
+    return int.parse(hexColor, radix: 16);
+  }
 
   static ThemeData get({required bool isLight}) {
     final base = isLight ? ThemeData.light() : ThemeData.dark();
@@ -48,7 +61,7 @@ class AppTheme {
           activeNavigationBarColor: isLight ? Colors.black87 : Colors.white,
           notActiveNavigationBarColor:
               isLight ? Colors.black54 : Colors.white54,
-          shadowNavigationBarColor: isLight ? Colors.blue : colorOrange,
+          shadowNavigationBarColor: isLight ? Colors.blue : Colors.white54,
           linearGradientBackground: isLight
               ? const [
                   Color(0xFF6BB3FF),
@@ -77,27 +90,16 @@ class AppTheme {
         backgroundColor: isLight ? Colors.black : Colors.white,
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: isLight ? Colors.blue : colorGray,
+        backgroundColor: isLight ? Colors.blue : const Color(0xff021a2c),
       ),
       colorScheme: base.colorScheme.copyWith(
-        surface: isLight ? Colors.blue : colorGray,
-        background: isLight ? Colors.white : colorGray,
+        surface: isLight ? const Color(0xFF6BB3FF) : const Color(0xff021a2c),
+        background: isLight ? Colors.white : const Color(0xff021a2c),
       ),
+
       splashColor: Platform.isIOS ? Colors.transparent : null,
       // highlightColor: Platform.isIOS ? Colors.transparent : null,
       // hoverColor: Platform.isIOS ? Colors.transparent : null,
     );
-  }
-}
-
-class HexColor extends Color {
-  HexColor(String hexColor) : super(_getColorFromHex(hexColor));
-
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF$hexColor';
-    }
-    return int.parse(hexColor, radix: 16);
   }
 }

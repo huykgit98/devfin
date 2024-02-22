@@ -1,4 +1,3 @@
-import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/custom_scaffold/widgets/widgets.dart';
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +45,6 @@ class _DevFinScaffoldState extends ConsumerState<DevFinScaffold>
 
   @override
   Widget build(BuildContext context) => GradientBackground(
-        gradient: LinearGradient(
-          colors: Theme.of(context)
-              .extension<CustomColorsTheme>()!
-              .linearGradientBackground,
-        ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: NotificationListener<ScrollNotification>(

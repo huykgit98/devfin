@@ -51,8 +51,7 @@ class _ProgressWidgetState extends ConsumerState<CustomProgressWidget>
 
   @override
   Widget build(BuildContext context) {
-    final darkMode =
-        ref.watch(themeNotifierProvider).themeMode == ThemeMode.dark;
+    final darkMode = AppTheme.darkMode(context);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
