@@ -111,7 +111,6 @@ class SignInMethodsSheet extends ConsumerWidget {
                 ),
               ),
               const Spacer(),
-              _buildTermsAndConditions(context, colors),
               _buildLoginPrompt(context, colors),
             ],
           ),
@@ -139,6 +138,7 @@ class SignInMethodsSheet extends ConsumerWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
+          splashFactory: NoSplash.splashFactory,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,69 +153,6 @@ class SignInMethodsSheet extends ConsumerWidget {
             const SizedBox(),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildTermsAndConditions(
-      BuildContext context, CustomColorsTheme colors) {
-    return Center(
-      child: Column(
-        children: [
-          RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              style: TextStyle(
-                color: colors.labelColor,
-                fontSize: 16,
-                fontWeight: FontWeight.normal,
-              ),
-              children: [
-                TextSpan(text: 'By signing up, you agree to our '.hardcoded),
-                WidgetSpan(
-                  child: GestureDetector(
-                    onTap: () {
-                      // Handle tap on "Terms, Privacy Policy"
-                    },
-                    child: Text(
-                      'Terms, Privacy Policy, '.hardcoded,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        // color: Colors.blueGrey[200],
-                      ),
-                    ),
-                  ),
-                ),
-                WidgetSpan(
-                  child: GestureDetector(
-                    onTap: () {
-                      // Handle tap on "Cookie Use"
-                    },
-                    child: Text(
-                      'and '.hardcoded,
-                      // style: TextStyle(color: Colors.blueGrey[200]),
-                    ),
-                  ),
-                ),
-                WidgetSpan(
-                  child: GestureDetector(
-                    onTap: () {
-                      // Handle tap on "Cookie Use"
-                    },
-                    child: Text(
-                      'Cookies Policy.'.hardcoded,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        // color: Colors.blueGrey[200]
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: Sizes.p16),
-        ],
       ),
     );
   }

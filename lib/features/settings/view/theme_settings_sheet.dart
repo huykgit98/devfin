@@ -1,5 +1,6 @@
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +15,7 @@ class ThemeSettingsSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
     final notifier = ref.watch(themeNotifierProvider);
-
+    final themeTitleList = ['System', 'Light', 'Dark'];
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
         color: Theme.of(context).colorScheme.secondaryContainer,
@@ -26,6 +27,7 @@ class ThemeSettingsSheet extends ConsumerWidget {
               onPressed: () => context.go(AppRoutes.settings),
               icon: const Icon(Icons.close),
             ),
+            title: Text('Theme Settings'.hardcoded),
           ),
           body: GradientBackground(
             gradient: LinearGradient(
@@ -34,7 +36,7 @@ class ThemeSettingsSheet extends ConsumerWidget {
             child: ListView.builder(
               itemCount: ThemeMode.values.length,
               itemBuilder: (context, index) => _buildRadioTile(
-                title: ThemeMode.values[index].name,
+                title: themeTitleList[index],
                 mode: ThemeMode.values[index],
                 notifier: notifier,
                 colors: colors,

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class GradientAppBar extends ConsumerWidget implements PreferredSizeWidget {
-  const GradientAppBar({required this.leading, super.key});
+  const GradientAppBar({required this.leading, this.title, super.key});
   final Widget leading;
-
+  final Widget? title;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
@@ -18,6 +18,7 @@ class GradientAppBar extends ConsumerWidget implements PreferredSizeWidget {
       child: AppBar(
         leading: leading,
         backgroundColor: Colors.transparent,
+        title: title,
       ),
     );
   }
