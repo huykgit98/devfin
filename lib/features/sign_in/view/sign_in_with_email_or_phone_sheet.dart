@@ -36,14 +36,18 @@ class _SignInWithEmailOrPhoneSheetState
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
     return SheetContentScaffold(
       appBar: GradientAppBar(
         leading: IconButton(
           onPressed: () => GoRouter.of(context).pop(),
           icon: Icon(Icons.adaptive.arrow_back),
         ),
-        title: Text('Sign in'.hardcoded),
+        title: Text(
+          'Sign in'.hardcoded,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: GradientBackground(
         child: SingleChildScrollView(
@@ -55,12 +59,8 @@ class _SignInWithEmailOrPhoneSheetState
                 CustomTabBar(
                   tabController: _tabController,
                   tabs: [
-                    Tab(
-                      text: 'Email'.hardcoded,
-                    ),
-                    Tab(
-                      text: 'Phone'.hardcoded,
-                    ),
+                    _buildTab(context, 'Email'.hardcoded),
+                    _buildTab(context, 'Phone'.hardcoded),
                   ],
                   tabAlignment: TabAlignment.center,
                 ),
@@ -97,6 +97,22 @@ class _SignInWithEmailOrPhoneSheetState
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTab(BuildContext context, String title) {
+    return Tab(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width / 3,
+        child: Text(
+          title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

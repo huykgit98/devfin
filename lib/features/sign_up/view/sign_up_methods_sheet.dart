@@ -156,7 +156,9 @@ class SignUpMethodsSheet extends ConsumerWidget {
   }
 
   Widget _buildTermsAndConditions(
-      BuildContext context, CustomColorsTheme colors) {
+    BuildContext context,
+    CustomColorsTheme colors,
+  ) {
     return Center(
       child: Column(
         children: [

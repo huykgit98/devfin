@@ -55,6 +55,7 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
             duration: const Duration(milliseconds: 500),
             secondChild: Text(
               widget.title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             firstChild: ClipOval(
               child: SizedBox(
@@ -81,7 +82,8 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
                       const EdgeInsets.only(left: Sizes.p16, bottom: Sizes.p48),
                   title: Text(
                     widget.title,
-                    style: TextStyle(color: colors.labelColor),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: colors.labelColor),
                   ),
                   background: const GradientBackground(),
                 )
