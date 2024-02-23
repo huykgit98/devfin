@@ -87,7 +87,7 @@ class _SignInWithEmailOrPhoneSheetState
                             child: BlocProvider(
                               create: (_) => SignInCubit(
                                   context.read<AuthenticationRepository>()),
-                              child: const LoginForm(),
+                              child: const PhoneSignInWidget(),
                             ),
                           ),
                         ],

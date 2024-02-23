@@ -56,6 +56,17 @@ class AppTheme {
     return base.copyWith(
       extensions: [
         CustomColorsTheme(
+          gradientButton: isLight
+              ? const [
+                  Color(0xFFAEB3C1),
+                  Color(0xFF6C6A6A),
+                  Color(0xFFAEB3C1),
+                ]
+              : const [
+                  Color(0xFF323340),
+                  Color(0xFF6C6A6A),
+                  Color(0xFF323340),
+                ],
           labelColor: isLight ? Colors.black : Colors.white,
           bottomNavigationBarBackgroundColor: Colors.transparent,
           activeNavigationBarColor: isLight ? Colors.black87 : Colors.white,

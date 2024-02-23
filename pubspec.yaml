@@ -53,6 +53,7 @@ dependencies:
     git:
       url: https://github.com/huykgit98/animated-bottom-navigation-bar-flutter.git
       ref: 22ec10a85c3b3d548c546cc065f3e5a7f30fa17c
+  phone_form_field: ^9.0.5
 
 dev_dependencies:
   build_runner: ^2.4.7
