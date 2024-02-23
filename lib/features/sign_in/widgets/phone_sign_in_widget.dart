@@ -12,7 +12,7 @@ class PhoneSignInWidget extends StatefulWidget {
 
 class _PhoneSignInWidgetState extends State<PhoneSignInWidget> {
   late PhoneController controller;
-  final FocusNode focusNode = FocusNode();
+  late FocusNode focusNode;
 
   bool isCountryButtonPersistent = true;
   bool withLabel = true;
@@ -25,12 +25,14 @@ class _PhoneSignInWidgetState extends State<PhoneSignInWidget> {
     super.initState();
     controller = PhoneController();
     controller.addListener(() => setState(() {}));
+    focusNode = FocusNode();
   }
 
   @override
   void dispose() {
     super.dispose();
     controller.dispose();
+    focusNode.dispose();
   }
 
   @override
@@ -53,7 +55,7 @@ class _PhoneSignInWidgetState extends State<PhoneSignInWidget> {
           ),
           const SizedBox(height: 32),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 height: Sizes.p48,
@@ -80,7 +82,6 @@ class _PhoneSignInWidgetState extends State<PhoneSignInWidget> {
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
               Container(
                 width: MediaQuery.of(context).size.width * 0.4,
                 height: Sizes.p48,

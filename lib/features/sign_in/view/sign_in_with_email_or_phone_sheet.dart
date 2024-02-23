@@ -35,6 +35,17 @@ class _SignInWithEmailOrPhoneSheetState
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Call unfocus when the tab changes
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
+        FocusScope.of(context).unfocus();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SheetContentScaffold(
       appBar: GradientAppBar(
