@@ -38,7 +38,7 @@ class LoginButton extends StatelessWidget {
                   ),
                   child: Text(
                     'Sign in'.hardcoded,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),

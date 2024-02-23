@@ -1,5 +1,4 @@
 import 'package:devfin/app/app.dart';
-import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/settings/widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,19 +29,24 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
-
     return CustomScrollView(
-      slivers: [
+      slivers: <Widget>[
         SliverAppBar(
           shadowColor: Colors.black12.withOpacity(0.5),
-          foregroundColor: colors.labelColor,
-          collapsedHeight: 60,
           pinned: true,
-          centerTitle: true,
-          forceElevated: true,
-          title: Text('Settings'.hardcoded),
-          flexibleSpace: GradientBackground(),
-          actions: const [],
+          floating: true,
+          foregroundColor: colors.labelColor,
+          title: Text(
+            'Settings'.hardcoded,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: colors.linearGradientBackground,
+              ),
+            ),
+          ),
         ),
         SliverToBoxAdapter(
           child: Column(

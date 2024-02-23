@@ -53,6 +53,7 @@ class _DevFinScaffoldState extends ConsumerState<DevFinScaffold>
           ),
           extendBody: true,
           // drawer: const CustomDrawer(),
+          extendBodyBehindAppBar: true,
           bottomNavigationBar: CustomBottomAppBar(
               hideAnimationController: _hideBottomBarAnimationController),
           // floatingActionButton: ScaleTransition(
