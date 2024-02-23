@@ -16,7 +16,7 @@ class EmailInput extends StatelessWidget {
           onChanged: (email) => context.read<SignInCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            labelText: 'email'.hardcoded,
+            labelText: 'Email'.hardcoded,
             helperText: '',
             errorText: state.email.displayError != null
                 ? 'invalid email'.hardcoded

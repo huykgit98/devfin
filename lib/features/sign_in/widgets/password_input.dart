@@ -17,7 +17,7 @@ class PasswordInput extends StatelessWidget {
               context.read<SignInCubit>().passwordChanged(password),
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'password'.hardcoded,
+            labelText: 'Password'.hardcoded,
             helperText: '',
             errorText: state.password.displayError != null
                 ? 'invalid password'.hardcoded
