@@ -64,7 +64,7 @@ class _PhoneSignInWidgetState extends State<PhoneSignInForm> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Sizes.p20),
                   gradient: LinearGradient(
-                    colors: colors.gradientButton,
+                    colors: colors.buttonGradient,
                   ),
                 ),
                 child: ElevatedButton(
@@ -89,7 +89,7 @@ class _PhoneSignInWidgetState extends State<PhoneSignInForm> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
                   gradient: LinearGradient(
-                    colors: colors.gradientButton,
+                    colors: colors.buttonGradient,
                   ),
                 ),
                 child: ElevatedButton(

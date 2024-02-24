@@ -56,7 +56,18 @@ class AppTheme {
     return base.copyWith(
       extensions: [
         CustomColorsTheme(
-          gradientButton: isLight
+          disabledButtonGradient: isLight
+              ? [
+                  const Color(0xFFAEB3C1).withOpacity(0.3),
+                  const Color(0xFF6C6A6A).withOpacity(0.3),
+                  const Color(0xFFAEB3C1).withOpacity(0.3),
+                ]
+              : [
+                  const Color(0xFF323340).withOpacity(0.3),
+                  const Color(0xFF6C6A6A).withOpacity(0.3),
+                  const Color(0xFF323340).withOpacity(0.3),
+                ],
+          buttonGradient: isLight
               ? const [
                   Color(0xFFAEB3C1),
                   Color(0xFF6C6A6A),

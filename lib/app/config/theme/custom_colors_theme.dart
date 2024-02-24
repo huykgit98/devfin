@@ -11,7 +11,8 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
     required this.linearGradientBackground,
     required this.loadingIndicatorGradient,
     required this.customLoadingGradient,
-    required this.gradientButton,
+    required this.buttonGradient,
+    required this.disabledButtonGradient,
   });
 
   final Color bottomNavigationBarBackgroundColor;
@@ -22,7 +23,8 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
   final List<Color> linearGradientBackground;
   final List<Color> loadingIndicatorGradient;
   final List<Color> customLoadingGradient;
-  final List<Color> gradientButton;
+  final List<Color> buttonGradient;
+  final List<Color> disabledButtonGradient;
 
   @override
   CustomColorsTheme copyWith({
@@ -34,10 +36,13 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
     List<Color>? linearGradientBackground,
     List<Color>? loadingIndicatorGradient,
     List<Color>? customLoadingGradient,
-    List<Color>? gradientButton,
+    List<Color>? buttonGradient,
+    List<Color>? disabledButtonGradient,
   }) {
     return CustomColorsTheme(
-      gradientButton: gradientButton ?? this.gradientButton,
+      disabledButtonGradient:
+          disabledButtonGradient ?? this.disabledButtonGradient,
+      buttonGradient: buttonGradient ?? this.buttonGradient,
       bottomNavigationBarBackgroundColor: bottomNavigationBarBackgroundColor ??
           this.bottomNavigationBarBackgroundColor,
       labelColor: labelColor ?? this.labelColor,
@@ -66,7 +71,8 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
       return this;
     }
     return CustomColorsTheme(
-      gradientButton: gradientButton,
+      disabledButtonGradient: disabledButtonGradient,
+      buttonGradient: buttonGradient,
       linearGradientBackground: linearGradientBackground,
       loadingIndicatorGradient: loadingIndicatorGradient,
       customLoadingGradient: customLoadingGradient,

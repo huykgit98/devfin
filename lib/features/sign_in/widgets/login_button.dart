@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Sizes.p20),
                   gradient: LinearGradient(
-                    colors: colors.gradientButton,
+                    colors: colors.buttonGradient,
                   ),
                 ),
                 child: ElevatedButton(
