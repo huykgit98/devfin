@@ -48,7 +48,10 @@ class _WatchlistPageState extends State<WatchlistPage>
         slivers: [
           CustomHeader(
             title: 'Watchlist'.hardcoded,
-            bottom: CustomTabBar(
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: CustomTabBarDelegate(
               tabController: tabController,
               tabs: data.map((e) {
                 return Tab(
@@ -62,7 +65,7 @@ class _WatchlistPageState extends State<WatchlistPage>
               }).toList(),
               onTap: VerticalScrollableTabBarStatus.setIndex,
             ),
-          ),
+          )
         ],
       ),
     );

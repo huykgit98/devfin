@@ -38,7 +38,10 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
           CustomHeader(
             innerBoxIsScrolled: innerBoxIsScrolled,
             title: 'Markets'.hardcoded,
-            bottom: CustomTabBar(
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: CustomTabBarDelegate(
               tabs: tabValueList.map(
                 (e) {
                   return Tab(
@@ -67,6 +70,36 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
               ),
             ),
           ),
+          // SliverToBoxAdapter(
+          //   child: CustomTabBarDelegate(
+          //     tabs: tabValueList.map(
+          //       (e) {
+          //         return Tab(
+          //           child: Text(
+          //             e.title,
+          //             style: const TextStyle(
+          //               fontWeight: FontWeight.bold,
+          //             ),
+          //           ),
+          //         );
+          //       },
+          //     ).toList(),
+          //     choiceChips: CustomChoiceChips(
+          //       choices: const [
+          //         'All',
+          //         'Stocks',
+          //         'ETFs',
+          //         'Funds',
+          //         'Cryptos',
+          //         'ABC',
+          //         'XYA'
+          //       ],
+          //       onSelected: (bool selected) {
+          //         print('selected');
+          //       },
+          //     ),
+          //   ),
+          // ),
         ],
         body: TabBarView(
           children: <Widget>[

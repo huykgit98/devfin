@@ -6,15 +6,10 @@ import 'package:flutter_svg/svg.dart';
 
 class CustomHeader extends ConsumerStatefulWidget {
   const CustomHeader(
-      {this.innerBoxIsScrolled,
-      this.title = '',
-      this.leading,
-      this.bottom,
-      super.key});
+      {this.innerBoxIsScrolled, this.title = '', this.leading, super.key});
   final bool? innerBoxIsScrolled;
   final String title;
   final Widget? leading;
-  final PreferredSizeWidget? bottom;
 
   @override
   ConsumerState<CustomHeader> createState() => _CustomHeaderState();
@@ -39,14 +34,13 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
 
     return SliverLayoutBuilder(
       builder: (BuildContext context, constraints) {
-        bool isFullyCollapsed = constraints.scrollOffset == 0;
+        bool isFullyExpanded = constraints.scrollOffset == 0;
 
         return SliverAppBar(
           shadowColor: Colors.black12.withOpacity(0.5),
           foregroundColor: colors.labelColor,
           collapsedHeight: 60,
-          expandedHeight: 140,
-          bottom: widget.bottom,
+          expandedHeight: 90,
           leading: widget.leading,
           pinned: true,
           centerTitle: true,
@@ -69,17 +63,16 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
                 ),
               ),
             ),
-            crossFadeState: isFullyCollapsed
+            crossFadeState: isFullyExpanded
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,
           ),
-          flexibleSpace: isFullyCollapsed
+          flexibleSpace: isFullyExpanded
               ? FlexibleSpaceBar(
                   centerTitle: false,
                   collapseMode: CollapseMode.none,
                   stretchModes: const [StretchMode.blurBackground],
-                  titlePadding:
-                      const EdgeInsets.only(left: Sizes.p16, bottom: Sizes.p48),
+                  titlePadding: const EdgeInsets.only(left: Sizes.p16),
                   title: Text(
                     widget.title,
                     style: TextStyle(

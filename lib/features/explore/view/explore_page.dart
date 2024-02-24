@@ -48,7 +48,10 @@ class _ExplorePageState extends State<ExplorePage>
         slivers: [
           CustomHeader(
             title: 'Explore'.hardcoded,
-            bottom: CustomTabBar(
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: CustomTabBarDelegate(
               tabController: tabController,
               tabs: data.map((e) {
                 return Tab(
@@ -62,7 +65,7 @@ class _ExplorePageState extends State<ExplorePage>
               }).toList(),
               onTap: VerticalScrollableTabBarStatus.setIndex,
             ),
-          ),
+          )
         ],
       ),
     );
