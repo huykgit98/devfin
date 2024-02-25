@@ -40,8 +40,6 @@ dependencies:
   firebase_core: ^2.24.2
   flutter_launcher_icons: ^0.13.1
   font_awesome_flutter: ^10.7.0
-  easy_refresh: ^3.3.4
-  extended_nested_scroll_view: ^6.2.1
   vertical_scrollable_tabview: ^0.1.1
   equatable: ^2.0.5
   formz: ^0.6.1

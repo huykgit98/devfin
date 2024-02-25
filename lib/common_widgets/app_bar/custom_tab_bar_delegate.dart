@@ -42,7 +42,7 @@ class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
               tabs: tabs,
             ),
             if (choiceChips != null) ...[
-              const SizedBox(height: 4),
+              const SizedBox(height: 8),
               choiceChips!,
             ]
           ],

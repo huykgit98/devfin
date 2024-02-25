@@ -33,7 +33,6 @@ class _CustomChoiceChipsState extends State<CustomChoiceChips> {
               setState(() {
                 _value = index;
               });
-              widget.onSelected?.call(true);
             },
             gradient: LinearGradient(
               colors: _value == index
