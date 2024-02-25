@@ -6,11 +6,15 @@ import 'package:flutter_svg/svg.dart';
 
 class CustomHeader extends ConsumerStatefulWidget {
   const CustomHeader(
-      {this.innerBoxIsScrolled, this.title = '', this.leading, super.key});
+      {this.innerBoxIsScrolled,
+      this.title = '',
+      this.leading,
+      this.actions,
+      super.key});
   final bool? innerBoxIsScrolled;
   final String title;
   final Widget? leading;
-
+  final List<Widget>? actions;
   @override
   ConsumerState<CustomHeader> createState() => _CustomHeaderState();
 }
@@ -70,8 +74,6 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
           flexibleSpace: isFullyExpanded
               ? FlexibleSpaceBar(
                   centerTitle: false,
-                  collapseMode: CollapseMode.none,
-                  stretchModes: const [StretchMode.blurBackground],
                   titlePadding: const EdgeInsets.only(left: Sizes.p16),
                   title: Text(
                     widget.title,
@@ -81,18 +83,19 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
                   background: const GradientBackground(),
                 )
               : const GradientBackground(),
-          actions: [
-            _buildActionButton(
-              icon: Icons.search_rounded,
-              onPressed: () {},
-            ),
-            _buildActionButton(
-              icon: Icons.notifications_none_rounded,
-              onPressed: () {},
-              isShowBadge: true,
-            ),
-            gapW8,
-          ],
+          actions: widget.actions ??
+              [
+                _buildActionButton(
+                  icon: Icons.search_rounded,
+                  onPressed: () {},
+                ),
+                _buildActionButton(
+                  icon: Icons.notifications_none_rounded,
+                  onPressed: () {},
+                  isShowBadge: true,
+                ),
+                gapW8,
+              ],
         );
       },
     );

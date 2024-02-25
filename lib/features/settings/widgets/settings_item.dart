@@ -33,6 +33,7 @@ class SettingsItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: ListTile(
+        // dense: true,
         onTap: onTap,
         leading: Icon(
           icons,

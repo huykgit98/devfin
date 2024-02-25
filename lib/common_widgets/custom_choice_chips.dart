@@ -1,7 +1,7 @@
 import 'package:devfin/app/app.dart';
 import 'package:flutter/material.dart';
 
-class CustomChoiceChips extends StatefulWidget {
+class CustomChoiceChips extends StatefulWidget implements PreferredSizeWidget {
   const CustomChoiceChips({required this.choices, this.onSelected, super.key});
 
   final List<String> choices;
@@ -9,6 +9,9 @@ class CustomChoiceChips extends StatefulWidget {
 
   @override
   State<CustomChoiceChips> createState() => _CustomChoiceChipsState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(40);
 }
 
 class _CustomChoiceChipsState extends State<CustomChoiceChips> {

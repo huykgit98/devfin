@@ -8,6 +8,7 @@ import 'package:devfin/features/settings/settings.dart';
 import 'package:devfin/features/sign_in/sign_in.dart';
 import 'package:devfin/features/sign_up/sign_up.dart';
 import 'package:devfin/features/splash/splash_screen.dart';
+import 'package:devfin/features/symbol_details/symbol_details.dart';
 import 'package:devfin/features/watchlist/watchlist.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +86,19 @@ class AppRoutes {
                 child: const MarketsPage(),
               );
             },
-            routes: <RouteBase>[],
+            routes: <RouteBase>[
+              GoRoute(
+                path: ':symbolId',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (BuildContext context, GoRouterState state) {
+                  final String symbolId = state.pathParameters['symbolId']!;
+                  // final Symbol? selectedSymbol = libraryInstance.allSymbols
+                  //     .firstWhereOrNull((Author a) => a.id == symbolId);
+
+                  return const SymbolDetailsPage();
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: explore,
