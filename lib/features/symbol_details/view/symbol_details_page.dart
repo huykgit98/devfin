@@ -1,3 +1,4 @@
+import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class _SymbolDetailsPageState extends State<SymbolDetailsPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final colors = Theme.of(context).extension<CustomColorsTheme>()!;
 
     return Material(
       child: GradientBackground(
@@ -38,9 +40,17 @@ class _SymbolDetailsPageState extends State<SymbolDetailsPage>
           length: tabValueList.length,
           child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) => [
-              CustomHeader(
-                innerBoxIsScrolled: innerBoxIsScrolled,
-                title: 'AAPL'.hardcoded,
+              SliverAppBar(
+                shadowColor: Colors.black12.withOpacity(0.5),
+                foregroundColor: colors.labelColor,
+                collapsedHeight: 60,
+                pinned: true,
+                centerTitle: true,
+                title: Text(
+                  'AAPL'.hardcoded,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                flexibleSpace: const GradientBackground(),
                 actions: [
                   IconButton(
                     icon: const Icon(Icons.search_rounded),
