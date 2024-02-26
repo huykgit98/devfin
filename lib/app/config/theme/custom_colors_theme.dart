@@ -8,6 +8,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
     required this.activeNavigationBarColor,
     required this.notActiveNavigationBarColor,
     required this.shadowNavigationBarColor,
+    required this.backgroundColor,
     required this.linearGradientBackground,
     required this.loadingIndicatorGradient,
     required this.customLoadingGradient,
@@ -20,6 +21,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
   final Color activeNavigationBarColor;
   final Color notActiveNavigationBarColor;
   final Color shadowNavigationBarColor;
+  final Color backgroundColor;
   final List<Color> linearGradientBackground;
   final List<Color> loadingIndicatorGradient;
   final List<Color> customLoadingGradient;
@@ -33,6 +35,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
     Color? activeNavigationBarColor,
     Color? notActiveNavigationBarColor,
     Color? shadowNavigationBarColor,
+    Color? backgroundColor,
     List<Color>? linearGradientBackground,
     List<Color>? loadingIndicatorGradient,
     List<Color>? customLoadingGradient,
@@ -48,6 +51,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
       labelColor: labelColor ?? this.labelColor,
       activeNavigationBarColor:
           activeNavigationBarColor ?? this.activeNavigationBarColor,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
       notActiveNavigationBarColor:
           notActiveNavigationBarColor ?? this.notActiveNavigationBarColor,
       shadowNavigationBarColor:
@@ -106,6 +110,12 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
             t,
           ) ??
           shadowNavigationBarColor,
+      backgroundColor: Color.lerp(
+            backgroundColor,
+            other.backgroundColor,
+            t,
+          ) ??
+          backgroundColor,
     );
   }
 }

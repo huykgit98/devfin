@@ -78,6 +78,8 @@ class AppTheme {
                   Color(0xFF6C6A6A),
                   Color(0xFF323340),
                 ],
+          backgroundColor:
+              isLight ? const Color(0xFFD3DAFD) : const Color(0xFF121212),
           labelColor: isLight ? Colors.black : Colors.white,
           bottomNavigationBarBackgroundColor: Colors.transparent,
           activeNavigationBarColor: isLight ? Colors.black87 : Colors.white,

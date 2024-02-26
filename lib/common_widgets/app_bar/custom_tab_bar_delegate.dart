@@ -9,6 +9,7 @@ class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
     this.tabController,
     this.onTap,
     this.choiceChips,
+    this.showGradientBackground = true,
   });
 
   final TabController? tabController;
@@ -16,13 +17,22 @@ class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
   final List<Widget> tabs;
   final TabAlignment? tabAlignment;
   final CustomChoiceChips? choiceChips;
+  final bool showGradientBackground;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
 
-    return GradientBackground(
+    return Container(
+      color: showGradientBackground ? null : colors.backgroundColor,
+      decoration: showGradientBackground
+          ? BoxDecoration(
+              gradient: LinearGradient(
+                colors: colors.linearGradientBackground,
+              ),
+            )
+          : null,
       child: Column(
         children: [
           TabBar(

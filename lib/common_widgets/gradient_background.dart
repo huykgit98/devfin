@@ -4,9 +4,15 @@ import 'package:flutter/material.dart';
 class GradientBackground extends StatelessWidget {
   const GradientBackground({
     this.child,
+    this.begin = Alignment.centerLeft,
+    this.end = Alignment.centerRight,
+    this.stops,
     super.key,
   });
   final Widget? child;
+  final AlignmentGeometry begin;
+  final AlignmentGeometry end;
+  final List<double>? stops;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +24,9 @@ class GradientBackground extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: colors.linearGradientBackground,
+              begin: begin,
+              end: end,
+              stops: stops,
             ),
           ),
         ),
