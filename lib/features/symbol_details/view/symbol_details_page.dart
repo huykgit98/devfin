@@ -42,7 +42,7 @@ class _SymbolDetailsPageState extends State<SymbolDetailsPage>
             SliverAppBar(
               shadowColor: Colors.black12.withOpacity(0.5),
               foregroundColor: colors.labelColor,
-              collapsedHeight: 60,
+              collapsedHeight: kToolbarHeight,
               pinned: true,
               centerTitle: true,
               title: Text(

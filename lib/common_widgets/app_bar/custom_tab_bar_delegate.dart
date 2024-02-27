@@ -45,6 +45,7 @@ class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
             splashFactory: NoSplash.splashFactory,
             splashBorderRadius: BorderRadius.circular(100),
             onTap: onTap,
+            indicatorWeight: 2,
             // indicatorSize: TabBarIndicatorSize.tab,
             tabs: tabs,
           ),

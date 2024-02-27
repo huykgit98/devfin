@@ -43,7 +43,7 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
         return SliverAppBar(
           shadowColor: Colors.black12.withOpacity(0.5),
           foregroundColor: colors.labelColor,
-          collapsedHeight: 60,
+          // collapsedHeight: 56,
           expandedHeight: 90,
           leading: widget.leading,
           pinned: true,

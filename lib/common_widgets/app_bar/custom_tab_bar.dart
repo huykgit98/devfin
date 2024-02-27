@@ -32,6 +32,7 @@ class CustomTabBar extends ConsumerWidget implements PreferredSizeWidget {
             labelColor: colors.labelColor,
             indicatorColor: colors.labelColor,
             splashFactory: NoSplash.splashFactory,
+            indicatorWeight: 2,
             splashBorderRadius: BorderRadius.circular(100),
             onTap: onTap,
             // indicatorSize: TabBarIndicatorSize.tab,

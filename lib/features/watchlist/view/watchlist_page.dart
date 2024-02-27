@@ -1,10 +1,6 @@
-import 'package:devfin/common_widgets/widgets.dart';
-import 'package:devfin/features/explore/sample_data.dart';
-import 'package:devfin/features/explore/widgets/widgets.dart';
-import 'package:devfin/l10n/string_hardcoded.dart';
+import 'package:devfin/sample_data.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:vertical_scrollable_tabview/vertical_scrollable_tabview.dart';
 
 class WatchlistPage extends StatefulWidget {
   const WatchlistPage({super.key});
@@ -38,36 +34,7 @@ class _WatchlistPageState extends State<WatchlistPage>
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: VerticalScrollableTabView(
-        autoScrollController: autoScrollController,
-        scrollbarThumbVisibility: false,
-        tabController: tabController,
-        listItemData: data,
-        eachItemChild: (object, index) =>
-            CategorySection(category: object as Category),
-        slivers: [
-          CustomHeader(
-            title: 'Watchlist'.hardcoded,
-          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: CustomTabBarDelegate(
-              tabController: tabController,
-              tabs: data.map((e) {
-                return Tab(
-                  child: Text(
-                    e.title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                );
-              }).toList(),
-              onTap: VerticalScrollableTabBarStatus.setIndex,
-            ),
-          )
-        ],
-      ),
+      child: Text('HUHUHU'),
     );
   }
 }
