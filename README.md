@@ -191,3 +191,4 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 1. [Creating Development Environments for Firebase using the Very Good & Flutterfire CLIs in Flutter](https://demmss.medium.com/creating-development-environments-for-firebase-using-the-very-good-flutterfire-clis-in-flutter-250eba52bd4d)
 2. [Flutter Flavors Setup with multiple Firebase Environments using FlutterFire and Very Good CLI](https://codewithandrea.com/articles/flutter-flavors-for-firebase-apps/)
 3. [Practical Guide: Flutter + Firebase + FlutterFire CLI + CI (Codemagic)](https://blog.codemagic.io/pratical-guide-flutterfire-cli/)
+4. [Flutter iOS — Setup Flavors with different Firebase Config](https://ahmedyusuf.medium.com/setup-flavors-in-ios-flutter-with-different-firebase-config-43c4c4823e6b)
