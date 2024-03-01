@@ -1,8 +1,8 @@
 import 'package:devfin/features/explore/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:models/models.dart';
-
-import '../../../common_widgets/scrollable_list_tab_scroller.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -120,7 +120,7 @@ class _ExplorePageState extends State<ExplorePage>
       ],
     ),
   ];
-  final _scrollController = ScrollController();
+  ItemScrollController _itemScrollController = ItemScrollController();
 
   @override
   void initState() {
@@ -133,26 +133,33 @@ class _ExplorePageState extends State<ExplorePage>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ScrollableListTabScroller(
-        tabBuilder: (BuildContext context, int scrollIndex, bool active) =>
-            Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            markets.elementAt(scrollIndex).name,
-            style: !active
-                ? null
-                : const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.green),
-          ),
-        ),
-        itemCount: markets.length,
-        itemBuilder: (BuildContext context, int scrollIndex) =>
-            MarketItemWidget(
-          marketItem: markets.elementAt(scrollIndex),
+      child: ScrollConfiguration(
+        behavior: _ScrollbarBehavior(),
+        child: ScrollablePositionedList.builder(
+          itemScrollController: _itemScrollController,
+          itemCount: markets.length,
+          itemBuilder: (context, index) {
+            return MarketItemWidget(
+              marketItem: markets[index],
+            );
+          },
         ),
       ),
     );
+  }
+}
+
+class _ScrollbarBehavior extends ScrollBehavior {
+  @override
+  Widget buildScrollbar(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return PlatformScrollbar(child: child, controller: details.controller);
   }
 }
