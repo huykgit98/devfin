@@ -1,4 +1,4 @@
 /// Models package
 library models;
 
-export 'src/models.dart';
+export 'src/explore/market_item.dart';
