@@ -23,37 +23,36 @@ class NewsFlowSection extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: imageUrlList.length,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 4,
-                    margin: const EdgeInsets.all(10),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+            ListView.builder(
+              itemCount: imageUrlList.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                print("NewsFlowSection rebuild $index");
+                return Card(
+                  elevation: 4,
+                  margin: const EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    leading: const Icon(Icons.star, color: Colors.red),
+                    title: const Text('Title', style: TextStyle(fontSize: 20)),
+                    subtitle: const Text(
+                      'Subtitle',
+                      style: TextStyle(fontSize: 16),
                     ),
-                    child: ListTile(
-                      leading: const Icon(Icons.star, color: Colors.red),
-                      title:
-                          const Text('Title', style: TextStyle(fontSize: 20)),
-                      subtitle: const Text(
-                        'Subtitle',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      trailing: const Icon(Icons.arrow_forward),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      onTap: () {
-                        // Handle tile tap
-                      },
+                    trailing: const Icon(Icons.arrow_forward),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
                     ),
-                  );
-                },
-              ),
+                    onTap: () {
+                      // Handle tile tap
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(
               width: double.infinity,

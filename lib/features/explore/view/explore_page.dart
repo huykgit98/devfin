@@ -120,7 +120,7 @@ class _ExplorePageState extends State<ExplorePage>
       ],
     ),
   ];
-  ItemScrollController _itemScrollController = ItemScrollController();
+  final ItemScrollController _itemScrollController = ItemScrollController();
 
   @override
   void initState() {
@@ -148,6 +148,7 @@ class _ExplorePageState extends State<ExplorePage>
           itemBuilder: (context, index) {
             return MarketItemWidget(
               marketItem: markets[index],
+              id: 'marketItem$index',
             );
           },
         ),
