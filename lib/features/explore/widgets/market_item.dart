@@ -1,4 +1,5 @@
 import 'package:devfin/features/explore/widgets/widgets.dart';
+import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 
@@ -15,13 +16,14 @@ class MarketItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print('MarketItemWidget rebuild: $id');
-
+    //Replace this when the model is updated
     final firstThreeImages = marketItem.imageUrlList.length > 3
         ? marketItem.imageUrlList.sublist(0, 3)
         : marketItem.imageUrlList;
     final firstSixImages = marketItem.imageUrlList.length > 6
         ? marketItem.imageUrlList.sublist(0, 6)
         : marketItem.imageUrlList;
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -38,34 +40,32 @@ class MarketItemWidget extends StatelessWidget {
                   ?.apply(fontWeightDelta: 2),
             ),
           ),
-
           FilmStripItemsSection(
             marketItem: marketItem,
           ),
           NewsFlowSection(
             imageUrlList: firstThreeImages,
           ),
-          // FilmStripItemsSection(
-          //   marketItem: marketItem,
-          //   isCommunityTrends: true,
-          // ),
-          // HotItemsSection(
-          //   sectionName: 'Highest volume'.hardcoded,
-          //   imageUrlList: firstSixImages,
-          // ),
-          // HotItemsSection(
-          //   sectionName: 'Unusual volume'.hardcoded,
-          //   imageUrlList: firstSixImages,
-          // ),
-          //
-          // HotItemsSection(
-          //   sectionName: 'Gainers'.hardcoded,
-          //   imageUrlList: firstSixImages,
-          // ),
-          // HotItemsSection(
-          //   sectionName: 'Losers'.hardcoded,
-          //   imageUrlList: firstSixImages,
-          // ),
+          FilmStripItemsSection(
+            marketItem: marketItem,
+            isCommunityTrends: true,
+          ),
+          HotItemsSection(
+            sectionName: 'Highest volume'.hardcoded,
+            imageUrlList: firstSixImages,
+          ),
+          HotItemsSection(
+            sectionName: 'Unusual volume'.hardcoded,
+            imageUrlList: firstSixImages,
+          ),
+          HotItemsSection(
+            sectionName: 'Gainers'.hardcoded,
+            imageUrlList: firstSixImages,
+          ),
+          HotItemsSection(
+            sectionName: 'Losers'.hardcoded,
+            imageUrlList: firstSixImages,
+          ),
         ],
       ),
     );

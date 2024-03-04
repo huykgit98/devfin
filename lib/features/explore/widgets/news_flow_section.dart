@@ -25,16 +25,17 @@ class NewsFlowSection extends StatelessWidget {
             ),
             ListView.builder(
               itemCount: imageUrlList.length,
+              padding: EdgeInsets.zero,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                print("NewsFlowSection rebuild $index");
                 return Card(
                   elevation: 4,
                   margin: const EdgeInsets.all(10),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(20),
                   ),
+                  clipBehavior: Clip.hardEdge,
                   child: ListTile(
                     leading: const Icon(Icons.star, color: Colors.red),
                     title: const Text('Title', style: TextStyle(fontSize: 20)),

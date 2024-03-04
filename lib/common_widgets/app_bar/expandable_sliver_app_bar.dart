@@ -38,7 +38,8 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
 
     return SliverLayoutBuilder(
       builder: (BuildContext context, constraints) {
-        bool isFullyExpanded = constraints.scrollOffset == 0;
+        bool isFullyExpanded = (constraints.scrollOffset == 0);
+        final scrolled = constraints.scrollOffset > 0;
 
         return SliverAppBar(
           shadowColor: Colors.black12.withOpacity(0.5),
@@ -67,11 +68,11 @@ class _CustomHeaderState extends ConsumerState<CustomHeader>
                 ),
               ),
             ),
-            crossFadeState: isFullyExpanded
+            crossFadeState: !scrolled
                 ? CrossFadeState.showFirst
                 : CrossFadeState.showSecond,
           ),
-          flexibleSpace: isFullyExpanded
+          flexibleSpace: !scrolled
               ? FlexibleSpaceBar(
                   centerTitle: false,
                   titlePadding: const EdgeInsets.only(left: Sizes.p16),

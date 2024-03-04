@@ -6,6 +6,5 @@ export 'custom_choice_chips.dart';
 export 'custom_scaffold/devfin_scaffold.dart';
 export 'gradient_background.dart';
 export 'progress_indicator/custom_progress_indicator.dart';
-export 'scrollable_list_tab_scroller.dart';
 export 'skeleton_item.dart';
 export 'symbol_item.dart';

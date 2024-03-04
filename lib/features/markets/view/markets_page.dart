@@ -3,6 +3,7 @@ import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
 import 'package:devfin/sample_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -232,4 +233,12 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class _ScrollbarBehavior extends ScrollBehavior {
+  @override
+  Widget buildScrollbar(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return PlatformScrollbar(controller: details.controller, child: child);
+  }
 }

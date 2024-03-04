@@ -38,13 +38,16 @@ class FilmStripItemsSection extends StatelessWidget {
   Widget _buildImageListView(BuildContext context) => SizedBox(
         height: 180,
         width: double.infinity,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: marketItem.imageUrlList.length,
-          itemBuilder: (context, index) {
-            return _buildImageCard(
-                context, marketItem.imageUrlList[index] as String);
-          },
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: marketItem.imageUrlList.length,
+            itemBuilder: (context, index) {
+              return _buildImageCard(
+                  context, marketItem.imageUrlList[index] as String);
+            },
+          ),
         ),
       );
 
