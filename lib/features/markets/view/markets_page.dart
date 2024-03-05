@@ -16,36 +16,31 @@ class MarketsPage extends ConsumerStatefulWidget {
 }
 
 class _MarketsPageState extends ConsumerState<MarketsPage>
-    with AutomaticKeepAliveClientMixin<MarketsPage> {
+    with SingleTickerProviderStateMixin<MarketsPage> {
   final List<Category> tabValueList = ExampleData.data;
+  late TabController _tabController;
   late int tabIndex = 0;
   final List<MarketsFilterItem> marketsFilterItems = [
     MarketsFilterItem(
       id: 0,
       name: 'Indices',
       filterList: [
-        'United States',
         'Vietnam',
+        'United States',
       ],
     ),
     MarketsFilterItem(
       id: 1,
       name: 'Stocks',
       filterList: [
-        'United States',
         'Vietnam',
+        'United States',
       ],
     ),
     MarketsFilterItem(
       id: 2,
       name: 'CryptoCurrencies',
-      filterList: [
-        'All',
-        'Trending',
-        'New Listing',
-        'Top Gainer',
-        'Top Volume'
-      ],
+      filterList: ['Trending', 'New Listing', 'Top Gainer', 'Top Volume'],
     ),
     MarketsFilterItem(
       id: 3,
@@ -62,17 +57,27 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(
+      length: tabValueList.length,
+      vsync: this,
+    );
+
+    // Add listener to update tabIndex when tab is changed
+    _tabController.addListener(() {
+      setState(() {
+        tabIndex = _tabController.index;
+      });
+    });
   }
 
   @override
   void dispose() {
+    _tabController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
-
     return DefaultTabController(
       length: tabValueList.length,
       child: NestedScrollView(
@@ -84,6 +89,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
           SliverPersistentHeader(
             pinned: true,
             delegate: CustomTabBarDelegate(
+              tabController: _tabController,
               tabs: tabValueList.map(
                 (e) {
                   return Tab(
@@ -111,6 +117,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
           ),
         ],
         body: TabBarView(
+          controller: _tabController,
           children: <Widget>[
             Column(
               mainAxisSize: MainAxisSize.min,
@@ -120,7 +127,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                     padding: EdgeInsets.zero,
                     itemBuilder: (context, index) => SymbolItem(
                       onTap: () {
-                        final symbolId = 'AAPL';
+                        const symbolId = 'AAPL';
                         context.push('${AppRoutes.markets}/$symbolId');
                       },
                       icons: Icons.apple,
@@ -138,7 +145,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '\$182.45',
+                              r'$182.45',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.green,
@@ -268,9 +275,6 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
 
 class _ScrollbarBehavior extends ScrollBehavior {

@@ -18,7 +18,7 @@ class _ExplorePageState extends State<ExplorePage>
     with SingleTickerProviderStateMixin {
   List<MarketItem> markets = [
     MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
+      id: 0,
       name: 'Indices',
       imageUrl: 'https://picsum.photos/200',
       imageUrlList: [
@@ -39,7 +39,7 @@ class _ExplorePageState extends State<ExplorePage>
       ],
     ),
     MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
+      id: 1,
       name: 'Stocks',
       imageUrl: 'https://picsum.photos/200',
       imageUrlList: [
@@ -60,7 +60,7 @@ class _ExplorePageState extends State<ExplorePage>
       ],
     ),
     MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
+      id: 2,
       name: 'Crypto Currencies',
       imageUrl: 'https://picsum.photos/200',
       imageUrlList: [
@@ -81,7 +81,7 @@ class _ExplorePageState extends State<ExplorePage>
       ],
     ),
     MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
+      id: 3,
       name: 'Commodities',
       imageUrl: 'https://picsum.photos/200',
       imageUrlList: [
@@ -102,7 +102,7 @@ class _ExplorePageState extends State<ExplorePage>
       ],
     ),
     MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
+      id: 4,
       name: 'Currencies',
       imageUrl: 'https://picsum.photos/200',
       imageUrlList: [

@@ -23,7 +23,6 @@ class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
-
     return Container(
       color: showGradientBackground ? null : colors.backgroundColor,
       decoration: showGradientBackground
@@ -49,7 +48,7 @@ class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
             // indicatorSize: TabBarIndicatorSize.tab,
             tabs: tabs,
           ),
-          if (choiceChips != null) ...[
+          if (choiceChips != null && choiceChips!.choices != 0) ...[
             const SizedBox(height: 8),
             choiceChips!,
           ]

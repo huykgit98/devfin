@@ -11,7 +11,7 @@ class CustomChoiceChips extends StatefulWidget implements PreferredSizeWidget {
   State<CustomChoiceChips> createState() => _CustomChoiceChipsState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(40);
+  Size get preferredSize => Size.fromHeight(choices.isNotEmpty ? 40 : 0);
 }
 
 class _CustomChoiceChipsState extends State<CustomChoiceChips> {
@@ -22,8 +22,8 @@ class _CustomChoiceChipsState extends State<CustomChoiceChips> {
     final colors = Theme.of(context).extension<CustomColorsTheme>()!;
 
     return Container(
-      constraints: const BoxConstraints(
-        maxHeight: 40,
+      constraints: BoxConstraints(
+        maxHeight: widget.choices.isNotEmpty ? 40 : 0,
       ),
       child: ListView.separated(
         padding: const EdgeInsets.only(left: 16, right: 16),
