@@ -34,7 +34,11 @@ class _CustomChoiceChipsState extends State<CustomChoiceChips> {
             title: widget.choices[index],
             onTap: () {
               setState(() {
-                _value = index;
+                if (_value == index) {
+                  _value = -1;
+                } else {
+                  _value = index;
+                }
               });
             },
             gradient: LinearGradient(

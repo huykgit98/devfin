@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:models/models.dart';
 
 class MarketsPage extends ConsumerStatefulWidget {
   const MarketsPage({super.key});
@@ -17,6 +18,46 @@ class MarketsPage extends ConsumerStatefulWidget {
 class _MarketsPageState extends ConsumerState<MarketsPage>
     with AutomaticKeepAliveClientMixin<MarketsPage> {
   final List<Category> tabValueList = ExampleData.data;
+  late int tabIndex = 0;
+  final List<MarketsFilterItem> marketsFilterItems = [
+    MarketsFilterItem(
+      id: 0,
+      name: 'Indices',
+      filterList: [
+        'United States',
+        'Vietnam',
+      ],
+    ),
+    MarketsFilterItem(
+      id: 1,
+      name: 'Stocks',
+      filterList: [
+        'United States',
+        'Vietnam',
+      ],
+    ),
+    MarketsFilterItem(
+      id: 2,
+      name: 'CryptoCurrencies',
+      filterList: [
+        'All',
+        'Trending',
+        'New Listing',
+        'Top Gainer',
+        'Top Volume'
+      ],
+    ),
+    MarketsFilterItem(
+      id: 3,
+      name: 'Commodities',
+      filterList: [],
+    ),
+    MarketsFilterItem(
+      id: 4,
+      name: 'Currencies',
+      filterList: [],
+    ),
+  ];
 
   @override
   void initState() {
@@ -55,16 +96,13 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                   );
                 },
               ).toList(),
+              onTap: (index) {
+                setState(() {
+                  tabIndex = index;
+                });
+              },
               choiceChips: CustomChoiceChips(
-                choices: const [
-                  'All',
-                  'Stocks',
-                  'ETFs',
-                  'Funds',
-                  'Cryptos',
-                  'ABC',
-                  'XYA'
-                ],
+                choices: marketsFilterItems[tabIndex].filterList,
                 onSelected: (bool selected) {
                   print('selected');
                 },
@@ -108,7 +146,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                               ),
                             ),
                             Wrap(
-                              children: const [
+                              children: [
                                 Icon(
                                   Icons.arrow_drop_up,
                                   color: Colors.green,
@@ -170,7 +208,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                               ),
                             ),
                             Wrap(
-                              children: const [
+                              children: [
                                 Icon(
                                   Icons.arrow_drop_down,
                                   color: Colors.redAccent,
