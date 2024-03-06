@@ -1,6 +1,7 @@
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/watchlist/widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
+import 'package:devfin/sample_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:models/models.dart';
@@ -16,71 +17,10 @@ class WatchlistPage extends StatefulWidget {
 
 class _WatchlistPageState extends State<WatchlistPage>
     with SingleTickerProviderStateMixin {
-  List<MarketItem> watchlist = [
-    MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
-      name: 'Watchlist 1',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-    MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
-      name: 'Watchlist 2',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-    MarketItem(
-      id: DateTime.now().microsecondsSinceEpoch,
-      name: 'Watchlist 3',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-  ];
+  List<SymbolItem> watchlist1 = ExampleData.cryptoItems.sublist(0, 5);
+  List<SymbolItem> watchlist2 = ExampleData.cryptoItems.sublist(3, 8);
+  late List<dynamic> watchlist;
+
   late AutoScrollController scrollController;
   late TabController tabController;
   final double collapsedHeight = kToolbarHeight;
@@ -93,8 +33,8 @@ class _WatchlistPageState extends State<WatchlistPage>
 
   @override
   void initState() {
-    tabController = TabController(length: watchlist.length, vsync: this);
     scrollController = AutoScrollController();
+    watchlist = [watchlist1, watchlist2];
     super.initState();
   }
 
@@ -185,14 +125,17 @@ class _WatchlistPageState extends State<WatchlistPage>
 
   Widget buildCategoryItem(int index) {
     itemKeys[index] = RectGetter.createGlobalKey();
-    final item = watchlist[index];
+    final item = watchlist[index] as List<SymbolItem>;
     return RectGetter(
       key: itemKeys[index] as GlobalKey<RectGetterState>,
       child: AutoScrollTag(
         key: ValueKey(index),
         index: index,
         controller: scrollController,
-        child: WatchlistItem(imageUrlList: watchlist[index].imageUrlList),
+        child: WatchlistItem(
+          watchlistName: 'Watchlist ${index + 1}',
+          watchlist: item,
+        ),
       ),
     );
   }

@@ -1,16 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:devfin/sample_data.dart';
 import 'package:flutter/material.dart';
-import 'package:models/models.dart';
 
 class FilmStripItemsSection extends StatelessWidget {
   const FilmStripItemsSection({
-    required this.marketItem,
     this.isCommunityTrends = false,
     super.key,
   });
 
   final bool isCommunityTrends;
-  final MarketItem marketItem;
+  static final imageUrlList = ExampleData.imgUrlList;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +41,9 @@ class FilmStripItemsSection extends StatelessWidget {
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: marketItem.imageUrlList.length,
+            itemCount: imageUrlList.length,
             itemBuilder: (context, index) {
-              return _buildImageCard(
-                  context, marketItem.imageUrlList[index] as String);
+              return _buildImageCard(context, imageUrlList[index]);
             },
           ),
         ),

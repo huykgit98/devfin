@@ -1,22 +1,23 @@
-import 'package:devfin/features/settings/widgets/widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class SymbolItem extends StatelessWidget {
-  const SymbolItem({
-    required this.icons,
+class SymbolItemWidget extends StatelessWidget {
+  const SymbolItemWidget({
     required this.title,
+    this.icons,
     super.key,
     this.titleStyle,
     this.subtitle,
     this.subtitleStyle,
     this.backgroundColor,
+    this.leading,
     this.trailing,
     this.onTap,
     this.titleMaxLine,
     this.subtitleMaxLine,
     this.overflow = TextOverflow.ellipsis,
   });
-  final IconData icons;
+  final IconData? icons;
   final String title;
   final TextStyle? titleStyle;
   final String? subtitle;
@@ -27,6 +28,7 @@ class SymbolItem extends StatelessWidget {
   final int? titleMaxLine;
   final int? subtitleMaxLine;
   final TextOverflow? overflow;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +42,12 @@ class SymbolItem extends StatelessWidget {
         ),
         dense: true,
         onTap: onTap,
-        leading: Icon(
-          icons,
-          size: SettingsScreenUtils.settingsGroupIconSize,
-        ),
+        leading: leading ??
+            const CircleAvatar(
+              radius: 20,
+              backgroundImage: CachedNetworkImageProvider(
+                  'https://s2.coinmarketcap.com/static/img/coins/64x64/24478.png'),
+            ),
         title: Text(
           title,
           style: titleStyle ?? const TextStyle(fontWeight: FontWeight.bold),

@@ -1,6 +1,7 @@
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/explore/widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
+import 'package:devfin/sample_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:models/models.dart';
@@ -16,113 +17,9 @@ class ExplorePage extends StatefulWidget {
 
 class _ExplorePageState extends State<ExplorePage>
     with SingleTickerProviderStateMixin {
-  List<MarketItem> markets = [
-    MarketItem(
-      id: 0,
-      name: 'Indices',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-    MarketItem(
-      id: 1,
-      name: 'Stocks',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-    MarketItem(
-      id: 2,
-      name: 'Crypto Currencies',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-    MarketItem(
-      id: 3,
-      name: 'Commodities',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-    MarketItem(
-      id: 4,
-      name: 'Currencies',
-      imageUrl: 'https://picsum.photos/200',
-      imageUrlList: [
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-        'https://picsum.photos/200',
-      ],
-    ),
-  ];
+  late List<SymbolItem> cryptoItems;
+  late List<String> tabValueList;
+
   bool isCollapsed = false;
   late AutoScrollController scrollController;
   late TabController tabController;
@@ -136,7 +33,10 @@ class _ExplorePageState extends State<ExplorePage>
 
   @override
   void initState() {
-    tabController = TabController(length: markets.length, vsync: this);
+    cryptoItems = ExampleData.cryptoItems;
+    tabValueList = ExampleData.tabValueList;
+
+    tabController = TabController(length: tabValueList.length, vsync: this);
     scrollController = AutoScrollController();
     super.initState();
   }
@@ -230,10 +130,10 @@ class _ExplorePageState extends State<ExplorePage>
         pinned: true,
         delegate: CustomTabBarDelegate(
           tabController: tabController,
-          tabs: markets.map((e) {
+          tabs: tabValueList.map((e) {
             return Tab(
               child: Text(
-                e.name,
+                e,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -250,14 +150,14 @@ class _ExplorePageState extends State<ExplorePage>
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) => buildCategoryItem(index),
-        childCount: markets.length,
+        childCount: cryptoItems.length,
       ),
     );
   }
 
   Widget buildCategoryItem(int index) {
     itemKeys[index] = RectGetter.createGlobalKey();
-    final item = markets[index];
+    final item = cryptoItems[index];
     return RectGetter(
       key: itemKeys[index] as GlobalKey<RectGetterState>,
       child: AutoScrollTag(

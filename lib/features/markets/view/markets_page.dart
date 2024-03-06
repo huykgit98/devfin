@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
@@ -17,46 +18,19 @@ class MarketsPage extends ConsumerStatefulWidget {
 
 class _MarketsPageState extends ConsumerState<MarketsPage>
     with SingleTickerProviderStateMixin<MarketsPage> {
-  final List<Category> tabValueList = ExampleData.data;
+  late List<String> tabValueList;
   late TabController _tabController;
   late int tabIndex = 0;
-  final List<MarketsFilterItem> marketsFilterItems = [
-    MarketsFilterItem(
-      id: 0,
-      name: 'Indices',
-      filterList: [
-        'Vietnam',
-        'United States',
-      ],
-    ),
-    MarketsFilterItem(
-      id: 1,
-      name: 'Stocks',
-      filterList: [
-        'Vietnam',
-        'United States',
-      ],
-    ),
-    MarketsFilterItem(
-      id: 2,
-      name: 'CryptoCurrencies',
-      filterList: ['Trending', 'New Listing', 'Top Gainer', 'Top Volume'],
-    ),
-    MarketsFilterItem(
-      id: 3,
-      name: 'Commodities',
-      filterList: [],
-    ),
-    MarketsFilterItem(
-      id: 4,
-      name: 'Currencies',
-      filterList: [],
-    ),
-  ];
+  late List<MarketsFilterItem> marketsFilterItems;
+  late List<SymbolItem> cryptoItems;
 
   @override
   void initState() {
     super.initState();
+    tabValueList = ExampleData.tabValueList;
+    marketsFilterItems = ExampleData.marketsFilterItems;
+    cryptoItems = ExampleData.cryptoItems;
+
     _tabController = TabController(
       length: tabValueList.length,
       vsync: this,
@@ -94,7 +68,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                 (e) {
                   return Tab(
                     child: Text(
-                      e.title,
+                      e,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -125,7 +99,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                 Expanded(
                   child: ListView.separated(
                     padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) => SymbolItem(
+                    itemBuilder: (context, index) => SymbolItemWidget(
                       onTap: () {
                         const symbolId = 'AAPL';
                         context.push('${AppRoutes.markets}/$symbolId');
@@ -190,7 +164,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                 Expanded(
                   child: ListView.separated(
                     padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) => SymbolItem(
+                    itemBuilder: (context, index) => SymbolItemWidget(
                       onTap: () {},
                       icons: Icons.apple,
                       title: 'AAPL'.hardcoded,
@@ -246,13 +220,86 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                 ),
               ],
             ),
-            ListView.builder(
-              padding: EdgeInsets.zero,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(
-                  'Tab 3 content $index',
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: ListView.separated(
+                    padding: EdgeInsets.zero,
+                    itemBuilder: (context, index) {
+                      final item = cryptoItems[index];
+                      return SymbolItemWidget(
+                        onTap: () {
+                          final symbolId = item.name;
+                          context.push('${AppRoutes.markets}/$symbolId');
+                        },
+                        leading: CircleAvatar(
+                          radius: 20,
+                          backgroundImage:
+                              CachedNetworkImageProvider(item.imageUrl),
+                        ),
+                        title: item.name,
+                        subtitle: item.description,
+                        subtitleMaxLine: 1,
+                        trailing: Container(
+                          width: 130,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: item.increase
+                                ? Colors.teal.withOpacity(0.1)
+                                : Colors.redAccent.withOpacity(0.1),
+                          ),
+                          padding: const EdgeInsets.all(5.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                item.price,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color:
+                                      item.increase ? Colors.green : Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Wrap(
+                                children: [
+                                  Icon(
+                                    item.increase
+                                        ? Icons.arrow_drop_up
+                                        : Icons.arrow_drop_down,
+                                    color: item.increase
+                                        ? Colors.green
+                                        : Colors.red,
+                                    size: 16,
+                                  ),
+                                  Text(
+                                    '${item.symbolChange}%',
+                                    style: TextStyle(
+                                      color: item.increase
+                                          ? Colors.green
+                                          : Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const Divider(
+                        height: 0,
+                        indent: 0,
+                        thickness: 1,
+                      );
+                    },
+                    itemCount: cryptoItems.length,
+                  ),
                 ),
-              ),
+              ],
             ),
             ListView.builder(
               padding: EdgeInsets.zero,

@@ -70,7 +70,7 @@ class HotItemsSection extends StatelessWidget {
       elevation: 4,
       margin: const EdgeInsets.all(5),
       clipBehavior: Clip.hardEdge,
-      child: SymbolItem(
+      child: SymbolItemWidget(
         onTap: () {
           final symbolId = 'AAPL';
           // context.push('${AppRoutes.markets}/$symbolId');

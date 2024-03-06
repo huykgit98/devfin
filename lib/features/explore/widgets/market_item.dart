@@ -10,19 +10,15 @@ class MarketItemWidget extends StatelessWidget {
     super.key,
   });
 
-  final MarketItem marketItem;
+  final SymbolItem marketItem;
   final String id;
 
   @override
   Widget build(BuildContext context) {
     print('MarketItemWidget rebuild: $id');
     //Replace this when the model is updated
-    final firstThreeImages = marketItem.imageUrlList.length > 3
-        ? marketItem.imageUrlList.sublist(0, 3)
-        : marketItem.imageUrlList;
-    final firstSixImages = marketItem.imageUrlList.length > 6
-        ? marketItem.imageUrlList.sublist(0, 6)
-        : marketItem.imageUrlList;
+    final firstThreeImages = [''];
+    final firstSixImages = [''];
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -33,21 +29,18 @@ class MarketItemWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
             child: Text(
-              marketItem.name,
+              'asd',
               style: Theme.of(context)
                   .textTheme
                   .titleLarge
                   ?.apply(fontWeightDelta: 2),
             ),
           ),
-          FilmStripItemsSection(
-            marketItem: marketItem,
-          ),
+          FilmStripItemsSection(),
           NewsFlowSection(
             imageUrlList: firstThreeImages,
           ),
           FilmStripItemsSection(
-            marketItem: marketItem,
             isCommunityTrends: true,
           ),
           HotItemsSection(
