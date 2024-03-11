@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class GlassFrostAppBar extends StatefulWidget {
   const GlassFrostAppBar(
-      {super.key,
-      required this.mainScrollController,
-      required this.horizontalList});
+      {required this.mainScrollController,
+      required this.horizontalList,
+      super.key});
 
   final ScrollController mainScrollController;
   final Widget horizontalList;

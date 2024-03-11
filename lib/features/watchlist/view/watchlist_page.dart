@@ -132,6 +132,7 @@ class _WatchlistPageState extends State<WatchlistPage>
         CustomHeader(
           title: 'Watchlist'.hardcoded,
         ),
+        _buildTabBar(),
         _buildBody(),
       ],
     );
@@ -142,6 +143,29 @@ class _WatchlistPageState extends State<WatchlistPage>
       delegate: SliverChildBuilderDelegate(
         (context, index) => buildCategoryItem(index),
         childCount: watchlist.length,
+      ),
+    );
+  }
+
+  Widget _buildTabBar() {
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+      child: SliverPersistentHeader(
+        pinned: true,
+        delegate: CustomTabBarDelegate(
+          tabController: tabController,
+          tabs: watchlist.map((e) {
+            return Tab(
+              child: Text(
+                'Watchlist ${watchlist.indexOf(e) + 1}',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+          }).toList(),
+          onTap: animateAndScrollTo,
+        ),
       ),
     );
   }
