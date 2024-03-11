@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:devfin/app/app.dart';
 import 'package:devfin/common_widgets/widgets.dart';
@@ -20,6 +22,7 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
     with SingleTickerProviderStateMixin<MarketsPage> {
   late List<String> tabValueList;
   late TabController _tabController;
+  late ScrollController _scrollController;
   late int tabIndex = 0;
   late List<MarketsFilterItem> marketsFilterItems;
   late List<SymbolItem> cryptoItems;
@@ -36,6 +39,8 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
       vsync: this,
     );
 
+    _scrollController = ScrollController();
+
     // Add listener to update tabIndex when tab is changed
     _tabController.addListener(() {
       setState(() {
@@ -47,238 +52,124 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
   @override
   void dispose() {
     _tabController.dispose();
+    _scrollController.dispose();
     super.dispose();
+  }
+
+  bool _onScrollNotification(ScrollNotification notification) {
+    //implement automatically scrolling the SliverAppBar
+    //to a collapsed state
+    //at the moment the user stops scrolling in an intermediate position
+    if (notification is ScrollEndNotification && notification.depth == 0) {
+      final minExtent = notification.metrics.minScrollExtent;
+      final pos = notification.metrics.pixels;
+      final tabbarHeight = 100;
+
+      double? scrollTo;
+      if (minExtent < pos && pos <= kToolbarHeight) {
+        scrollTo = minExtent + tabbarHeight;
+        // Doesn't work without Timer
+        Timer(
+            const Duration(milliseconds: 1),
+            () => _scrollController.animateTo(scrollTo!,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.ease));
+        return true;
+      }
+    }
+    return false;
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: tabValueList.length,
-      child: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          CustomHeader(
-            innerBoxIsScrolled: innerBoxIsScrolled,
-            title: 'Markets'.hardcoded,
-          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: CustomTabBarDelegate(
-              tabController: _tabController,
-              tabs: tabValueList.map(
-                (e) {
-                  return Tab(
-                    child: Text(
-                      e,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+      child: NotificationListener<ScrollNotification>(
+        onNotification: _onScrollNotification,
+        child: NestedScrollView(
+          controller: _scrollController,
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            CustomHeader(
+              innerBoxIsScrolled: innerBoxIsScrolled,
+              title: 'Markets'.hardcoded,
+            ),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: CustomTabBarDelegate(
+                tabController: _tabController,
+                tabs: tabValueList.map(
+                  (e) {
+                    return Tab(
+                      child: Text(
+                        e,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  },
+                ).toList(),
+                onTap: (index) {
+                  setState(() {
+                    tabIndex = index;
+                  });
                 },
-              ).toList(),
-              onTap: (index) {
-                setState(() {
-                  tabIndex = index;
-                });
-              },
-              choiceChips: CustomChoiceChips(
-                choices: marketsFilterItems[tabIndex].filterList,
-                onSelected: (bool selected) {
-                  print('selected');
-                },
+                choiceChips: CustomChoiceChips(
+                  choices: marketsFilterItems[tabIndex].filterList,
+                  onSelected: (bool selected) {
+                    print('selected');
+                  },
+                ),
               ),
             ),
-          ),
-        ],
-        body: TabBarView(
-          controller: _tabController,
-          children: <Widget>[
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: ListView.separated(
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) => SymbolItemWidget(
-                      onTap: () {
-                        const symbolId = 'AAPL';
-                        context.push('${AppRoutes.markets}/$symbolId');
-                      },
-                      icons: Icons.apple,
-                      title: 'AAPL'.hardcoded,
-                      subtitle: 'Apple Inc.'.hardcoded,
-                      subtitleMaxLine: 1,
-                      trailing: Container(
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.teal.withOpacity(0.1),
-                        ),
-                        padding: const EdgeInsets.all(5.0),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              r'$182.45',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Wrap(
-                              children: [
-                                Icon(
-                                  Icons.arrow_drop_up,
-                                  color: Colors.green,
-                                  size: 16,
-                                ),
-                                Text(
-                                  '1.23%',
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const Divider(
-                        height: 0,
-                        indent: 0,
-                        thickness: 1,
-                      );
-                    },
-                    itemCount: 100,
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: ListView.separated(
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) => SymbolItemWidget(
-                      onTap: () {},
-                      icons: Icons.apple,
-                      title: 'AAPL'.hardcoded,
-                      subtitle: 'Apple Inc.'.hardcoded,
-                      subtitleMaxLine: 1,
-                      trailing: Container(
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.redAccent.withOpacity(0.1),
-                        ),
-                        padding: const EdgeInsets.all(5.0),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '\$182.45',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.redAccent,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Wrap(
-                              children: [
-                                Icon(
-                                  Icons.arrow_drop_down,
-                                  color: Colors.redAccent,
-                                  size: 16,
-                                ),
-                                Text(
-                                  '1.23%',
-                                  style: TextStyle(
-                                    color: Colors.redAccent,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const Divider(
-                        height: 0,
-                        indent: 0,
-                        thickness: 1,
-                      );
-                    },
-                    itemCount: 100,
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: ListView.separated(
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) {
-                      final item = cryptoItems[index];
-                      return SymbolItemWidget(
+          ],
+          body: TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index) => SymbolItemWidget(
                         onTap: () {
-                          final symbolId = item.name;
+                          const symbolId = 'AAPL';
                           context.push('${AppRoutes.markets}/$symbolId');
                         },
-                        leading: CircleAvatar(
-                          radius: 20,
-                          backgroundImage:
-                              CachedNetworkImageProvider(item.imageUrl),
-                        ),
-                        title: item.name,
-                        subtitle: item.description,
+                        icons: Icons.apple,
+                        title: 'AAPL'.hardcoded,
+                        subtitle: 'Apple Inc.'.hardcoded,
                         subtitleMaxLine: 1,
                         trailing: Container(
-                          width: 130,
+                          width: 100,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: item.increase
-                                ? Colors.teal.withOpacity(0.1)
-                                : Colors.redAccent.withOpacity(0.1),
+                            color: Colors.teal.withOpacity(0.1),
                           ),
                           padding: const EdgeInsets.all(5.0),
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                item.price,
+                                r'$182.45',
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color:
-                                      item.increase ? Colors.green : Colors.red,
+                                  color: Colors.green,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Wrap(
                                 children: [
                                   Icon(
-                                    item.increase
-                                        ? Icons.arrow_drop_up
-                                        : Icons.arrow_drop_down,
-                                    color: item.increase
-                                        ? Colors.green
-                                        : Colors.red,
+                                    Icons.arrow_drop_up,
+                                    color: Colors.green,
                                     size: 16,
                                   ),
                                   Text(
-                                    '${item.symbolChange}%',
+                                    '1.23%',
                                     style: TextStyle(
-                                      color: item.increase
-                                          ? Colors.green
-                                          : Colors.red,
+                                      color: Colors.green,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -287,37 +178,181 @@ class _MarketsPageState extends ConsumerState<MarketsPage>
                             ],
                           ),
                         ),
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return const Divider(
-                        height: 0,
-                        indent: 0,
-                        thickness: 1,
-                      );
-                    },
-                    itemCount: cryptoItems.length,
+                      ),
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const Divider(
+                          height: 0,
+                          indent: 0,
+                          thickness: 1,
+                        );
+                      },
+                      itemCount: 100,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index) => SymbolItemWidget(
+                        onTap: () {},
+                        icons: Icons.apple,
+                        title: 'AAPL'.hardcoded,
+                        subtitle: 'Apple Inc.'.hardcoded,
+                        subtitleMaxLine: 1,
+                        trailing: Container(
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.redAccent.withOpacity(0.1),
+                          ),
+                          padding: const EdgeInsets.all(5.0),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '\$182.45',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.redAccent,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Wrap(
+                                children: [
+                                  Icon(
+                                    Icons.arrow_drop_down,
+                                    color: Colors.redAccent,
+                                    size: 16,
+                                  ),
+                                  Text(
+                                    '1.23%',
+                                    style: TextStyle(
+                                      color: Colors.redAccent,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const Divider(
+                          height: 0,
+                          indent: 0,
+                          thickness: 1,
+                        );
+                      },
+                      itemCount: 100,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index) {
+                        final item = cryptoItems[index];
+                        return SymbolItemWidget(
+                          onTap: () {
+                            final symbolId = item.name;
+                            context.push('${AppRoutes.markets}/$symbolId');
+                          },
+                          leading: CircleAvatar(
+                            radius: 20,
+                            backgroundImage:
+                                CachedNetworkImageProvider(item.imageUrl),
+                          ),
+                          title: item.name,
+                          subtitle: item.description,
+                          subtitleMaxLine: 1,
+                          trailing: Container(
+                            width: 130,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: item.increase
+                                  ? Colors.teal.withOpacity(0.1)
+                                  : Colors.redAccent.withOpacity(0.1),
+                            ),
+                            padding: const EdgeInsets.all(5.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item.price,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: item.increase
+                                        ? Colors.green
+                                        : Colors.red,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Wrap(
+                                  children: [
+                                    Icon(
+                                      item.increase
+                                          ? Icons.arrow_drop_up
+                                          : Icons.arrow_drop_down,
+                                      color: item.increase
+                                          ? Colors.green
+                                          : Colors.red,
+                                      size: 16,
+                                    ),
+                                    Text(
+                                      '${item.symbolChange}%',
+                                      style: TextStyle(
+                                        color: item.increase
+                                            ? Colors.green
+                                            : Colors.red,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const Divider(
+                          height: 0,
+                          indent: 0,
+                          thickness: 1,
+                        );
+                      },
+                      itemCount: cryptoItems.length,
+                    ),
+                  ),
+                ],
+              ),
+              ListView.builder(
+                padding: EdgeInsets.zero,
+                itemBuilder: (context, index) => ListTile(
+                  title: Text(
+                    'Tab 4 content $index',
                   ),
                 ),
-              ],
-            ),
-            ListView.builder(
-              padding: EdgeInsets.zero,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(
-                  'Tab 4 content $index',
+              ),
+              ListView.builder(
+                padding: EdgeInsets.zero,
+                itemBuilder: (context, index) => ListTile(
+                  title: Text(
+                    'Tab 5 content $index',
+                  ),
                 ),
               ),
-            ),
-            ListView.builder(
-              padding: EdgeInsets.zero,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(
-                  'Tab 5 content $index',
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

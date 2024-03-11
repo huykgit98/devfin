@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:devfin/common_widgets/widgets.dart';
 import 'package:devfin/features/watchlist/widgets/widgets.dart';
 import 'package:devfin/l10n/string_hardcoded.dart';
@@ -79,25 +77,6 @@ class _WatchlistPageState extends State<WatchlistPage>
       final middleIndex = sumIndex ~/ visibleItems.length;
       if (tabController.index != middleIndex) {
         tabController.animateTo(middleIndex);
-      }
-    }
-
-    //implement automatically scrolling the SliverAppBar
-    //to a collapsed or expanded state
-    //at the moment the user stops scrolling in an intermediate position
-    if (notification is ScrollEndNotification && notification.depth == 0) {
-      final minExtent = notification.metrics.minScrollExtent;
-      final pos = notification.metrics.pixels;
-
-      double? scrollTo;
-      if (minExtent < pos && pos <= kToolbarHeight) {
-        scrollTo = minExtent + 40;
-        // Doesn't work without Timer
-        Timer(
-            const Duration(milliseconds: 1),
-            () => scrollController.animateTo(scrollTo!,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.ease));
       }
     }
     return false;

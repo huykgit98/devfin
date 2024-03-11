@@ -95,6 +95,15 @@ class AppTheme {
                   Color(0xFF0c355a),
                   Color(0xFF121212),
                 ],
+          linearGradientBackgroundWithOpacity: isLight
+              ? [
+                  const Color(0xFF6BB3FF).withOpacity(0.5),
+                  const Color(0xFFD3DAFD).withOpacity(0.5),
+                ]
+              : [
+                  const Color(0xFF0c355a).withOpacity(0.5),
+                  const Color(0xFF121212).withOpacity(0.5),
+                ],
           loadingIndicatorGradient: const [
             Color(0xFF0695FF),
             Color(0xFFA334FA),

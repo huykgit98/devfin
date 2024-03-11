@@ -10,6 +10,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
     required this.shadowNavigationBarColor,
     required this.backgroundColor,
     required this.linearGradientBackground,
+    required this.linearGradientBackgroundWithOpacity,
     required this.loadingIndicatorGradient,
     required this.customLoadingGradient,
     required this.buttonGradient,
@@ -23,6 +24,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
   final Color shadowNavigationBarColor;
   final Color backgroundColor;
   final List<Color> linearGradientBackground;
+  final List<Color> linearGradientBackgroundWithOpacity;
   final List<Color> loadingIndicatorGradient;
   final List<Color> customLoadingGradient;
   final List<Color> buttonGradient;
@@ -37,6 +39,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
     Color? shadowNavigationBarColor,
     Color? backgroundColor,
     List<Color>? linearGradientBackground,
+    List<Color>? linearGradientBackgroundWithOpacity,
     List<Color>? loadingIndicatorGradient,
     List<Color>? customLoadingGradient,
     List<Color>? buttonGradient,
@@ -58,6 +61,9 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
           shadowNavigationBarColor ?? this.shadowNavigationBarColor,
       linearGradientBackground:
           linearGradientBackground ?? this.linearGradientBackground,
+      linearGradientBackgroundWithOpacity:
+          linearGradientBackgroundWithOpacity ??
+              this.linearGradientBackgroundWithOpacity,
       loadingIndicatorGradient:
           loadingIndicatorGradient ?? this.loadingIndicatorGradient,
       customLoadingGradient:
@@ -78,6 +84,7 @@ class CustomColorsTheme extends ThemeExtension<CustomColorsTheme> {
       disabledButtonGradient: disabledButtonGradient,
       buttonGradient: buttonGradient,
       linearGradientBackground: linearGradientBackground,
+      linearGradientBackgroundWithOpacity: linearGradientBackgroundWithOpacity,
       loadingIndicatorGradient: loadingIndicatorGradient,
       customLoadingGradient: customLoadingGradient,
       bottomNavigationBarBackgroundColor: Color.lerp(
