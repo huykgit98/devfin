@@ -17,6 +17,9 @@ class DevFinApp extends ConsumerWidget {
         RepositoryProvider<AuthenticationRepository>(
           create: (_) => AuthenticationRepository(),
         ),
+        // RepositoryProvider<CryptoRepository>(
+        //   create: (_) => CryptoRepository(coincapApi: null),
+        // ),
       ],
       child: const DevFinAppView(),
     );

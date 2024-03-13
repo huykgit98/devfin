@@ -15,6 +15,10 @@ dependencies:
     path: packages/form_inputs
   models:
     path: packages/models
+  crypto_repository:
+    path: packages/crypto_repository
+  coincap_api:
+    path: packages/coincap_api
 
   #external packages
   bloc: ^8.1.2
